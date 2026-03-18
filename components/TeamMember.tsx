@@ -6,9 +6,10 @@ import Image from 'next/image';
 
 interface TeamMemberProps {
   id: string;
+  locale: string;
 }
 
-export default function TeamMember({ id }: TeamMemberProps) {
+export default function TeamMember({ id, locale }: TeamMemberProps) {
   const t = useTranslations();
   const member = team.find(m => m.id === id);
 

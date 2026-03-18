@@ -7,9 +7,10 @@ import { services } from '@/data/services';
 
 interface ServiceCardProps {
   id: string;
+  locale: string;
 }
 
-export default function ServiceCard({ id }: ServiceCardProps) {
+export default function ServiceCard({ id, locale }: ServiceCardProps) {
   const t = useTranslations();
   const service = services.find(s => s.id === id);
 

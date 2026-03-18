@@ -41,7 +41,7 @@ export default function Hero({ locale }: HeroProps) {
               href={`/${locale}/contact`}
               className="btn-secondary inline-flex items-center justify-center"
             >
-              联系我们
+              {locale === 'zh' ? '联系我们' : 'Contattaci'}
             </Link>
           </div>
         </div>

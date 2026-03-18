@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Mail, Send } from 'lucide-react';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  locale: string;
+}
+
+export default function ContactForm({ locale }: ContactFormProps) {
   const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
@@ -16,7 +20,7 @@ export default function ContactForm() {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('感谢您的留言!我们会尽快回复您。');
+    alert(locale === 'zh' ? '感谢您的留言!我们会尽快回复您。' : 'Grazie per il tuo messaggio! Ti risponderemo presto.');
     setFormData({ name: '', email: '', message: '' });
   };
 

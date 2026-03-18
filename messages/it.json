@@ -12,6 +12,50 @@
     "subtitle": "Offriamo servizi di competenze AI, esperienze di cultura del tè e prodotti cultura-tecnologia, creando un profondo dialogo culturale tra Cina e Italia",
     "cta": "Scopri di più"
   },
+  "home": {
+    "services": {
+      "title": "I Nostri Servizi",
+      "description": "Attraverso servizi e prodotti innovativi, colleghiamo le culture orientali e occidentali, creando valore unico"
+    },
+    "whyUs": {
+      "title": "Perché Sceglierci",
+      "points": {
+        "1": {
+          "title": "Professionalità Biculturale",
+          "description": "Profonda conoscenza delle culture e degli ambienti aziendali cinesi e italiani"
+        },
+        "2": {
+          "title": "Servizi Innovativi",
+          "description": "Combinando tradizione e modernità, offriamo esperienze uniche"
+        },
+        "3": {
+          "title": "Team Professionale",
+          "description": "Team esperto e professionale al vostro servizio completo"
+        },
+        "4": {
+          "title": "Soluzioni Personalizzate",
+          "description": "Soluzioni personalizzate in base alle esigenze dei clienti"
+        },
+        "5": {
+          "title": "Garanzia di Qualità",
+          "description": "Rigido sistema di controllo qualità"
+        },
+        "6": {
+          "title": "Supporto Continuo",
+          "description": "Relazioni a lungo termine e supporto post-vendita"
+        }
+      }
+    },
+    "team": {
+      "title": "Conosci il Nostro Team",
+      "description": "Team professionale, appassionato e creativo, al vostro servizio"
+    },
+    "cta": {
+      "title": "Pronto a Iniziare?",
+      "description": "Creiamo valore culturale insieme, colleghiamo la saggezza orientale e occidentale",
+      "button": "Contattaci Subito"
+    }
+  },
   "services": {
     "title": "I Nostri Servizi",
     "ai_skills": {

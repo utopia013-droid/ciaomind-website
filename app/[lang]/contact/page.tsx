@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { company } from '@/data/company';
@@ -6,15 +7,17 @@ export function generateStaticParams() {
   return [{ lang: 'it' }, { lang: 'zh' }];
 }
 
-export default function ContactPage() {
+export default function ContactPage({ params: { lang } }: { params: { lang: string } }) {
+  const t = useTranslations();
+
   return (
     <>
       {/* Hero Section */}
       <section className="section bg-gradient-to-br from-primary-navy to-primary-navy/90 text-white">
         <div className="container text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">联系我们</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('contact.title')}</h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            我们期待与您交流,为您创造独特价值
+            {t('contact.hero_description') || '我们期待与您交流,为您创造独特价值'}
           </p>
         </div>
       </section>
@@ -27,10 +30,10 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-primary-navy mb-6">
-                  联系方式
+                  {t('contact.contact_info') || '联系方式'}
                 </h2>
                 <p className="text-text-secondary mb-8">
-                  有任何问题或建议?我们随时准备为您提供帮助。通过以下方式联系我们,或使用右侧表单留言。
+                  {t('contact.contact_description') || '有任何问题或建议?我们随时准备为您提供帮助。通过以下方式联系我们,或使用右侧表单留言。'}
                 </p>
               </div>
 
@@ -40,7 +43,7 @@ export default function ContactPage() {
                     <MapPin className="w-6 h-6 text-primary-coral" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary-navy mb-1">地址</h3>
+                    <h3 className="font-semibold text-primary-navy mb-1">{t('contact.address')}</h3>
                     <p className="text-text-secondary">{company.address}</p>
                   </div>
                 </div>
@@ -50,7 +53,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-primary-coral" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary-navy mb-1">邮箱</h3>
+                    <h3 className="font-semibold text-primary-navy mb-1">{t('contact.email')}</h3>
                     <p className="text-text-secondary">{company.email}</p>
                   </div>
                 </div>
@@ -60,7 +63,7 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-primary-coral" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary-navy mb-1">电话</h3>
+                    <h3 className="font-semibold text-primary-navy mb-1">{t('contact.phone')}</h3>
                     <p className="text-text-secondary">{company.phone}</p>
                   </div>
                 </div>
@@ -70,10 +73,10 @@ export default function ContactPage() {
                     <Clock className="w-6 h-6 text-primary-coral" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary-navy mb-1">工作时间</h3>
+                    <h3 className="font-semibold text-primary-navy mb-1">{t('contact.working_hours') || '工作时间'}</h3>
                     <p className="text-text-secondary">
-                      周一至周五: 9:00 - 18:00<br />
-                      周六至周日: 休息
+                      {t('contact.weekdays') || '周一至周五'}: 9:00 - 18:00<br />
+                      {t('contact.weekend') || '周六至周日'}: {t('contact.closed') || '休息'}
                     </p>
                   </div>
                 </div>
@@ -82,7 +85,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div>
-              <ContactForm />
+              <ContactForm locale={lang} />
             </div>
           </div>
         </div>
@@ -92,7 +95,7 @@ export default function ContactPage() {
       <section className="section bg-background-light">
         <div className="container">
           <h2 className="text-3xl font-bold text-center text-primary-navy mb-8">
-            我们的位置
+            {t('contact.our_location') || '我们的位置'}
           </h2>
           <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
             <iframe
