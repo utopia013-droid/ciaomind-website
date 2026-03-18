@@ -5,10 +5,6 @@ import TeamMember from '@/components/TeamMember';
 import { services } from '@/data/services';
 import { team } from '@/data/team';
 
-export function generateStaticParams() {
-  return [{ lang: 'it' }, { lang: 'zh' }];
-}
-
 export default function HomePage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 

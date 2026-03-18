@@ -2,10 +2,6 @@ import { useTranslations } from 'next-intl';
 import TeamMember from '@/components/TeamMember';
 import { team } from '@/data/team';
 
-export function generateStaticParams() {
-  return [{ lang: 'it' }, { lang: 'zh' }];
-}
-
 export default function TeamPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 

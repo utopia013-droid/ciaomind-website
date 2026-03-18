@@ -2,10 +2,6 @@ import { useTranslations } from 'next-intl';
 import ServiceCard from '@/components/ServiceCard';
 import { services } from '@/data/services';
 
-export function generateStaticParams() {
-  return [{ lang: 'it' }, { lang: 'zh' }];
-}
-
 export default function ServicesPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 

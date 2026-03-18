@@ -1,9 +1,5 @@
 import { company } from '@/data/company';
 
-export function generateStaticParams() {
-  return [{ lang: 'it' }, { lang: 'zh' }];
-}
-
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white">

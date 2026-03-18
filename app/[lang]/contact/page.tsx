@@ -3,10 +3,6 @@ import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { company } from '@/data/company';
 
-export function generateStaticParams() {
-  return [{ lang: 'it' }, { lang: 'zh' }];
-}
-
 export default function ContactPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 
