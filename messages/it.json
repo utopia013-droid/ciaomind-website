@@ -1,0 +1,73 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "services": "Servizi",
+    "team": "Team",
+    "contact": "Contatti",
+    "language": "Lingua"
+  },
+  "hero": {
+    "title": "Un Ponte Culturale tra Oriente e Occidente",
+    "subtitle": "Offriamo servizi di competenze AI, esperienze di cultura del tè e prodotti cultura-tecnologia, creando un profondo dialogo culturale tra Cina e Italia",
+    "cta": "Scopri di più"
+  },
+  "services": {
+    "title": "I Nostri Servizi",
+    "ai_skills": {
+      "title": "Servizi di Competenze AI",
+      "description": "Utilizzando tecnologie di intelligenza artificiale all'avanguardia, forniamo soluzioni intelligenti e servizi di consulenza per le aziende"
+    },
+    "tea_culture": {
+      "title": "Esperienze di Cultura del Tè",
+      "description": "Esperienze immersive della cultura del tè cinese, degustazione di tè di altissima qualità e comprensione della saggezza millenaria del tea ceremony"
+    },
+    "culture_tech": {
+      "title": "Prodotti Cultura-Tecnologia",
+      "description": "Fusioniamo la cultura tradizionale con la tecnologia moderna per creare esperienze uniche di prodotti cultura-tecnologia"
+    }
+  },
+  "about": {
+    "title": "Chi Siamo",
+    "company_name": "CIAOMIND S.B. S.R.L.",
+    "description": "CIAOMIND è un'azienda specializzata nel creare un ponte culturale tra Oriente e Occidente, dedicata a promuovere la profonda scena culturale tra Cina e Italia. Crediamo che attraverso il potere della cultura possiamo creare un futuro migliore.",
+    "vision": "Visione",
+    "vision_text": "Diventare leader nella scena culturale tra Cina e Italia, promuovendo il dialogo e l'integrazione tra le civiltà orientali e occidentali",
+    "mission": "Missione",
+    "mission_text": "Attraverso servizi e prodotti innovativi, far conoscere e apprezzare a più persone il fascino unico delle culture orientali e occidentali"
+  },
+  "team": {
+    "title": "Il Nostro Team",
+    "zeng_zhiyuan": {
+      "name": "Cheng Zhiyuan",
+      "role": "Fondatore & CEO",
+      "bio": "Specializzato nella scena culturale Cina-Italia da 20 anni, profondo conoscitore della cultura aziendale e delle opportunità di mercato dei due paesi"
+    },
+    "huang_huanying": {
+      "name": "Huang Huanying",
+      "role": "Co-fondatore & COO",
+      "bio": "Ricca esperienza nella promozione della cultura del tè e nella gestione aziendale"
+    },
+    "cheng_zicheng": {
+      "name": "Cheng Zicheng",
+      "role": "Direttore Tecnico",
+      "bio": "Esperto di tecnologie AI e loro applicazioni, dedicato a integrare l'innovazione tecnologica nella cultura tradizionale"
+    }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "address": "Indirizzo",
+    "email": "Email",
+    "phone": "Telefono",
+    "message": "Lasciaci un messaggio",
+    "send": "Invia Messaggio",
+    "your_name": "Il tuo nome",
+    "your_email": "La tua email",
+    "your_message": "Il tuo messaggio"
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati",
+    "privacy": "Privacy Policy",
+    "terms": "Termini di Servizio"
+  }
+}

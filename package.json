@@ -1,0 +1,33 @@
+{
+  "name": "ciaomind-website",
+  "version": "1.0.0",
+  "description": "CIAOMIND S.B. S.R.L. 官方网站 - 中意双文化桥梁",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build && next export"
+  },
+  "keywords": ["ciaomind", "website", "nextjs", "bilingual"],
+  "author": "CIAOMIND S.B. S.R.L.",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "next-intl": "^3.17.0",
+    "lucide-react": "^0.379.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  }
+}

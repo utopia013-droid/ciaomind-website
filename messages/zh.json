@@ -1,0 +1,73 @@
+{
+  "common": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "team": "团队",
+    "contact": "联系",
+    "language": "语言"
+  },
+  "hero": {
+    "title": "连接东方与西方的文化桥梁",
+    "subtitle": "我们提供AI技能服务、茶文化体验和科技文化产品,架起中意两国之间的深度文化对话",
+    "cta": "了解更多"
+  },
+  "services": {
+    "title": "我们的服务",
+    "ai_skills": {
+      "title": "AI技能服务",
+      "description": "利用前沿人工智能技术,为企业提供智能化的解决方案和咨询服务"
+    },
+    "tea_culture": {
+      "title": "茶文化预约",
+      "description": "沉浸式中国茶文化体验,品鉴顶级茶叶,了解千年茶道智慧"
+    },
+    "culture_tech": {
+      "title": "文化科技产品",
+      "description": "融合传统文化与现代科技,打造独特的文化科技产品体验"
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "company_name": "CIAOMIND S.B. S.R.L.",
+    "description": "CIAOMIND 是一家专注于连接东方与西方的文化桥梁企业,致力于促进中意两国之间的深度文化交流与合作。我们相信,通过文化的力量,可以创造更美好的未来。",
+    "vision": "愿景",
+    "vision_text": "成为中意文化交流的领导者,推动东西方文明的对话与融合",
+    "mission": "使命",
+    "mission_text": "通过创新的服务和产品,让更多人了解和欣赏东西方文化的独特魅力"
+  },
+  "team": {
+    "title": "我们的团队",
+    "zeng_zhiyuan": {
+      "name": "程之远",
+      "role": "创始人 & CEO",
+      "bio": "专注于中意文化交流20年,深谙两国商业文化和市场机遇"
+    },
+    "huang_huanying": {
+      "name": "黄焕英",
+      "role": "联合创始人 & COO",
+      "bio": "在茶文化推广和企业管理方面拥有丰富经验"
+    },
+    "cheng_zicheng": {
+      "name": "程子承",
+      "role": "技术总监",
+      "bio": "精通AI技术与应用,致力于将科技创新融入传统文化"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "address": "地址",
+    "email": "邮箱",
+    "phone": "电话",
+    "message": "给我们留言",
+    "send": "发送消息",
+    "your_name": "您的姓名",
+    "your_email": "您的邮箱",
+    "your_message": "您的消息"
+  },
+  "footer": {
+    "rights": "版权所有",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  }
+}
