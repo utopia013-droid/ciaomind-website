@@ -9,15 +9,21 @@
     "lint": "next lint",
     "export": "next build && next export"
   },
-  "keywords": ["ciaomind", "website", "nextjs", "bilingual"],
+  "keywords": [
+    "ciaomind",
+    "website",
+    "nextjs",
+    "bilingual"
+  ],
   "author": "CIAOMIND S.B. S.R.L.",
   "license": "MIT",
   "dependencies": {
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^0.379.0",
     "next": "^14.2.0",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
     "next-intl": "^3.17.0",
-    "lucide-react": "^0.379.0"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",

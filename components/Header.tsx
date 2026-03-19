@@ -2,13 +2,24 @@
 
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const t = useTranslations('common');
   const locale = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -27,21 +38,38 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-lg shadow-lg'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className="container-modern">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="text-2xl font-bold text-primary-navy">
-            CIAOMIND
+          <Link
+            href={`/${locale}`}
+            className={`text-2xl font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-primary-navy' : 'text-white'
+            }`}
+          >
+            <span className="text-primary-coral">CIAO</span>MIND
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-text-main hover:text-primary-coral transition-colors"
+                className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                  isScrolled
+                    ? 'text-text-main hover:text-primary-coral hover:bg-primary-coral/5'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
               >
                 {t(item.key as any)}
               </Link>
@@ -50,7 +78,11 @@ export default function Header() {
             {/* Language Switcher */}
             <button
               onClick={() => switchLanguage(locale === 'it' ? 'zh' : 'it')}
-              className="px-4 py-2 rounded-lg border border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white transition-colors"
+              className={`ml-4 px-4 py-2 rounded-lg border transition-all duration-300 ${
+                isScrolled
+                  ? 'border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white'
+                  : 'border-white/50 text-white hover:bg-white hover:text-primary-navy'
+              }`}
             >
               {locale === 'it' ? '中文' : 'Italiano'}
             </button>
@@ -58,7 +90,11 @@ export default function Header() {
             {/* CTA Button */}
             <Link
               href={`/${locale}/contact`}
-              className="btn-primary"
+              className={`ml-4 px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 ${
+                isScrolled
+                  ? 'bg-primary-coral text-white hover:bg-primary-coral-dark hover:shadow-glow'
+                  : 'bg-white text-primary-navy hover:bg-white/90 hover:shadow-lg'
+              }`}
             >
               {t('contact')}
             </Link>
@@ -67,7 +103,9 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-primary-navy"
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              isScrolled ? 'text-primary-navy' : 'text-white'
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -75,38 +113,50 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t pt-4">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className="text-text-main hover:text-primary-coral transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t(item.key as any)}
-                </Link>
-              ))}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white rounded-2xl shadow-xl mt-2 overflow-hidden"
+            >
+              <div className="p-4 space-y-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className="block px-4 py-3 rounded-lg text-text-main hover:text-primary-coral hover:bg-primary-coral/5 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t(item.key as any)}
+                  </Link>
+                ))}
 
-              <button
-                onClick={() => switchLanguage(locale === 'it' ? 'zh' : 'it')}
-                className="px-4 py-2 rounded-lg border border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white transition-colors text-left"
-              >
-                {locale === 'it' ? '中文' : 'Italiano'}
-              </button>
+                <div className="pt-4 border-t mt-4 space-y-2">
+                  <button
+                    onClick={() => {
+                      switchLanguage(locale === 'it' ? 'zh' : 'it');
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-3 rounded-lg border border-primary-navy text-primary-navy hover:bg-primary-navy hover:text-white transition-colors text-left"
+                  >
+                    {locale === 'it' ? '切换到中文' : 'Passa all\'italiano'}
+                  </button>
 
-              <Link
-                href={`/${locale}/contact`}
-                className="btn-primary text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('contact')}
-              </Link>
-            </div>
-          </div>
-        )}
+                  <Link
+                    href={`/${locale}/contact`}
+                    className="block w-full px-4 py-3 rounded-lg bg-primary-coral text-white text-center font-semibold hover:bg-primary-coral-dark transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t('contact')}
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   );
 }

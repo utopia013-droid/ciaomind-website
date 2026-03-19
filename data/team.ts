@@ -5,6 +5,9 @@ export const team = [
     roleKey: 'team.zeng_zhiyuan.role',
     bioKey: 'team.zeng_zhiyuan.bio',
     image: '/images/cheng-zhiyuan.jpg',
+    linkedin: 'https://linkedin.com/in/chengzhiyuan',
+    twitter: 'https://twitter.com/chengzhiyuan',
+    email: 'zhiyuan@ciaomind.com',
   },
   {
     id: 'huang-huanying',
@@ -12,6 +15,8 @@ export const team = [
     roleKey: 'team.huang_huanying.role',
     bioKey: 'team.huang_huanying.bio',
     image: '/images/huang-huanying.jpg',
+    linkedin: 'https://linkedin.com/in/huanghuanying',
+    email: 'huanying@ciaomind.com',
   },
   {
     id: 'cheng-zicheng',
@@ -19,5 +24,8 @@ export const team = [
     roleKey: 'team.cheng_zicheng.role',
     bioKey: 'team.cheng_zicheng.bio',
     image: '/images/cheng-zicheng.jpg',
+    linkedin: 'https://linkedin.com/in/chengzicheng',
+    twitter: 'https://twitter.com/chengzicheng',
+    email: 'zicheng@ciaomind.com',
   },
 ];
