@@ -31,14 +31,14 @@
   },
   "services": {
     "title": "I Nostri Servizi",
-    "ai_skills": { "title": "Servizi AI", "description": "Utilizzando tecnologie AI all'\''avanguardia, offriamo soluzioni intelligenti e servizi di consulenza per le imprese" },
+    "ai_skills": { "title": "Servizi AI", "description": "Utilizzando tecnologie AI all'''avanguardia, offriamo soluzioni intelligenti e servizi di consulenza per le imprese" },
     "tea_culture": { "title": "Esperienza Cultura del T\u00e8", "description": "Esperienza immersiva nella cultura cinese del t\u00e8, degustazione di t\u00e9 premium e saggezza millenaria" },
     "culture_tech": { "title": "Prodotti Cultura-Tech", "description": "Fusione di tradizione culturale e tecnologia moderna per esperienze uniche" }
   },
   "about": {
     "title": "Chi Siamo",
     "company_name": "CIAOMIND S.B. S.R.L.",
-    "description": "CIAOMIND \u00e8 un'\''impresa dedicata a costruire ponti tra Oriente e Occidente, impegnata a promuovere scambi culturali profondi tra Cina e Italia.",
+    "description": "CIAOMIND \u00e8 un'''impresa dedicata a costruire ponti tra Oriente e Occidente, impegnata a promuovere scambi culturali profondi tra Cina e Italia.",
     "vision": "Visione",
     "vision_text": "Diventare leader negli scambi culturali italo-cinesi, promuovendo il dialogo e la fusione delle civilt\u00e0 orientale e occidentale",
     "mission": "Missione",
