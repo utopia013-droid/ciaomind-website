@@ -1,8 +1,8 @@
 export const company = {
   name: 'CIAOMIND S.B. S.R.L.',
-  address: 'Via Roma, 123, 00100 Roma, Italia',
-  email: 'info@ciaomind.com',
-  phone: '+39 06 1234567',
+  address: 'Via Oroboni 78/A, 44122 Ferrara FE, Italy',
+  email: 'utopia013@gmail.com',
+  phone: '+39 334 945 1718',
   website: 'https://www.ciaomind.com',
   year: '2026',
   social: {
@@ -28,7 +28,7 @@ export const emailConfig = {
   
   // 建议的邮箱账户
   suggestedEmails: [
-    { name: 'info', description: '通用咨询邮箱' },
+    { name: 'info', description: '通用咨诺邮箱' },
     { name: 'contact', description: '联系邮箱' },
     { name: 'support', description: '客户支持邮箱' },
     { name: 'sales', description: '销售邮箱' },
