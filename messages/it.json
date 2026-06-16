@@ -1,5 +1,92 @@
-
-,
+{
+  "common": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "services": "Servizi",
+    "team": "Team",
+    "contact": "Contatti",
+    "news": "Notizie",
+    "language": "Lingua"
+  },
+  "hero": {
+    "title": "Un Ponte Culturale tra Oriente e Occidente",
+    "subtitle": "Offriamo servizi di competenze AI, esperienze di cultura del t\u00e8 e prodotti cultura-tecnologia, creando un profondo dialogo culturale tra Cina e Italia",
+    "cta": "Scopri di pi\u00f9"
+  },
+  "home": {
+    "services": { "title": "I Nostri Servizi", "description": "Attraverso servizi e prodotti innovativi, colleghiamo le culture orientali e occidentali, creando valore unico" },
+    "whyUs": {
+      "title": "Perch\u00e9 Sceglierci",
+      "points": {
+        "1": { "title": "Professionalit\u00e0 Biculturale", "description": "Profonda conoscenza delle culture e degli ambienti aziendali cinesi e italiani" },
+        "2": { "title": "Servizi Innovativi", "description": "Combinando tradizione e modernit\u00e0, offriamo esperienze uniche" },
+        "3": { "title": "Team Professionale", "description": "Team esperto e professionale al vostro servizio completo" },
+        "4": { "title": "Soluzioni Personalizzate", "description": "Soluzioni personalizzate in base alle esigenze dei clienti" },
+        "5": { "title": "Garanzia di Qualit\u00e0", "description": "Rigido sistema di controllo qualit\u00e0" },
+        "6": { "title": "Supporto Continuo", "description": "Relazioni a lungo termine e supporto post-vendita" }
+      }
+    },
+    "team": { "title": "Conosci il Nostro Team", "description": "Team professionale, appassionato e creativo, al vostro servizio" },
+    "cta": { "title": "Pronto a Iniziare?", "description": "Creiamo valore culturale insieme, colleghiamo la saggezza orientale e occidentale", "button": "Contattaci Subito" }
+  },
+  "services": {
+    "title": "I Nostri Servizi",
+    "ai_skills": { "title": "Servizi AI", "description": "Utilizzando tecnologie AI all'\''avanguardia, offriamo soluzioni intelligenti e servizi di consulenza per le imprese" },
+    "tea_culture": { "title": "Esperienza Cultura del T\u00e8", "description": "Esperienza immersiva nella cultura cinese del t\u00e8, degustazione di t\u00e9 premium e saggezza millenaria" },
+    "culture_tech": { "title": "Prodotti Cultura-Tech", "description": "Fusione di tradizione culturale e tecnologia moderna per esperienze uniche" }
+  },
+  "about": {
+    "title": "Chi Siamo",
+    "company_name": "CIAOMIND S.B. S.R.L.",
+    "description": "CIAOMIND \u00e8 un'\''impresa dedicata a costruire ponti tra Oriente e Occidente, impegnata a promuovere scambi culturali profondi tra Cina e Italia.",
+    "vision": "Visione",
+    "vision_text": "Diventare leader negli scambi culturali italo-cinesi, promuovendo il dialogo e la fusione delle civilt\u00e0 orientale e occidentale",
+    "mission": "Missione",
+    "mission_text": "Attraverso servizi e prodotti innovativi, costruire ponti per gli scambi interculturali tra persone e imprese",
+    "values_title": "I Nostri Valori",
+    "value1_title": "Rispetto",
+    "value1_desc": "Rispettare il valore unico e le tradizioni di ogni cultura",
+    "value2_title": "Innovazione",
+    "value2_desc": "Esplorare costantemente nuovi modi di espressione culturale",
+    "value3_title": "Professionalit\u00e0",
+    "value3_desc": "Affrontare ogni progetto con spirito professionale",
+    "value4_title": "Collaborazione",
+    "value4_desc": "Credere nella forza della collaborazione per creare un futuro migliore"
+  },
+  "team": {
+    "title": "Il Nostro Team",
+    "description": "Conosci i talenti professionali che guidano CIAOMIND",
+    "members": {
+      "cheng_zhiyuan": {
+        "name": "Cheng Zhiyuan",
+        "role": "Fondatore & CEO",
+        "bio": "Esperto di scambi interculturali tra Cina e Italia, dedicato a costruire ponti tra Oriente e Occidente."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "message": "Lasciaci un Messaggio",
+    "your_name": "Il Tuo Nome",
+    "your_email": "La Tua Email",
+    "your_message": "Il Tuo Messaggio",
+    "send": "Invia Messaggio",
+    "address": "Indirizzo",
+    "email": "Email",
+    "phone": "Telefono",
+    "working_hours": "Orari di Lavoro",
+    "weekdays": "Luned\u00ec - Venerd\u00ec",
+    "weekend": "Sabato - Domenica",
+    "closed": "Chiuso",
+    "our_location": "La Nostra Posizione"
+  },
+  "footer": {
+    "description": "Un ponte culturale tra Oriente e Occidente per scambi profondi tra Cina e Italia",
+    "quick_links": "Link Rapidi",
+    "contact_us": "Contattaci",
+    "follow_us": "Seguici",
+    "rights": "Tutti i diritti riservati"
+  },
   "news": {
     "title": "Centro Notizie",
     "description": "Resta aggiornato sulle ultime novita ed eventi internazionali di CIAOMIND",
