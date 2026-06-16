@@ -6,12 +6,21 @@ import FadeIn from '@/components/animations/FadeIn';
 
 const newsArticles = [
   {
+    slug: 'milan-woac-2025',
+    date: '2025-07-25',
+    titleZh: 'CIAOMIND创始人在米兰会晤WOAC国际奥艺委员会主席一行',
+    titleIt: 'Il Fondatore di CIAOMIND Incontra a Milano la Delegazione WOAC',
+    excerptZh: '程之远先生在米兰热情接待WOAC执行主席秦雯女士与Dalia女士一行，共话中欧文化艺术合作。',
+    excerptIt: 'Cheng Zhiyuan accoglie a Milano la Presidente WOAC Qin Wen e Dalia per un fruttuoso dialogo culturale. ',
+    image: '/images/news/milan-woac-2025/milan-staircase-group.jpg',
+  },
+  {
     slug: 'woac-unesco-2025',
     date: '2025-07-16',
     titleZh: 'CIAOMIND创始人受邀出席UNESCO国际奥艺委员会30周年庆典',
-    titleIt: 'Il Fondatore di CIAOMIND Invitato al 30° Anniversario WOAC presso l'UNESCO',
-    excerptZh: '程之远先生赴巴黎联合国教科文组织总部，出席"艺术连接世界"暨《奥林匹克艺术宪章》签署30周年庆典活动。',
-    excerptIt: 'Cheng Zhiyuan partecipa alla celebrazione del 30° anniversario della Carta Olimpica delle Arti presso la sede UNESCO di Parigi.',
+    titleIt: 'Il Fondatore di CIAOMIND Invitato al 30\u00b0 Anniversario WOAC presso l'UNESCO',
+    excerptZh: '程之远先生赴巴黎联合国教科文组织总部，出席\u201c艺术连接世界\u201d暨《奥林匹克艺术宪章》签署30周年庆典活动。',
+    excerptIt: 'Cheng Zhiyuan partecipa alla celebrazione del 30\u00b0 anniversario della Carta Olimpica delle Arti presso la sede UNESCO di Parigi.',
     image: '/images/news/woac-unesco-2025/cheng-unesco-portrait.jpg',
   },
 ];
@@ -33,7 +42,7 @@ export default function NewsPage({ params: { lang } }: { params: { lang: string 
               {isZh ? '新闻中心' : 'Centro Notizie'}
             </h1>
             <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-              {isZh ? '了解CIAOMIND最新动态与国际交流活动' : 'Resta aggiornato sulle ultime novità ed eventi internazionali di CIAOMIND'}
+              {isZh ? '了解CIAOMIND最新动态与国际交流活动' : 'Resta aggiornato sulle ultime novit\u00e0 ed eventi internazionali di CIAOMIND'}
             </p>
           </FadeIn>
         </div>
