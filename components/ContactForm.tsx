@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { useTranslations } from 'next-intl';
 import { Mail, Send } from 'lucide-react';
 
@@ -10,53 +10,21 @@ interface ContactFormProps {
 
 export default function ContactForm({ locale }: ContactFormProps) {
   const t = useTranslations('contact');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [state, handleSubmit] = useForm('mqeojwnd');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setHasError(false);
-    setIsSuccess(false);
-
-    try {
-      const response = await fetch('https://formspree.io/f/mqeojwnd', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
-
-      if (response.ok) {
-        setFormData({ name: '', email: '', message: '' });
-        setIsSuccess(true);
-      } else {
-        setHasError(true);
-      }
-    } catch (error) {
-      setHasError(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  if (state.succeeded) {
+    return (
+      <div className="card max-w-2xl mx-auto text-center py-12">
+        <div className="text-green-600 text-4xl mb-4">✓</div>
+        <h3 className="text-xl font-bold text-primary-navy mb-2">
+          {locale === 'zh' ? '感谢您的留言！' : 'Grazie per il tuo messaggio!'}
+        </h3>
+        <p className="text-text-main">
+          {locale === 'zh' ? '我们会尽快回复您。' : 'Ti risponderemo il prima possibile.'}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="card max-w-2xl mx-auto">
@@ -65,21 +33,9 @@ export default function ContactForm({ locale }: ContactFormProps) {
         <h2 className="text-2xl font-bold text-primary-navy">{t('message')}</h2>
       </div>
 
-      {isSuccess && (
-        <div className="bg-green-100 text-green-800 p-4 rounded-lg mb-6">
-          {locale === 'zh' ? '感谢您的留言！我们会尽快回复您。' : 'Grazie per il tuo messaggio! Ti risponderemo presto.'}
-          <button onClick={() => { setIsSuccess(false); setHasError(false); }} className="text-sm text-green-800 hover:text-green-600 ml-2">
-            {locale === 'zh' ? '关闭' : 'Chiudi'}
-          </button>
-        </div>
-      )}
-
-      {hasError && (
+      {state.errors && (
         <div className="bg-red-100 text-red-800 p-4 rounded-lg mb-6">
           {locale === 'zh' ? '发送失败，请重试。' : 'Errore! Per favore riprova.'}
-          <button onClick={() => { setHasError(false); setIsSuccess(false); }} className="text-sm text-red-800 hover:text-red-600 ml-2">
-            {locale === 'zh' ? '重试' : 'Riprova'}
-          </button>
         </div>
       )}
 
@@ -92,12 +48,11 @@ export default function ContactForm({ locale }: ContactFormProps) {
             type="text"
             id="name"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-navy focus:border-transparent transition-all"
             placeholder={t('your_name')}
           />
+          <ValidationError field="name" errors={state.errors} className="text-red-600 text-sm mt-1" />
         </div>
 
         <div>
@@ -108,12 +63,11 @@ export default function ContactForm({ locale }: ContactFormProps) {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-navy focus:border-transparent transition-all"
             placeholder="your@email.com"
           />
+          <ValidationError field="email" errors={state.errors} className="text-red-600 text-sm mt-1" />
         </div>
 
         <div>
@@ -123,21 +77,22 @@ export default function ContactForm({ locale }: ContactFormProps) {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleChange}
             required
             rows={5}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-navy focus:border-transparent transition-all resize-none"
             placeholder={t('your_message')}
           />
+          <ValidationError field="message" errors={state.errors} className="text-red-600 text-sm mt-1" />
         </div>
 
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={state.submitting}
           className="btn-primary w-full inline-flex items-center justify-center gap-2"
         >
-          {isSubmitting ? (locale === 'zh' ? '发送中...' : 'Invio in corso...') : t('send')}
+          {state.submitting
+            ? (locale === 'zh' ? '发送中...' : 'Invio in corso...')
+            : t('send')}
           <Send size={20} />
         </button>
       </form>
