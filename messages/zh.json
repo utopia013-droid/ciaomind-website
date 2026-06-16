@@ -1,5 +1,95 @@
-
-,
+{
+  "common": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "team": "团队",
+    "contact": "联系",
+    "news": "新闻",
+    "language": "语言"
+  },
+  "hero": {
+    "title": "连接东方与西方的文化桥梁",
+    "subtitle": "我们提供AI技能服务、茶文化体验和科技文化产品,架起中意两国之间的深度文化对话",
+    "cta": "了解更多"
+  },
+  "home": {
+    "services": {
+      "title": "我们的服务",
+      "description": "通过创新的服务和产品,连接东西方文化,创造独特价值"
+    },
+    "whyUs": {
+      "title": "为什么选择我们",
+      "points": {
+        "1": { "title": "双文化专业", "description": "深谙中意两国文化和商业环境" },
+        "2": { "title": "创新服务", "description": "结合传统与现代,提供独特体验" },
+        "3": { "title": "专业团队", "description": "经验丰富的专业团队全程服务" },
+        "4": { "title": "定制方案", "description": "根据客户需求提供个性化解决方案" },
+        "5": { "title": "质量保证", "description": "严格的质量控制体系" },
+        "6": { "title": "持续支持", "description": "长期的合作关系和售后支持" }
+      }
+    },
+    "team": { "title": "认识我们的团队", "description": "专业、热情、富有创造力的团队,为您服务" },
+    "cta": { "title": "准备好开始了吗?", "description": "让我们一起创造文化价值,连接东西方智慧", "button": "立即联系我们" }
+  },
+  "services": {
+    "title": "我们的服务",
+    "ai_skills": { "title": "AI技能服务", "description": "利用前沿人工智能技术,为企业提供智能化的解决方案和咨询服务" },
+    "tea_culture": { "title": "茶文化预约", "description": "沉浸式中国茶文化体验,品鉴顶级茶叶,了解千年茶道智慧" },
+    "culture_tech": { "title": "文化科技产品", "description": "融合传统文化与现代科技,打造独特的文化科技产品体验" }
+  },
+  "about": {
+    "title": "关于我们",
+    "company_name": "CIAOMIND S.B. S.R.L.",
+    "description": "CIAOMIND 是一家专注于连接东方与西方的文化桥梁企业,致力于促进中意两国之间的深度文化交流与合作。我们相信,通过文化的力量,可以创造更美好的未来。",
+    "vision": "愿景",
+    "vision_text": "成为中意文化交流的领导者,推动东西方文明的对话与融合",
+    "mission": "使命",
+    "mission_text": "通过创新的服务和产品,为个人和企业搭建跨文化交流的桥梁,促进相互理解与合作共赢",
+    "values_title": "我们的价值观",
+    "value1_title": "尊重",
+    "value1_desc": "尊重每种文化的独特价值和传统",
+    "value2_title": "创新",
+    "value2_desc": "不断探索文化表达的新方式",
+    "value3_title": "专业",
+    "value3_desc": "以专业精神对待每一个项目",
+    "value4_title": "合作",
+    "value4_desc": "相信合作的力量,共创美好未来"
+  },
+  "team": {
+    "title": "我们的团队",
+    "description": "认识驱动CIAOMIND前进的专业人才",
+    "members": {
+      "cheng_zhiyuan": {
+        "name": "程之远",
+        "role": "创始人 & CEO",
+        "bio": "资深跨境文化交流专家，深耕中意商业与文化领域多年，致力于搭建东方与西方之间的桥梁。"
+      }
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "message": "给我们留言",
+    "your_name": "您的姓名",
+    "your_email": "您的邮箱",
+    "your_message": "您的留言",
+    "send": "发送消息",
+    "address": "地址",
+    "email": "邮箱",
+    "phone": "电话",
+    "working_hours": "工作时间",
+    "weekdays": "周一至周五",
+    "weekend": "周六至周日",
+    "closed": "休息",
+    "our_location": "我们的位置"
+  },
+  "footer": {
+    "description": "连接东方与西方的文化桥梁，促进中意深度交流与合作",
+    "quick_links": "快速链接",
+    "contact_us": "联系方式",
+    "follow_us": "关注我们",
+    "rights": "保留所有权利"
+  },
   "news": {
     "title": "新闻中心",
     "description": "了解CIAOMIND最新动态与国际交流活动",
