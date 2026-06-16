@@ -15,13 +15,40 @@ export default function ContactForm({ locale }: ContactFormProps) {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert(locale === 'zh' ? '感谢您的留言!我们会尽快回复您。' : 'Grazie per il tuo messaggio! Ti risponderemo presto.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setHasError(false);
+    setIsSuccess(false);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mqeojwnd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        setIsSuccess(true);
+      } else {
+        setHasError(true);
+      }
+    } catch (error) {
+      setHasError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,6 +64,24 @@ export default function ContactForm({ locale }: ContactFormProps) {
         <Mail className="w-8 h-8 text-primary-coral mr-3" />
         <h2 className="text-2xl font-bold text-primary-navy">{t('message')}</h2>
       </div>
+
+      {isSuccess && (
+        <div className="bg-green-100 text-green-800 p-4 rounded-lg mb-6">
+          {locale === 'zh' ? '感谢您的留言！我们会尽快回复您。' : 'Grazie per il tuo messaggio! Ti risponderemo presto.'}
+          <button onClick={() => { setIsSuccess(false); setHasError(false); }} className="text-sm text-green-800 hover:text-green-600 ml-2">
+            {locale === 'zh' ? '关闭' : 'Chiudi'}
+          </button>
+        </div>
+      )}
+
+      {hasError && (
+        <div className="bg-red-100 text-red-800 p-4 rounded-lg mb-6">
+          {locale === 'zh' ? '发送失败，请重试。' : 'Errore! Per favore riprova.'}
+          <button onClick={() => { setHasError(false); setIsSuccess(false); }} className="text-sm text-red-800 hover:text-red-600 ml-2">
+            {locale === 'zh' ? '重试' : 'Riprova'}
+          </button>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -89,9 +134,10 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
         <button
           type="submit"
+          disabled={isSubmitting}
           className="btn-primary w-full inline-flex items-center justify-center gap-2"
         >
-          {t('send')}
+          {isSubmitting ? (locale === 'zh' ? '发送中...' : 'Invio in corso...') : t('send')}
           <Send size={20} />
         </button>
       </form>
