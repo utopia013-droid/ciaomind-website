@@ -42,7 +42,7 @@ export default function ServicesPage({ params: { lang } }: { params: { lang: str
                     {service.features?.map((feature, i) => (
                       <li key={i} className="flex items-center">
                         <span className="text-primary-coral mr-2">✓</span>
-                        {feature}
+                        {t(feature)}
                       </li>
                     ))}
                   </ul>

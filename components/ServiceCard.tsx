@@ -1,10 +1,12 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import * as Icons from 'lucide-react';
+import { BrainCircuit, Coffee, Cpu } from 'lucide-react';
+const icons = { BrainCircuit, Coffee, Cpu };
 import { services } from '@/data/services';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface ServiceCardProps {
   id: string;
@@ -17,7 +19,7 @@ export default function ServiceCard({ id, locale }: ServiceCardProps) {
 
   if (!service) return null;
 
-  const Icon = Icons[service.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
+  const Icon = icons[service.icon as keyof typeof icons];
 
   return (
     <motion.div
@@ -53,19 +55,19 @@ export default function ServiceCard({ id, locale }: ServiceCardProps) {
             {service.features.slice(0, 3).map((feature, index) => (
               <li key={index} className="flex items-center text-sm text-text-secondary">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary-coral mr-3" />
-                {feature}
+                {t(feature)}
               </li>
             ))}
           </ul>
         )}
 
         {/* CTA Link */}
-        <div className="flex items-center text-primary-coral font-semibold group/link cursor-pointer">
+        <Link href={`/${locale}/contact/`} className="flex items-center text-primary-coral font-semibold group/link">
           <span className="mr-2 group-hover/link:mr-4 transition-all duration-300">
             {locale === 'zh' ? '了解更多' : 'Scopri di più'}
           </span>
           <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-2 transition-transform duration-300" />
-        </div>
+        </Link>
       </div>
 
       {/* Decorative Corner */}

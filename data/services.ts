@@ -4,35 +4,20 @@ export const services = [
     icon: 'BrainCircuit',
     titleKey: 'services.ai_skills.title',
     descriptionKey: 'services.ai_skills.description',
-    features: [
-      '智能化数据分析与决策支持',
-      '自动化流程优化',
-      '智能客服系统开发',
-      '预测性维护解决方案',
-    ],
+    features: ['services.ai_skills.features.1', 'services.ai_skills.features.2', 'services.ai_skills.features.3'],
   },
   {
     id: 'tea-culture',
     icon: 'Coffee',
     titleKey: 'services.tea_culture.title',
     descriptionKey: 'services.tea_culture.description',
-    features: [
-      '专业茶道表演',
-      '茶艺培训课程',
-      '高端茶叶品鉴',
-      '定制化茶文化活动',
-    ],
+    features: ['services.tea_culture.features.1', 'services.tea_culture.features.2', 'services.tea_culture.features.3'],
   },
   {
     id: 'culture-tech',
     icon: 'Cpu',
     titleKey: 'services.culture_tech.title',
     descriptionKey: 'services.culture_tech.description',
-    features: [
-      'VR/AR文化体验',
-      '互动数字艺术装置',
-      '文化遗产数字化',
-      '沉浸式文化展览',
-    ],
+    features: ['services.culture_tech.features.1', 'services.culture_tech.features.2', 'services.culture_tech.features.3'],
   },
 ];

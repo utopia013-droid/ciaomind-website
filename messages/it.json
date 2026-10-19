@@ -9,58 +9,127 @@
     "language": "Lingua"
   },
   "hero": {
-    "title": "Un Ponte Culturale tra Oriente e Occidente",
-    "subtitle": "Offriamo servizi di competenze AI, esperienze di cultura del t\u00e8 e prodotti cultura-tecnologia, creando un profondo dialogo culturale tra Cina e Italia",
-    "cta": "Scopri di pi\u00f9"
+    "title": "Cultura e tecnologia tra Italia e Cina",
+    "subtitle": "Digitalizzazione del patrimonio culturale, educazione digitale e dialogo interculturale: esploriamo progetti con istituzioni culturali, formatori e imprese.",
+    "cta": "Scopri i nostri ambiti"
   },
   "home": {
-    "services": { "title": "I Nostri Servizi", "description": "Attraverso servizi e prodotti innovativi, colleghiamo le culture orientali e occidentali, creando valore unico" },
-    "whyUs": {
-      "title": "Perch\u00e9 Sceglierci",
-      "points": {
-        "1": { "title": "Professionalit\u00e0 Biculturale", "description": "Profonda conoscenza delle culture e degli ambienti aziendali cinesi e italiani" },
-        "2": { "title": "Servizi Innovativi", "description": "Combinando tradizione e modernit\u00e0, offriamo esperienze uniche" },
-        "3": { "title": "Team Professionale", "description": "Team esperto e professionale al vostro servizio completo" },
-        "4": { "title": "Soluzioni Personalizzate", "description": "Soluzioni personalizzate in base alle esigenze dei clienti" },
-        "5": { "title": "Garanzia di Qualit\u00e0", "description": "Rigido sistema di controllo qualit\u00e0" },
-        "6": { "title": "Supporto Continuo", "description": "Relazioni a lungo termine e supporto post-vendita" }
-      }
+    "services": {
+      "title": "I Nostri Servizi",
+      "description": "Partiamo dalle esigenze concrete per definire obiettivi, risultati e percorso di lavoro.",
+      "badge": "Ambiti di progetto",
+      "viewAll": "Tutti gli ambiti"
     },
-    "team": { "title": "Conosci il Nostro Team", "description": "Team professionale, appassionato e creativo, al vostro servizio" },
-    "cta": { "title": "Pronto a Iniziare?", "description": "Creiamo valore culturale insieme, colleghiamo la saggezza orientale e occidentale", "button": "Contattaci Subito" }
+    "whyUs": {
+      "title": "Perché Sceglierci",
+      "points": {
+        "1": {
+          "title": "Collegare Italia e Cina",
+          "description": "Costruiamo una comprensione condivisa di lingua, cultura ed esigenze."
+        },
+        "2": {
+          "title": "Cultura e tecnologia",
+          "description": "Valutiamo strumenti e formati digitali adatti ai contenuti culturali."
+        },
+        "3": {
+          "title": "Obiettivi chiari",
+          "description": "Definiamo ambito, risultati intermedi e criteri di verifica."
+        },
+        "4": {
+          "title": "Collaborazione mirata",
+          "description": "Concordiamo competenze e collaborazione in base al progetto."
+        },
+        "5": {
+          "title": "Rispetto della privacy",
+          "description": "Utilizziamo materiali e dati personali solo quando necessari."
+        },
+        "6": {
+          "title": "Un passo alla volta",
+          "description": "Partiamo da una verifica circoscritta prima delle fasi successive."
+        }
+      },
+      "subtitle": "Comunicazione chiara e prossimi passi concreti."
+    },
+    "team": {
+      "title": "Conosci il Nostro Team",
+      "description": "Conosci la rappresentante della società e chi contribuisce allo sviluppo dei progetti.",
+      "badge": "Persone",
+      "viewAll": "Conosci il team"
+    },
+    "cta": {
+      "title": "Iniziamo con un confronto",
+      "description": "Raccontaci le esigenze del tuo progetto culturale, educativo o digitale.",
+      "button": "Contattaci Subito",
+      "secondaryButton": "Esplora gli ambiti"
+    }
   },
   "services": {
     "title": "I Nostri Servizi",
-    "ai_skills": { "title": "Servizi AI", "description": "Utilizzando tecnologie AI all'''avanguardia, offriamo soluzioni intelligenti e servizi di consulenza per le imprese" },
-    "tea_culture": { "title": "Esperienza Cultura del T\u00e8", "description": "Esperienza immersiva nella cultura cinese del t\u00e8, degustazione di t\u00e9 premium e saggezza millenaria" },
-    "culture_tech": { "title": "Prodotti Cultura-Tech", "description": "Fusione di tradizione culturale e tecnologia moderna per esperienze uniche" }
+    "ai_skills": {
+      "title": "Educazione digitale e AI",
+      "description": "Esploriamo strumenti AI, organizzazione dei contenuti e processi per cultura ed educazione.",
+      "features": {
+        "1": "Analisi delle esigenze AI",
+        "2": "Organizzazione dei contenuti digitali",
+        "3": "Scenari educativi"
+      }
+    },
+    "tea_culture": {
+      "title": "Dialogo culturale Italia-Cina",
+      "description": "Progettiamo insieme temi, contenuti e modalità di incontro tra Italia e Cina.",
+      "features": {
+        "1": "Comunicazione cinese-italiana",
+        "2": "Ideazione di temi culturali",
+        "3": "Confronto sui progetti"
+      }
+    },
+    "culture_tech": {
+      "title": "Patrimonio culturale digitale",
+      "description": "Valutiamo presentazione digitale, organizzazione dei materiali e accessibilità di arte, artigianato e risorse culturali.",
+      "features": {
+        "1": "Organizzazione dei materiali culturali",
+        "2": "Pianificazione di esposizioni digitali",
+        "3": "Accessibilità dei contenuti"
+      }
+    },
+    "cta_description": "Ambito, costi e tempi vengono concordati dopo il confronto iniziale."
   },
   "about": {
     "title": "Chi Siamo",
     "company_name": "CIAOMIND S.B. S.R.L.",
-    "description": "CIAOMIND \u00e8 un'''impresa dedicata a costruire ponti tra Oriente e Occidente, impegnata a promuovere scambi culturali profondi tra Cina e Italia.",
+    "description": "CIAOMIND S.B. S.R.L. è stata costituita in Italia nel 2025, con sede legale a Como, e si dedica al rapporto tra cultura e tecnologia.",
     "vision": "Visione",
-    "vision_text": "Diventare leader negli scambi culturali italo-cinesi, promuovendo il dialogo e la fusione delle civilt\u00e0 orientale e occidentale",
+    "vision_text": "Rendere le risorse culturali più comprensibili, accessibili e condivisibili.",
     "mission": "Missione",
-    "mission_text": "Attraverso servizi e prodotti innovativi, costruire ponti per gli scambi interculturali tra persone e imprese",
+    "mission_text": "Esplorare il rapporto tra cultura, educazione e strumenti digitali, favorendo il dialogo tra Italia e Cina.",
     "values_title": "I Nostri Valori",
     "value1_title": "Rispetto",
     "value1_desc": "Rispettare il valore unico e le tradizioni di ogni cultura",
     "value2_title": "Innovazione",
     "value2_desc": "Esplorare costantemente nuovi modi di espressione culturale",
-    "value3_title": "Professionalit\u00e0",
+    "value3_title": "Professionalità",
     "value3_desc": "Affrontare ogni progetto con spirito professionale",
     "value4_title": "Collaborazione",
-    "value4_desc": "Credere nella forza della collaborazione per creare un futuro migliore"
+    "value4_desc": "Credere nella forza della collaborazione per creare un futuro migliore",
+    "story_title": "Risorse culturali e connessioni digitali",
+    "description2": "Gli ambiti statutari comprendono la digitalizzazione del patrimonio culturale, artistico e artigianale, l’educazione digitale e l’inclusione sociale, con attenzione alla cooperazione tra Europa e Cina.",
+    "description3": "Partiamo dalle esigenze del progetto per concordare contenuti, strumenti e modalità di collaborazione."
   },
   "team": {
-    "title": "Il Nostro Team",
-    "description": "Conosci i talenti professionali che guidano CIAOMIND",
+    "title": "Il team",
+    "description": "Conosci la rappresentante della società e chi contribuisce allo sviluppo dei progetti.",
+    "join_us": "Parliamo di collaborazione",
+    "join_description": "Contattaci per confrontarci su un progetto concreto.",
     "members": {
       "cheng_zhiyuan": {
         "name": "Cheng Zhiyuan",
-        "role": "Fondatore & CEO",
-        "bio": "Esperto di scambi interculturali tra Cina e Italia, dedicato a costruire ponti tra Oriente e Occidente."
+        "role": "Socio",
+        "bio": "Ha esperienze nel commercio transfrontaliero e nella distribuzione del lusso e contribuisce all’esplorazione di progetti culturali e digitali tra Italia e Cina."
+      },
+      "huang_huanying": {
+        "name": "Huang Huanying",
+        "role": "Amministratrice unica e rappresentante legale",
+        "bio": "Ricopre le funzioni di amministrazione e rappresentanza della società, con attenzione a cultura, comunicazione e progetti digitali."
       }
     }
   },
@@ -70,18 +139,24 @@
     "your_name": "Il Tuo Nome",
     "your_email": "La Tua Email",
     "your_message": "Il Tuo Messaggio",
-    "send": "Invia Messaggio",
-    "address": "Indirizzo",
+    "send": "Apri la posta",
+    "address": "Sede legale",
     "email": "Email",
     "phone": "Telefono",
     "working_hours": "Orari di Lavoro",
-    "weekdays": "Luned\u00ec - Venerd\u00ec",
+    "weekdays": "Lunedì - Venerdì",
     "weekend": "Sabato - Domenica",
     "closed": "Chiuso",
-    "our_location": "La Nostra Posizione"
+    "our_location": "La Nostra Posizione",
+    "hero_description": "Raccontaci il tuo progetto e definiamo insieme i prossimi passi.",
+    "contact_info": "Recapiti",
+    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
+    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
+    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
+    "privacy_link": "Informazioni sulla privacy"
   },
   "footer": {
-    "description": "Un ponte culturale tra Oriente e Occidente per scambi profondi tra Cina e Italia",
+    "description": "Digitalizzazione del patrimonio culturale, educazione digitale e dialogo interculturale: esploriamo progetti con istituzioni culturali, formatori e imprese.",
     "quick_links": "Link Rapidi",
     "contact_us": "Contattaci",
     "follow_us": "Seguici",
@@ -96,5 +171,11 @@
     "publishedOn": "Pubblicato il",
     "location": "Luogo",
     "article_section": "Notizie e Eventi"
+  },
+  "legal": {
+    "privacyTitle": "Privacy e contatti",
+    "termsTitle": "Informazioni sul sito",
+    "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
+    "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }
 }

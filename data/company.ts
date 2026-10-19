@@ -1,16 +1,14 @@
 export const company = {
   name: 'CIAOMIND S.B. S.R.L.',
-  address: 'Via Oroboni 78/A, 44122 Ferrara FE, Italy',
+  address: 'Via Vandelli 20, 22100 Como (CO), Italia',
+  vat: '04260950136',
+  rea: 'CO - 431951',
+  pec: 'ciaomindsrl@pec.it',
   email: 'utopia013@gmail.com',
   phone: '+39 334 945 1718',
   website: 'https://www.ciaomind.com',
   year: '2026',
-  social: {
-    facebook: 'https://facebook.com/ciaomind',
-    instagram: 'https://instagram.com/ciaomind',
-    linkedin: 'https://linkedin.com/company/ciaomind',
-    twitter: 'https://twitter.com/ciaomind',
-  },
+
 };
 
 // 企业邮箱配置

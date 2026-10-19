@@ -1,10 +1,9 @@
+import { pageMetadata } from '@/lib/seo';
+export function generateMetadata({ params: { lang } }: { params: { lang: string } }) { return pageMetadata(lang, ''); }
 import { useTranslations } from 'next-intl';
 import Hero from '@/components/Hero';
 import ServiceCard from '@/components/ServiceCard';
 import TeamMember from '@/components/TeamMember';
-import StatsSection from '@/components/StatsSection';
-import Testimonials from '@/components/Testimonials';
-import Partners from '@/components/Partners';
 import FloatingCTA from '@/components/FloatingCTA';
 import FadeIn from '@/components/animations/FadeIn';
 import { services } from '@/data/services';
@@ -47,10 +46,8 @@ export default function HomePage({ params: { lang } }: { params: { lang: string 
       <Hero locale={lang} />
 
       {/* Partners Section */}
-      <Partners locale={lang} />
 
       {/* Stats Section */}
-      <StatsSection locale={lang} />
 
       {/* Services Section */}
       <section className="section bg-white relative overflow-hidden">
@@ -70,7 +67,7 @@ export default function HomePage({ params: { lang } }: { params: { lang: string 
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <FadeIn key={service.id} delay={index * 0.1}>
                 <ServiceCard id={service.id} locale={lang} />
@@ -132,7 +129,6 @@ export default function HomePage({ params: { lang } }: { params: { lang: string 
       </section>
 
       {/* Testimonials Section */}
-      <Testimonials locale={lang} />
 
       {/* Team Preview Section */}
       <section className="section bg-white relative overflow-hidden">
@@ -149,7 +145,7 @@ export default function HomePage({ params: { lang } }: { params: { lang: string 
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <FadeIn key={member.id} delay={index * 0.1}>
                 <TeamMember id={member.id} locale={lang} />

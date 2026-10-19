@@ -1,17 +1,10 @@
 import { getRequestConfig } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-
-// Can be imported from a shared config
-const locales = ['it', 'zh'] as const;
-
+import { locales, type Locale } from '@/lib/i18n';
+import zh from '../messages/zh.json';
+import it from '../messages/it.json';
+const messages = { zh, it };
 export default getRequestConfig(async ({ requestLocale }) => {
-  // This typically corresponds to the `[locale]` segment
-  let locale = await requestLocale;
-
-  // Ensure that a valid locale is used
-  if (!locale || !locales.includes(locale as any)) notFound();
-
-  return {
-    messages: (await import(`../messages/${locale}.json`)).default
-  };
+  const requested = await requestLocale;
+  const locale: Locale = locales.includes(requested as Locale) ? requested as Locale : 'zh';
+  return { locale, timeZone: 'Europe/Rome', messages: messages[locale] };
 });

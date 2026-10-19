@@ -150,9 +150,9 @@ MIT License
 
 ## 联系方式
 
-- 邮箱: info@ciaomind.it
-- 网站: https://www.ciaomind.it
-- 地址: Via Roma, 123, 00100 Roma, Italia
+- 邮箱: utopia013@gmail.com
+- 网站: https://www.ciaomind.com
+- 地址: Via Vandelli 20, 22100 Como (CO), Italia
 
 ## 设计规范
 
@@ -180,3 +180,7 @@ MIT License
 ---
 
 **© 2026 CIAOMIND S.B. S.R.L. 版权所有**
+
+## 联系与社交设置
+
+联系工具生成本机邮件草稿，不会直接提交到第三方表单。四个社交平台尚未创建，当前不显示无效主页链接。部署前核对公司现行资料及联系地址。
