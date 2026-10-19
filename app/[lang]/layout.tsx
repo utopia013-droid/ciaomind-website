@@ -12,6 +12,7 @@ export function generateMetadata({ params: { lang } }: { params: { lang: string 
   const zh = lang === 'zh';
   return {
     metadataBase: new URL(company.website),
+    icons: { icon: '/brand/ciaomind-icon.png', apple: '/brand/ciaomind-icon.png' },
     title: { default: zh ? 'CIAOMIND｜文化与科技连接中意' : 'CIAOMIND | Cultura e tecnologia tra Italia e Cina', template: '%s | CIAOMIND' },
     description: zh ? 'CIAOMIND S.B. S.R.L.：文化遗产数字化、数字教育与中意文化交流。了解项目方向，联系团队讨论合作。' : 'CIAOMIND S.B. S.R.L.: digitalizzazione del patrimonio culturale, educazione digitale e dialogo tra Italia e Cina.',
     openGraph: { siteName: company.name, type: 'website', locale: zh ? 'zh_CN' : 'it_IT' },

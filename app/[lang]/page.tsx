@@ -1,3 +1,4 @@
+import OrganizationData from '@/components/OrganizationData';
 import Link from 'next/link';
 import { pageMetadata } from '@/lib/seo';
 export function generateMetadata({ params: { lang } }: { params: { lang: string } }) { return pageMetadata(lang, ''); }
@@ -7,7 +8,7 @@ it: { title:['La cultura ispira.','Il futuro prende forma.'], intro:'Dall’Ital
 };
 export default function HomePage({params:{lang}}:{params:{lang:string}}) {
 const c=content[lang==='it'?'it':'zh']; const link=(p:string)=>`/${lang}/${p}/`;
-return <div className="editorial-home">
+return <div className="editorial-home"><OrganizationData lang={lang}/>
 <section className="heritage-hero"><div className="hero-art" aria-hidden="true"><div className="arch arch-one"/><div className="arch arch-two"/><div className="arch arch-three"/><div className="art-orbit"/><div className="art-floor"/><span className="art-caption">COMO — ITALIA<br/>A DIALOGUE WITH THE FUTURE</span></div><div className="hero-editorial-content"><p className="eyebrow">CULTURE · INTELLIGENCE · CONNECTION</p><h1>{c.title[0]}<br/><em>{c.title[1]}</em></h1><p className="hero-intro">{c.intro}</p><Link className="editorial-link light" href={link('about')}>{c.discover}<span aria-hidden="true">↗</span></Link></div><a className="hero-scroll" href="#our-world">{c.scroll}<span aria-hidden="true">↓</span></a><div className="hero-edition" aria-hidden="true">01 / 03 — CULTURE</div></section>
 <section id="our-world" className="editorial-section vision-section"><div><p className="eyebrow">01 — CIAOMIND</p><p className="section-label">{c.about}</p></div><div><h2 className="editorial-title preline">{c.statement}</h2><p className="editorial-body">{c.body}</p><Link className="editorial-link" href={link('about')}>{c.more}<span aria-hidden="true">↗</span></Link></div></section>
 <section className="worlds-section editorial-section"><div className="section-heading"><div><p className="eyebrow">02 — OUR WORLD</p><h2 className="editorial-title">{c.worlds}</h2></div><p>{c.worldIntro}</p></div><div className="world-grid">{c.cards.map((card,i)=><Link href={link('services')} className={`world-card world-${i}`} key={card[0]}><div className="world-visual" aria-hidden="true"><span className="visual-symbol">{['文','∞','↔'][i]}</span><span className="visual-index">0{i+1}</span></div><div className="world-copy"><p className="eyebrow">{card[1]}</p><h3>{card[0]}</h3><p>{card[2]}</p><span className="card-discover">{c.explore}<span aria-hidden="true">↗</span></span></div></Link>)}</div></section>
