@@ -83,7 +83,7 @@ export default function AboutPage({ params: { lang } }: { params: { lang: string
           <p className="text-center text-text-secondary mb-12 max-w-2xl mx-auto">
             {t('home.team.description')}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {team.map((member) => (
               <TeamMember key={member.id} id={member.id} locale={lang} />
             ))}

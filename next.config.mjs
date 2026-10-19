@@ -1,6 +1,6 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,6 +8,7 @@ const nextConfig = {
     unoptimized: true, // Vercel/Cloudflare 静态导出需要
   },
   trailingSlash: true,
+  poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true,
   },

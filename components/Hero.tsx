@@ -108,24 +108,7 @@ export default function Hero({ locale }: HeroProps) {
             </Link>
           </motion.div>
 
-          {/* Stats Preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-          >
-            {[
-              { value: '10+', label: locale === 'zh' ? '年经验' : 'Anni Exp' },
-              { value: '500+', label: locale === 'zh' ? '合作伙伴' : 'Partner' },
-              { value: '50+', label: locale === 'zh' ? '文化项目' : 'Progetti' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-white/60">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
       </div>
 

@@ -1,31 +1,4 @@
 export const team = [
-  {
-    id: 'cheng-zhiyuan',
-    nameKey: 'team.zeng_zhiyuan.name',
-    roleKey: 'team.zeng_zhiyuan.role',
-    bioKey: 'team.zeng_zhiyuan.bio',
-    image: '/images/cheng-zhiyuan.jpg',
-    linkedin: 'https://linkedin.com/in/chengzhiyuan',
-    twitter: 'https://twitter.com/chengzhiyuan',
-    email: 'zhiyuan@ciaomind.com',
-  },
-  {
-    id: 'huang-huanying',
-    nameKey: 'team.huang_huanying.name',
-    roleKey: 'team.huang_huanying.role',
-    bioKey: 'team.huang_huanying.bio',
-    image: '/images/huang-huanying.jpg',
-    linkedin: 'https://linkedin.com/in/huanghuanying',
-    email: 'huanying@ciaomind.com',
-  },
-  {
-    id: 'cheng-zicheng',
-    nameKey: 'team.cheng_zicheng.name',
-    roleKey: 'team.cheng_zicheng.role',
-    bioKey: 'team.cheng_zicheng.bio',
-    image: '/images/cheng-zicheng.jpg',
-    linkedin: 'https://linkedin.com/in/chengzicheng',
-    twitter: 'https://twitter.com/chengzicheng',
-    email: 'zicheng@ciaomind.com',
-  },
+  { id: 'huang-huanying', nameKey: 'team.members.huang_huanying.name', roleKey: 'team.members.huang_huanying.role', bioKey: 'team.members.huang_huanying.bio' },
+  { id: 'cheng-zhiyuan', nameKey: 'team.members.cheng_zhiyuan.name', roleKey: 'team.members.cheng_zhiyuan.role', bioKey: 'team.members.cheng_zhiyuan.bio' },
 ];
