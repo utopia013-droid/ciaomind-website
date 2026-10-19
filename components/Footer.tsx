@@ -4,7 +4,7 @@ import { company } from '@/data/company';
 export default function Footer() {
   const locale = useLocale(); const t = useTranslations();
   const paths = ['about', 'services', 'team', 'contact'] as const;
-  return <footer className="bg-primary-navy text-white">
+  return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
       <div><Link href={`/${locale}/`} className="text-2xl font-bold">CIAOMIND</Link>
         <p className="mt-4 max-w-lg text-white/80">{t('footer.description')}</p>
