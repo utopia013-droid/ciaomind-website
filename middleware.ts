@@ -1,12 +1,20 @@
 import createMiddleware from 'next-intl/middleware';
+import { NextResponse, type NextRequest } from 'next/server';
+import { locales } from './lib/i18n';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['zh', 'it'],
+const localize = createMiddleware({ locales, defaultLocale: 'zh' });
+const legacyPages = /^\/(en|fr|de|es)\/(about|contact|news|pilot|services|team|terms|portal)(?:\/|$)/;
 
-  // Used when no locale matches
-  defaultLocale: 'zh',
-});
+export default function middleware(request: NextRequest) {
+  if (legacyPages.test(request.nextUrl.pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = url.pathname.replace(/^\/(en|fr|de|es)(?=\/)/, '/it');
+    const response = NextResponse.redirect(url);
+    response.headers.set('Vary', 'Accept-Language');
+    return response;
+  }
+  return localize(request);
+}
 
 export const config = {
   // Match all pathnames except for

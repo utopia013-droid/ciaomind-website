@@ -2,9 +2,9 @@
 
 import { useRef, useState } from 'react';
 import styles from './ServiceCheckout.module.css';
-import { businessServices } from '@/data/business-catalog';
+import { businessServices, type BusinessLocale } from '@/data/business-catalog';
 
-type Locale = 'zh' | 'it';
+type Locale = BusinessLocale;
 type Props = { locale: Locale; initialService: string; source: string; variant: string };
 type OrderResponse = { orderNumber?: unknown };
 type TextCopy = {
@@ -24,6 +24,30 @@ const copy = {
     service: 'Di quale servizio hai bisogno?', choose: 'Seleziona un servizio', variant: 'Tipologia specifica (facoltativa)', chooseVariant: 'Seleziona una tipologia', company: 'Nome dell’azienda o organizzazione', name: 'Nome del referente', email: 'Indirizzo email', brief: 'Descrizione della richiesta', briefHint: 'Ad esempio: situazione attuale, obiettivo e tempistiche. Non inserire password o dati personali sensibili.',
     submit: 'Invia l’ordine', submitting: 'Invio in corso…', privacy: 'Inviando confermi di aver letto l’informativa privacy.', privacyLink: 'Informativa privacy', noPayment: 'Non è richiesto alcun pagamento adesso. Prezzo, perimetro e tempi saranno definiti nel preventivo scritto concordato.',
     required: 'Controlla i campi obbligatori e riprova.', failed: 'Al momento non è possibile inviare la richiesta. Riprova più tardi. I campi restano compilati.', successTitle: 'Ordine ricevuto', success: 'Conserva il numero d’ordine. Il team ti contatterà per definire il perimetro e il preventivo.', order: 'Numero d’ordine', copy: 'Copia il numero', copied: 'Copiato', copyError: 'Copia automatica non riuscita. Seleziona il numero manualmente.', newOrder: 'Invia un altro ordine',
+  },
+  en: {
+    eyebrow: 'Order and quotation', title: 'Submit a service request', intro: 'Briefly describe your organization and what you need. We will review the request, confirm the scope, and send you a written quotation.',
+    service: 'What service do you need?', choose: 'Select a service', variant: 'Specific service type (optional)', chooseVariant: 'Select a type', company: 'Company or organization name', name: 'Contact name', email: 'Email address', brief: 'Request details', briefHint: 'For example: your current situation, what you want to address, and your timing. Do not enter passwords or sensitive personal information.',
+    submit: 'Submit request', submitting: 'Submitting…', privacy: 'By submitting, you confirm that you have read the privacy notice.', privacyLink: 'Privacy notice', noPayment: 'No payment is required now. Price, scope, and timing will be set out in a written quotation agreed by both parties.',
+    required: 'Check the required information and try again.', failed: 'We could not submit your request right now. Please try again later. Your entries have been kept.', successTitle: 'Request received', success: 'Save your order number. Our team will contact you by email to confirm the scope and quotation.', order: 'Order number', copy: 'Copy number', copied: 'Copied', copyError: 'Could not copy automatically. Please select the number manually.', newOrder: 'Submit another request',
+  },
+  fr: {
+    eyebrow: 'Demande et devis', title: 'Envoyer une demande de service', intro: 'Décrivez brièvement votre organisation et vos besoins. Nous examinerons la demande, confirmerons le périmètre et vous enverrons un devis écrit.',
+    service: 'De quel service avez-vous besoin ?', choose: 'Sélectionnez un service', variant: 'Type de service précis (facultatif)', chooseVariant: 'Sélectionnez un type', company: 'Nom de l’entreprise ou de l’organisation', name: 'Nom du contact', email: 'Adresse e-mail', brief: 'Détails de la demande', briefHint: 'Par exemple : situation actuelle, objectif et délai souhaité. N’indiquez aucun mot de passe ni donnée personnelle sensible.',
+    submit: 'Envoyer la demande', submitting: 'Envoi en cours…', privacy: 'En envoyant cette demande, vous confirmez avoir lu la notice de confidentialité.', privacyLink: 'Notice de confidentialité', noPayment: 'Aucun paiement n’est demandé à ce stade. Le prix, le périmètre et les délais figureront dans un devis écrit accepté par les deux parties.',
+    required: 'Vérifiez les champs obligatoires et réessayez.', failed: 'Votre demande ne peut pas être envoyée pour le moment. Réessayez plus tard. Vos informations saisies ont été conservées.', successTitle: 'Demande reçue', success: 'Conservez votre numéro de commande. Notre équipe vous contactera par e-mail pour confirmer le périmètre et le devis.', order: 'Numéro de commande', copy: 'Copier le numéro', copied: 'Copié', copyError: 'La copie automatique a échoué. Sélectionnez le numéro manuellement.', newOrder: 'Envoyer une autre demande',
+  },
+  de: {
+    eyebrow: 'Anfrage und Angebot', title: 'Serviceanfrage senden', intro: 'Beschreiben Sie kurz Ihre Organisation und Ihren Bedarf. Wir prüfen die Anfrage, klären den Umfang und senden Ihnen ein schriftliches Angebot.',
+    service: 'Welche Leistung benötigen Sie?', choose: 'Leistung auswählen', variant: 'Genaue Leistungsart (optional)', chooseVariant: 'Art auswählen', company: 'Name des Unternehmens oder der Organisation', name: 'Kontaktperson', email: 'E-Mail-Adresse', brief: 'Details zur Anfrage', briefHint: 'Zum Beispiel: aktuelle Situation, gewünschtes Ziel und Zeitrahmen. Bitte keine Passwörter oder sensiblen persönlichen Daten angeben.',
+    submit: 'Anfrage senden', submitting: 'Wird gesendet…', privacy: 'Mit dem Absenden bestätigen Sie, dass Sie den Datenschutzhinweis gelesen haben.', privacyLink: 'Datenschutzhinweis', noPayment: 'Jetzt ist keine Zahlung erforderlich. Preis, Umfang und Zeitplan werden in einem schriftlichen, gemeinsam vereinbarten Angebot festgelegt.',
+    required: 'Bitte prüfen Sie die Pflichtfelder und versuchen Sie es erneut.', failed: 'Ihre Anfrage kann derzeit nicht gesendet werden. Bitte versuchen Sie es später erneut. Ihre Eingaben bleiben erhalten.', successTitle: 'Anfrage eingegangen', success: 'Bitte bewahren Sie Ihre Auftragsnummer auf. Unser Team kontaktiert Sie per E-Mail, um Umfang und Angebot abzustimmen.', order: 'Auftragsnummer', copy: 'Nummer kopieren', copied: 'Kopiert', copyError: 'Automatisches Kopieren fehlgeschlagen. Bitte markieren Sie die Nummer manuell.', newOrder: 'Weitere Anfrage senden',
+  },
+  es: {
+    eyebrow: 'Solicitud y presupuesto', title: 'Enviar una solicitud de servicio', intro: 'Describe brevemente tu organización y lo que necesitas. Revisaremos la solicitud, confirmaremos el alcance y te enviaremos un presupuesto por escrito.',
+    service: '¿Qué servicio necesitas?', choose: 'Selecciona un servicio', variant: 'Tipo de servicio específico (opcional)', chooseVariant: 'Selecciona un tipo', company: 'Nombre de la empresa u organización', name: 'Nombre de contacto', email: 'Correo electrónico', brief: 'Detalles de la solicitud', briefHint: 'Por ejemplo: situación actual, objetivo y plazos. No incluyas contraseñas ni datos personales sensibles.',
+    submit: 'Enviar solicitud', submitting: 'Enviando…', privacy: 'Al enviar, confirmas que has leído el aviso de privacidad.', privacyLink: 'Aviso de privacidad', noPayment: 'No se requiere ningún pago ahora. El precio, el alcance y los plazos se establecerán en un presupuesto escrito acordado por ambas partes.',
+    required: 'Revisa los campos obligatorios e inténtalo de nuevo.', failed: 'No se pudo enviar la solicitud en este momento. Inténtalo más tarde. Se han conservado los datos introducidos.', successTitle: 'Solicitud recibida', success: 'Guarda tu número de pedido. Nuestro equipo se pondrá en contacto contigo por correo electrónico para confirmar el alcance y el presupuesto.', order: 'Número de pedido', copy: 'Copiar número', copied: 'Copiado', copyError: 'No se pudo copiar automáticamente. Selecciona el número manualmente.', newOrder: 'Enviar otra solicitud',
   },
 } satisfies Record<Locale, TextCopy>;
 

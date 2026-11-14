@@ -6,5 +6,5 @@ const messages = { zh, it };
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
   const locale: Locale = locales.includes(requested as Locale) ? requested as Locale : 'zh';
-  return { locale, timeZone: 'Europe/Rome', messages: messages[locale] };
+  return { locale, timeZone: 'Europe/Rome', messages: locale === 'zh' ? messages.zh : messages.it };
 });

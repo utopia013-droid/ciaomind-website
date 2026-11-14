@@ -2,6 +2,7 @@ import { createHmac } from 'node:crypto';
 import { isIP } from 'node:net';
 import { NextResponse } from 'next/server';
 import { businessServices } from '@/data/business-catalog';
+import { locales, type Locale } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
 
@@ -68,7 +69,7 @@ export async function POST(request: Request) {
   const source = field(data.source, 80);
   if (!selectedService || (data.variant && !selectedService.variants.some(item => item.id === variant)) ||
       !company || !name || !/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email) || !brief ||
-      (locale !== 'zh' && locale !== 'it') || !uuid.test(requestId) ||
+      !locales.includes(locale as Locale) || !uuid.test(requestId) ||
       (data.source && !/^[A-Za-z0-9_.-]{1,80}$/.test(source))) {
     return reply(400, { error: 'invalid_request' });
   }
