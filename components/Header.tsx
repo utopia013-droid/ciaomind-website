@@ -19,6 +19,11 @@ const copy: Record<Locale, { guides: string; pricing: string; order: string; men
   es: { guides: 'Guías', pricing: 'Precios', order: 'Iniciar solicitud', menu: 'Navegación principal', companyServices: 'Servicios de la empresa' },
 };
 
+const globalLabel: Record<Locale, string> = {
+  zh: '跨境与信托', it: 'Internazionale e trust', en: 'Global and trusts',
+  fr: 'International et trusts', de: 'International und Trusts', es: 'Internacional y fideicomisos',
+};
+
 const companyOnlyPaths = new Set(['about', 'services', 'team', 'news', 'contact', 'pilot', 'terms', 'portal']);
 
 export default function Header() {
@@ -75,6 +80,7 @@ export default function Header() {
             </details>
           </div>
         ))}
+        <Link href={`/${locale}/global/`} onClick={() => mobile && setOpen(false)} className={mobile ? 'block rounded-lg px-4 py-3 hover:bg-white/10' : 'rounded-lg px-2 py-2 hover:bg-white/10'}>{globalLabel[locale]}</Link>
         <Link href={sectionHref('guides')} onClick={() => mobile && setOpen(false)} className={mobile ? 'block rounded-lg px-4 py-3 hover:bg-white/10' : 'rounded-lg px-3 py-2 hover:bg-white/10'}>{text.guides}</Link>
         <Link href={sectionHref('pricing')} onClick={() => mobile && setOpen(false)} className={mobile ? 'block rounded-lg px-4 py-3 hover:bg-white/10' : 'rounded-lg px-3 py-2 hover:bg-white/10'}>{text.pricing}</Link>
         <Link href={orderHref()} onClick={() => mobile && setOpen(false)} className={mobile ? 'block rounded-lg bg-primary-navy px-4 py-3 text-center font-semibold text-white' : 'ml-2 rounded-lg bg-primary-navy px-4 py-2 font-semibold text-white hover:bg-slate-800'}>{text.order}</Link>
@@ -92,10 +98,10 @@ export default function Header() {
     <nav className="container-modern" aria-label={text.menu}>
       <div className="flex min-h-20 items-center justify-between gap-4">
         <Link href={`/${locale}/`} className="brand-mark">CIAOMIND</Link>
-        <div className="hidden xl:flex items-center">{navigation(false)}</div>
-        <button type="button" className="xl:hidden rounded-lg p-3" aria-expanded={open} aria-controls="mobile-navigation" aria-label={locale === 'zh' ? '打开或关闭导航菜单' : 'Open or close navigation menu'} onClick={() => setOpen(value => !value)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
+        <div className="hidden 2xl:flex items-center">{navigation(false)}</div>
+        <button type="button" className="2xl:hidden rounded-lg p-3" aria-expanded={open} aria-controls="mobile-navigation" aria-label={locale === 'zh' ? '打开或关闭导航菜单' : 'Open or close navigation menu'} onClick={() => setOpen(value => !value)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
       </div>
-      {open ? <div id="mobile-navigation" className="xl:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-white/20 pb-4 pt-3">{navigation(true)}</div> : null}
+      {open ? <div id="mobile-navigation" className="2xl:hidden max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-white/20 pb-4 pt-3">{navigation(true)}</div> : null}
     </nav>
   </header>;
 }

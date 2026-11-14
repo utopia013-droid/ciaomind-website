@@ -5,27 +5,27 @@ import { resolveBusinessLocale } from '@/data/business-catalog';
 const orderData = {
   zh: {
     title: '服务订单',
-    text: '提交服务订单时，CIAOMIND 使用你填写的公司名称、联系人、邮箱和需求，以及选择的服务、访问来源和提交时间，接收订单并联系你确认范围和报价。订单保存在我们使用的欧盟区域数据库中。我们用网络地址的加密摘要限制重复滥用。你可以通过下列邮箱咨询订单数据的处理。',
+    text: '提交服务订单或跨境架构评估申请时，CIAOMIND 使用你填写的公司名称、联系人、邮箱和需求，以及选择的服务、办理地区或架构、联系语言、访问来源和提交时间，接收订单并联系你确认范围和报价。订单保存在我们使用的欧盟区域数据库中。我们用网络地址的加密摘要限制重复滥用。你可以通过下列邮箱咨询订单数据的处理。',
   },
   it: {
     title: 'Ordini di servizio',
-    text: 'Quando invii un ordine, CIAOMIND usa ragione sociale, referente, email, descrizione, servizio scelto, canale di provenienza e data di invio per registrare l’ordine e contattarti per definire il perimetro e il preventivo. Gli ordini sono conservati in un database in una regione UE. Usiamo un hash dell’indirizzo di rete per limitare gli abusi. Per domande sul trattamento dei dati, scrivi al recapito qui sotto.',
+    text: 'Quando invii un ordine o una richiesta di valutazione internazionale, CIAOMIND usa ragione sociale, referente, email, descrizione, servizio scelto, giurisdizione o struttura, lingua di contatto, canale di provenienza e data di invio per registrare l’ordine e contattarti per definire il perimetro e il preventivo. Gli ordini sono conservati in un database in una regione UE. Usiamo un hash dell’indirizzo di rete per limitare gli abusi. Per domande sul trattamento dei dati, scrivi al recapito qui sotto.',
   },
   en: {
     title: 'Service orders',
-    text: 'When you submit a service order, CIAOMIND uses the company name, contact person, email address, description, selected service, referral source, and submission time to receive the order and contact you to confirm its scope and quotation. Orders are stored in a database hosted in an EU region. We use a hashed network address to limit repeated abuse. You can contact us at the address below with questions about the processing of order data.',
+    text: 'When you submit a service order or request a cross-border structure review, CIAOMIND uses the company name, contact person, email address, description, selected service, jurisdiction or structure, contact language, referral source, and submission time to receive the order and contact you to confirm its scope and quotation. Orders are stored in a database hosted in an EU region. We use a hashed network address to limit repeated abuse. You can contact us at the address below with questions about the processing of order data.',
   },
   fr: {
     title: 'Demandes de service',
-    text: 'Lorsque vous envoyez une demande de service, CIAOMIND utilise le nom de l’entreprise, le contact, l’adresse e-mail, la description, le service choisi, la source de la visite et l’heure d’envoi pour recevoir la demande et vous contacter afin d’en confirmer le périmètre et le devis. Les demandes sont conservées dans une base de données hébergée dans une région de l’UE. Nous utilisons une empreinte hachée de l’adresse réseau pour limiter les abus répétés. Pour toute question sur le traitement des données de commande, vous pouvez nous écrire à l’adresse ci-dessous.',
+    text: 'Lorsque vous envoyez une demande de service ou d’évaluation transfrontalière, CIAOMIND utilise le nom de l’entreprise, le contact, l’adresse e-mail, la description, le service choisi, la juridiction ou la structure, la langue de contact, la source de la visite et l’heure d’envoi pour recevoir la demande et vous contacter afin d’en confirmer le périmètre et le devis. Les demandes sont conservées dans une base de données hébergée dans une région de l’UE. Nous utilisons une empreinte hachée de l’adresse réseau pour limiter les abus répétés. Pour toute question sur le traitement des données de commande, vous pouvez nous écrire à l’adresse ci-dessous.',
   },
   de: {
     title: 'Serviceaufträge',
-    text: 'Wenn Sie einen Serviceauftrag absenden, verwendet CIAOMIND den Unternehmensnamen, die Kontaktperson, die E-Mail-Adresse, die Beschreibung, die ausgewählte Leistung, die Herkunft des Besuchs und den Absendezeitpunkt, um den Auftrag entgegenzunehmen und Sie zur Bestätigung von Umfang und Angebot zu kontaktieren. Die Aufträge werden in einer Datenbank in einer EU-Region gespeichert. Zur Begrenzung wiederholten Missbrauchs verwenden wir einen Hash der Netzwerkadresse. Fragen zur Verarbeitung von Auftragsdaten können Sie an die unten angegebene Adresse richten.',
+    text: 'Wenn Sie einen Serviceauftrag oder eine Anfrage zur grenzüberschreitenden Prüfung absenden, verwendet CIAOMIND den Unternehmensnamen, die Kontaktperson, die E-Mail-Adresse, die Beschreibung, die ausgewählte Leistung, Rechtsordnung oder Struktur, Kontaktsprache, die Herkunft des Besuchs und den Absendezeitpunkt, um den Auftrag entgegenzunehmen und Sie zur Bestätigung von Umfang und Angebot zu kontaktieren. Die Aufträge werden in einer Datenbank in einer EU-Region gespeichert. Zur Begrenzung wiederholten Missbrauchs verwenden wir einen Hash der Netzwerkadresse. Fragen zur Verarbeitung von Auftragsdaten können Sie an die unten angegebene Adresse richten.',
   },
   es: {
     title: 'Solicitudes de servicio',
-    text: 'Cuando envías una solicitud de servicio, CIAOMIND utiliza el nombre de la empresa, la persona de contacto, el correo electrónico, la descripción, el servicio elegido, el canal de procedencia y la hora de envío para recibirla y contactarte con el fin de confirmar el alcance y el presupuesto. Las solicitudes se conservan en una base de datos alojada en una región de la UE. Utilizamos un hash de la dirección de red para limitar los abusos reiterados. Si tienes preguntas sobre el tratamiento de los datos de la solicitud, puedes escribirnos a la dirección indicada a continuación.',
+    text: 'Cuando envías una solicitud de servicio o de evaluación transfronteriza, CIAOMIND utiliza el nombre de la empresa, la persona de contacto, el correo electrónico, la descripción, el servicio elegido, la jurisdicción o estructura, el idioma de contacto, el canal de procedencia y la hora de envío para recibirla y contactarte con el fin de confirmar el alcance y el presupuesto. Las solicitudes se conservan en una base de datos alojada en una región de la UE. Utilizamos un hash de la dirección de red para limitar los abusos reiterados. Si tienes preguntas sobre el tratamiento de los datos de la solicitud, puedes escribirnos a la dirección indicada a continuación.',
   },
 };
 

@@ -2,6 +2,7 @@ import { createHmac } from 'node:crypto';
 import { isIP } from 'node:net';
 import { NextResponse } from 'next/server';
 import { businessServices } from '@/data/business-catalog';
+import { structureReview } from '@/data/global-catalog';
 import { locales, type Locale } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
@@ -58,7 +59,7 @@ export async function POST(request: Request) {
   const data = await readBody(request);
   if (!data || data.website !== '') return reply(400, { error: 'invalid_request' });
   const service = field(data.service, 48);
-  const selectedService = businessServices.find(item => item.id === service);
+  const selectedService = service === structureReview.id ? structureReview : businessServices.find(item => item.id === service);
   const variant = field(data.variant, 48);
   const company = field(data.company, 120);
   const name = field(data.name, 100);
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
   const locale = field(data.locale, 2);
   const requestId = field(data.requestId, 36);
   const source = field(data.source, 80);
-  if (!selectedService || (data.variant && !selectedService.variants.some(item => item.id === variant)) ||
+  if (!selectedService || (service === structureReview.id && !variant) || (data.variant && !selectedService.variants.some(item => item.id === variant)) ||
       !company || !name || !/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email) || !brief ||
       !locales.includes(locale as Locale) || !uuid.test(requestId) ||
       (data.source && !/^[A-Za-z0-9_.-]{1,80}$/.test(source))) {

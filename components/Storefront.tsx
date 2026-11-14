@@ -253,6 +253,14 @@ const copy = {
   }
 }
 };
+const globalLink: Record<string, { title: string; text: string; cta: string }> = {
+  zh: { title: '跨境公司与信托架构', text: '香港、美国、英属维尔京群岛、开曼及其他市场。按办理地和架构提交评估。', cta: '查看地区与架构' },
+  it: { title: 'Società internazionali e trust', text: 'Hong Kong, Stati Uniti, Isole Vergini Britanniche, Cayman e altri mercati. Richiedi una valutazione per giurisdizione e struttura.', cta: 'Esplora giurisdizioni e strutture' },
+  en: { title: 'International companies and trusts', text: 'Hong Kong, the United States, the British Virgin Islands, Cayman and more. Request a review by jurisdiction and structure.', cta: 'Explore jurisdictions and structures' },
+  fr: { title: 'Sociétés internationales et trusts', text: 'Hong Kong, États-Unis, Îles Vierges britanniques, Caïmans et autres marchés. Demandez une évaluation par juridiction et structure.', cta: 'Voir les juridictions et structures' },
+  de: { title: 'Internationale Gesellschaften und Trusts', text: 'Hongkong, USA, Britische Jungferninseln, Kaimaninseln und weitere Märkte. Wählen Sie Rechtsordnung und Struktur für Ihre Anfrage.', cta: 'Rechtsordnungen und Strukturen ansehen' },
+  es: { title: 'Sociedades internacionales y fideicomisos', text: 'Hong Kong, Estados Unidos, Islas Vírgenes Británicas, Caimán y otros mercados. Solicita una evaluación por jurisdicción y estructura.', cta: 'Explorar jurisdicciones y estructuras' },
+};
 const icons = [Building2, CreditCard, Users, Calculator, FileText, MessageCircle, ClipboardCheck, Home, Handshake, Sparkles];
 export function storefrontMetadata(language: string, path: 'home' | 'business'): Metadata {
   const lang = resolveBusinessLocale(language);
@@ -302,6 +310,16 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
         </div>
       </div>
     </div>
+
+    <section className={styles.section + ' ' + styles.tinted} aria-labelledby="global-structures-title">
+      <div className={styles.inner}>
+        <h2 id="global-structures-title">{globalLink[lang].title}</h2>
+        <p className={styles.intro}>{globalLink[lang].text}</p>
+        <Link href={{ pathname: `/${lang}/global/`, query: campaign ? { utm_source: campaign } : undefined }} className={styles.textLink}>
+          {globalLink[lang].cta}<ArrowRight size={16} aria-hidden />
+        </Link>
+      </div>
+    </section>
 
     {businessGroups.map(group => <section className={styles.section} key={group.id} id={group.id}>
       <div className={styles.inner}>
