@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import PackagePayment from '@/components/PackagePayment';
 import ServiceCheckout from '@/components/ServiceCheckout';
 import { businessServices, resolveBusinessLocale } from '@/data/business-catalog';
 import { structureReview } from '@/data/global-catalog';
 import { getServicePrice } from '@/data/service-prices';
+import { isCheckoutDemoEnabled } from '@/lib/checkout-session';
 
 type Props = { params: { lang: string }; searchParams: Record<string, string | string[] | undefined> };
 
@@ -35,7 +37,7 @@ export default function OrderPage({ params, searchParams }: Props) {
             {{ zh: '← 返回套餐', it: '← Torna ai pacchetti', en: '← Back to packages',
               fr: '← Retour aux formules', de: '← Zurück zu den Paketen', es: '← Volver a los paquetes' }[locale]}
           </Link>
-          <ServiceCheckout key={service + ':' + variant} locale={locale} initialService={service} source={source} variant={variant} checkout />
+          <PackagePayment key={service + ':' + variant} locale={locale} price={pricedPackage} demoEnabled={isCheckoutDemoEnabled()} />
         </div>
       </section>
     );

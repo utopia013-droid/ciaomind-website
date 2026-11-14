@@ -1,7 +1,7 @@
 import { localeTags, type Locale } from '@/lib/i18n';
 
 type Labels = Record<Locale, string>;
-type ServicePrice = {
+export type ServicePrice = {
   service: string;
   variant: string;
   amountCents: number;

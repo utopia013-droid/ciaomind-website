@@ -30,6 +30,15 @@ const trustCopy: Record<Locale, { title: string; summary: string; boundaries: st
   es: { title: 'Revisión de trusts y estructuras de titularidad', summary: 'Distingue la ley aplicable al trust, el lugar de licencia o servicio del fiduciario y la ubicación de la sociedad tenedora subyacente. Revisa el mapa de funciones, el documento del trust firmado y el inventario final de bienes, el registro de acciones y las pruebas de control, y después las declaraciones periódicas. La salida del proveedor y la terminación del trust deben poder revisarse de forma independiente.', boundaries: 'Hong Kong es solo para revisar proveedores. Las estructuras especiales de las BVI requieren revisión individual. No se prometen resultados fiscales ni se reciben fondos del trust.', existing: 'Otros temas sobre trusts' },
 };
 
+const restructuringCopy = {
+  zh: { title: '跨境产业重组', scope: '梳理供应链、品牌、经销渠道和拟承接的经营资产，核对涉及地区、交易主体、控制权变化和交割条件。评估范围与费用按项目确认。', action: '申请重组评估与报价' },
+  it: { title: 'Riorganizzazione industriale transfrontaliera', scope: 'Mappiamo filiera, marchi, canali di vendita e attività da rilevare, verificando paesi, parti, controllo e condizioni di chiusura. Perimetro e costo sono definiti per progetto.', action: 'Richiedi una valutazione e un preventivo' },
+  en: { title: 'Cross-border industrial restructuring', scope: 'Map supply chains, brands, distribution and operating assets, then review jurisdictions, counterparties, control changes and closing conditions. The scope and fee are quoted for each project.', action: 'Request a restructuring assessment and quote' },
+  fr: { title: 'Restructuration industrielle transfrontalière', scope: 'Cartographiez la chaîne d’approvisionnement, les marques, la distribution et les actifs, puis examinez les pays, les parties, le contrôle et les conditions de réalisation. Le périmètre et les frais sont définis sur devis.', action: 'Demander une évaluation et un devis' },
+  de: { title: 'Grenzüberschreitende industrielle Umstrukturierung', scope: 'Erfassen Sie Lieferketten, Marken, Vertrieb und Betriebsvermögen. Geprüft werden Länder, Parteien, Kontrollwechsel und Vollzugsbedingungen. Umfang und Kosten werden je Projekt angeboten.', action: 'Prüfung und Angebot anfragen' },
+  es: { title: 'Reestructuración industrial transfronteriza', scope: 'Analiza cadenas de suministro, marcas, distribución y activos operativos, así como jurisdicciones, partes, cambios de control y condiciones de cierre. El alcance y el precio se cotizan por proyecto.', action: 'Solicitar evaluación y presupuesto' },
+} satisfies Record<Locale, { title: string; scope: string; action: string }>;
+
 function resolveLocale(value: string): Locale {
   return locales.find(locale => locale === value) ?? 'zh';
 }
@@ -75,6 +84,7 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
     fr: 'Sources officielles', de: 'Offizielle Quellen', es: 'Fuentes oficiales',
   }[locale];
   const trust = trustCopy[locale];
+  const restructuring = restructuringCopy[locale];
   const trustMarket = globalMarkets.find(market => market.id === 'trusts')!;
   const trustRegions = ['trust-ky', 'trust-sg', 'trust-hk', 'trust-bvi', 'trust-uk', 'trust-record-review'];
 
@@ -96,6 +106,10 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
     <section className={styles.section} aria-labelledby="regions-title">
       <div className={styles.inner}>
         <h2 id="regions-title">{t.pathways}</h2>
+        <article className={styles.market + ' ' + styles.restructuring} id="industrial-restructuring" aria-labelledby="restructuring-title">
+          <div><h3 id="restructuring-title">{restructuring.title}</h3><p>{restructuring.scope}</p></div>
+          <Link className={styles.restructuringLink} href={orderHref('industrial-restructuring')}>{restructuring.action}<ArrowRight size={16} aria-hidden /></Link>
+        </article>
         <article className={styles.trustPanel} aria-labelledby="trust-title" id="trusts">
           <div className={styles.trustIntro}>
             <p className={styles.trustEyebrow}>TRUST · STRUCTURE REVIEW</p>

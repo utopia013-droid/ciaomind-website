@@ -75,3 +75,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .topicList a, .contact { transition: color 120ms ease; }
 }
+.restructuring { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.25rem; }
+.restructuring > div { flex: 1 1 30rem; }
+.restructuring p { margin: .4rem 0 0; }
+.restructuringLink { display: inline-flex; align-items: center; gap: .55rem; padding: .7rem 1rem; border-radius: .55rem; background: #173d35; color: #fff; font-weight: 700; }
+.restructuringLink:hover { background: #24564a; }
