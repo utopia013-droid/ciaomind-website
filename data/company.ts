@@ -3,7 +3,7 @@ export const company = {
   address: 'Via Oroboni 78/A, 44122 Ferrara (FE), Italia',
   vat: '04260950136',
   rea: 'CO - 431951',
-  pec: 'ciaomindsrl@pec.it',
+  pec: 'ciaomind@pec.it',
   email: 'luxyoo.italy@gmail.com',
   phone: '+39 392 463 9169',
   website: 'https://www.ciaomind.com',
