@@ -23,7 +23,7 @@ const text = {
   it: {
     title: 'Italia e Cina: parti da un progetto pilota',
     intro: 'Trasforma una domanda concreta in un risultato verificabile: mercato, fornitori o un progetto per il tuo brand culturale.',
-    action: 'Scegli il progetto', process: 'Come funziona', demoTitle: 'Scopri come si segue un progetto', demoBody: 'Una dimostrazione con dati fittizi: dalla richiesta al preventivo, alla consegna e al riepilogo dei pagamenti. Interfaccia in cinese.',
+    action: 'Scegli il progetto', process: 'Come funziona', demoTitle: 'Scopri come si segue un progetto', demoBody: 'Una dimostrazione con dati fittizi: dalla richiesta al preventivo, alla consegna e al riepilogo dei pagamenti.',
     demo: 'Apri la demo del portale', services: 'Inizia da un obiettivo', quote: 'Preventivo scritto dopo la definizione del perimetro', select: 'Seleziona il servizio',
     steps: ['Scegli il progetto', 'Conferma perimetro e preventivo', 'Ricevi il risultato'], form: 'Raccontaci cosa vuoi verificare',
     defaultBrief: 'Mercato obiettivo:\nProdotto o progetto:\nDomanda da verificare:\nTempistiche:',
@@ -96,7 +96,7 @@ export default function Pilot({ params, searchParams }: Props) {
         </ol>
         <aside className="mt-8 rounded-xl bg-background-light p-6">
           <h3 className="text-xl font-bold">{t.demoTitle}</h3><p className="my-2">{t.demoBody}</p>
-          <a href="/pilot-demo.html" className="underline font-semibold">{t.demo}</a>
+          <Link href={`/${lang}/portal/`} className="underline font-semibold">{t.demo}</Link>
         </aside>
       </div>
     </section>
