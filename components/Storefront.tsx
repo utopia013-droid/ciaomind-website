@@ -263,12 +263,20 @@ const globalLink: Record<string, { title: string; text: string; cta: string }> =
   es: { title: 'Negocios transfronterizos y planificación patrimonial', text: 'Singapur, Hong Kong, Estados Unidos, Islas Vírgenes Británicas, Caimán y otros mercados. Indica tus objetivos y jurisdicción para una evaluación empresarial o patrimonial.', cta: 'Explorar jurisdicciones y estructuras' },
 };
 const priceCopy = {
-  zh: { title: '清晰起步价', intro: '选好套餐即可提交订单。团队确认适用范围和书面报价后再安排付款。', from: '起', beforeVat: '未含 IVA', submit: '提交套餐订单', period: '服务周期', included: '包含', excluded: '另计费用' },
-  it: { title: 'Prezzi di partenza chiari', intro: 'Invia una richiesta per uno dei pacchetti base. Il team confermerà il perimetro; l’invio non comporta un addebito.', from: 'da', beforeVat: 'IVA esclusa', submit: 'Invia richiesta per il pacchetto', period: 'Periodo', included: 'Incluso', excluded: 'Costi separati' },
-  en: { title: 'Clear starting prices', intro: 'Submit a request for one of these starter packages. The team will confirm the scope; submitting does not charge you.', from: 'From', beforeVat: 'before VAT', submit: 'Submit package request', period: 'Service period', included: 'Included', excluded: 'Separate fees' },
-  fr: { title: 'Tarifs de départ clairs', intro: 'Envoyez une demande pour l’une de ces formules de base. L’équipe confirmera le périmètre ; l’envoi ne déclenche aucun paiement.', from: 'À partir de', beforeVat: 'hors TVA', submit: 'Demander cette formule', period: 'Période', included: 'Inclus', excluded: 'Frais en supplément' },
-  de: { title: 'Klare Einstiegspreise', intro: 'Senden Sie eine Anfrage für eines dieser Basispakete. Das Team bestätigt den Umfang; beim Absenden wird nichts berechnet.', from: 'Ab', beforeVat: 'zzgl. MwSt.', submit: 'Paket anfragen', period: 'Leistungszeitraum', included: 'Enthalten', excluded: 'Zusätzliche Kosten' },
-  es: { title: 'Precios iniciales claros', intro: 'Envía una solicitud para uno de estos paquetes básicos. El equipo confirmará el alcance; el envío no genera ningún cargo.', from: 'Desde', beforeVat: 'IVA no incluido', submit: 'Solicitar este paquete', period: 'Periodo del servicio', included: 'Incluye', excluded: 'Costes aparte' },
+  zh: { title: '清晰起步价', intro: '选好套餐即可提交订单。团队确认适用范围和书面报价后再安排付款。', from: '起', beforeVat: '未含 IVA', submit: '进入结账', period: '服务周期', included: '包含', excluded: '另计费用' },
+  it: { title: 'Prezzi di partenza chiari', intro: 'Invia una richiesta per uno dei pacchetti base. Il team confermerà il perimetro; l’invio non comporta un addebito.', from: 'da', beforeVat: 'IVA esclusa', submit: 'Vai al riepilogo ordine', period: 'Periodo', included: 'Incluso', excluded: 'Costi separati' },
+  en: { title: 'Clear starting prices', intro: 'Submit a request for one of these starter packages. The team will confirm the scope; submitting does not charge you.', from: 'From', beforeVat: 'before VAT', submit: 'Go to checkout', period: 'Service period', included: 'Included', excluded: 'Separate fees' },
+  fr: { title: 'Tarifs de départ clairs', intro: 'Envoyez une demande pour l’une de ces formules de base. L’équipe confirmera le périmètre ; l’envoi ne déclenche aucun paiement.', from: 'À partir de', beforeVat: 'hors TVA', submit: 'Passer à la commande', period: 'Période', included: 'Inclus', excluded: 'Frais en supplément' },
+  de: { title: 'Klare Einstiegspreise', intro: 'Senden Sie eine Anfrage für eines dieser Basispakete. Das Team bestätigt den Umfang; beim Absenden wird nichts berechnet.', from: 'Ab', beforeVat: 'zzgl. MwSt.', submit: 'Zur Bestellübersicht', period: 'Leistungszeitraum', included: 'Enthalten', excluded: 'Zusätzliche Kosten' },
+  es: { title: 'Precios iniciales claros', intro: 'Envía una solicitud para uno de estos paquetes básicos. El equipo confirmará el alcance; el envío no genera ningún cargo.', from: 'Desde', beforeVat: 'IVA no incluido', submit: 'Ir al pedido', period: 'Periodo del servicio', included: 'Incluye', excluded: 'Costes aparte' },
+};
+const trustLink = {
+  zh: '查看信托设立与复核选项',
+  it: 'Vedi le opzioni per i trust',
+  en: 'Explore trust setup and review options',
+  fr: 'Voir les options de création et de revue de trusts',
+  de: 'Optionen für Trust-Gründung und Prüfung ansehen',
+  es: 'Ver opciones de constitución y revisión de fideicomisos',
 };
 const icons = [Building2, CreditCard, Users, Calculator, FileText, MessageCircle, ClipboardCheck, Home, Handshake, Sparkles];
 export function storefrontMetadata(language: string, path: 'home' | 'business'): Metadata {
@@ -348,9 +356,14 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
       <div className={styles.inner}>
         <h2 id="global-structures-title">{globalLink[lang].title}</h2>
         <p className={styles.intro}>{globalLink[lang].text}</p>
-        <Link href={{ pathname: `/${lang}/global/`, query: Object.keys(utm).length ? utm : undefined }} className={styles.textLink}>
-          {globalLink[lang].cta}<ArrowRight size={16} aria-hidden />
-        </Link>
+        <div className={styles.actions}>
+          <Link href={{ pathname: `/${lang}/global/`, query: Object.keys(utm).length ? utm : undefined }} className={styles.textLink}>
+            {globalLink[lang].cta}<ArrowRight size={16} aria-hidden />
+          </Link>
+          <Link href={{ pathname: `/${lang}/global/`, query: Object.keys(utm).length ? utm : undefined, hash: 'trusts' }} className={styles.textLink}>
+            {trustLink[lang]}<ArrowRight size={16} aria-hidden />
+          </Link>
+        </div>
       </div>
     </section>
 

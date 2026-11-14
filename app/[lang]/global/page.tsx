@@ -21,6 +21,15 @@ const pageCopy: Record<Locale, {
   es: { title: 'Directorio internacional de negocios y regiones', intro: 'Consulta las opciones según dónde se desarrolla tu actividad. Elige un país o región y después un tema; primero revisaremos si la solicitud encaja en nuestro ámbito.', crossBorderTitle: 'Situaciones transfronterizas', crossBorder: 'Si los fundadores, activos, clientes o actividades abarcan varios países, selecciona las regiones pertinentes para definir qué cuestiones conviene revisar.', pathways: 'Opciones relacionadas', italyNote: 'Para iniciar una actividad en Italia, puedes acceder directamente a los servicios existentes.', evaluationNote: 'Esta opción es solo para una evaluación inicial. No garantiza disponibilidad, aceptación del encargo ni beneficios fiscales.', wealthNote: 'Este formulario recopila necesidades para derivarlas a un asesor autorizado adecuado. No ofrece servicios de inversión ni transferencias de activos; no se cotizan ni garantizan comisiones, rendimientos o resultados.', stepsTitle: 'Qué ocurre después', steps: ['Elige las regiones y temas relevantes', 'Resume la situación y tu objetivo', 'Espera la revisión del alcance y un presupuesto por escrito'], privacyTitle: 'Protege tus datos sensibles', privacy: 'No envíes documentos de identidad, extractos bancarios, números fiscales ni escrituras de fideicomiso mediante el formulario. Para el primer contacto basta una descripción general; si necesitamos documentos, primero indicaremos un medio seguro para compartirlos.', contact: 'Contactar con el equipo', meta: 'Opciones de evaluación inicial para negocios y estructuras transfronterizas por país y región.' },
 };
 
+const trustCopy: Record<Locale, { title: string; summary: string; boundaries: string; existing: string }> = {
+  zh: { title: '信托与持有架构专项评估', summary: '先区分信托适用的管辖法律、受托人的牌照或服务所在地，以及底层持股公司的注册地。核查角色图、已签署的信托契约与最终财产清单、股份登记及控制权凭证，再梳理持续申报。服务提供方退出与信托终止应可独立复核。', boundaries: '香港入口仅用于核查服务提供方；BVI 特殊结构需个案审查。本入口不承诺税务结果，也不收取信托资金。', existing: '其他信托主题' },
+  it: { title: 'Valutazione dedicata di trust e strutture di detenzione', summary: 'Distinguere la legge applicabile al trust, il luogo della licenza o del servizio del trustee e il luogo della società sottostante. Verificare mappa dei ruoli, atto fiduciario firmato e inventario patrimoniale definitivo, registrazione delle quote e prove del controllo, quindi gli adempimenti continuativi. L’uscita del fornitore e la cessazione del trust devono poter essere verificate separatamente.', boundaries: 'Hong Kong: verifica del solo fornitore. Le strutture speciali BVI richiedono un esame caso per caso. Nessun risultato fiscale è promesso e non vengono ricevuti fondi del trust.', existing: 'Altri temi sui trust' },
+  en: { title: 'Trust and ownership structure review', summary: 'Separate the trust’s governing law, the trustee’s licence or service location, and the underlying holding company’s location. Review the role map, signed trust deed and final property schedule, share registration and control evidence, then ongoing reporting. Provider offboarding and trust termination should be independently reviewable.', boundaries: 'Hong Kong is a provider review only. BVI special structures are subject to case review. No tax outcome is promised and no trust funds are accepted.', existing: 'Other trust topics' },
+  fr: { title: 'Évaluation dédiée des trusts et structures de détention', summary: 'Distinguer le droit applicable au trust, le lieu d’agrément ou de service du trustee et le lieu de la société sous-jacente. Examiner la cartographie des rôles, l’acte de trust signé et l’inventaire définitif des biens, l’inscription des parts et les preuves de contrôle, puis les déclarations continues. Le départ du prestataire et la clôture du trust doivent pouvoir être vérifiés indépendamment.', boundaries: 'Hong Kong : vérification du prestataire uniquement. Les structures spéciales BVI sont soumises à un examen au cas par cas. Aucun résultat fiscal n’est promis et aucun fonds du trust n’est reçu.', existing: 'Autres thèmes liés aux trusts' },
+  de: { title: 'Prüfung von Trusts und Beteiligungsstrukturen', summary: 'Zu unterscheiden sind das maßgebliche Trust-Recht, der Ort der Zulassung oder Dienstleistung des Trustees und der Sitz der zugrunde liegenden Holdinggesellschaft. Geprüft werden Rollenübersicht, unterzeichnete Trust-Urkunde und endgültiges Vermögensverzeichnis, Aktienregistrierung und Kontrollnachweise sowie laufende Meldungen. Das Ausscheiden des Dienstleisters und die Beendigung des Trusts sollten unabhängig überprüfbar sein.', boundaries: 'Hongkong dient ausschließlich der Prüfung von Dienstleistern. Besondere BVI-Strukturen werden einzeln geprüft. Steuerliche Ergebnisse werden nicht versprochen; Trust-Gelder werden nicht angenommen.', existing: 'Weitere Trust-Themen' },
+  es: { title: 'Revisión de trusts y estructuras de titularidad', summary: 'Distingue la ley aplicable al trust, el lugar de licencia o servicio del fiduciario y la ubicación de la sociedad tenedora subyacente. Revisa el mapa de funciones, el documento del trust firmado y el inventario final de bienes, el registro de acciones y las pruebas de control, y después las declaraciones periódicas. La salida del proveedor y la terminación del trust deben poder revisarse de forma independiente.', boundaries: 'Hong Kong es solo para revisar proveedores. Las estructuras especiales de las BVI requieren revisión individual. No se prometen resultados fiscales ni se reciben fondos del trust.', existing: 'Otros temas sobre trusts' },
+};
+
 function resolveLocale(value: string): Locale {
   return locales.find(locale => locale === value) ?? 'zh';
 }
@@ -49,7 +58,7 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
   };
 
   const featured = ['expansion', 'sg', 'wealth', 'hk', 'us', 'bvi', 'cayman', 'trusts'];
-  const markets = [...globalMarkets].sort((a, b) => {
+  const markets = globalMarkets.filter(market => market.id !== 'trusts').sort((a, b) => {
     const rank = (id: string) => featured.includes(id) ? featured.indexOf(id) : featured.length;
     return rank(a.id) - rank(b.id);
   });
@@ -65,6 +74,9 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
     zh: '官方资料', it: 'Fonti ufficiali', en: 'Official references',
     fr: 'Sources officielles', de: 'Offizielle Quellen', es: 'Fuentes oficiales',
   }[locale];
+  const trust = trustCopy[locale];
+  const trustMarket = globalMarkets.find(market => market.id === 'trusts')!;
+  const trustRegions = ['trust-ky', 'trust-sg', 'trust-hk', 'trust-bvi', 'trust-uk', 'trust-record-review'];
 
   return <div className={styles.page}>
     <section className={styles.hero}>
@@ -84,6 +96,29 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
     <section className={styles.section} aria-labelledby="regions-title">
       <div className={styles.inner}>
         <h2 id="regions-title">{t.pathways}</h2>
+        <article className={styles.trustPanel} aria-labelledby="trust-title" id="trusts">
+          <div className={styles.trustIntro}>
+            <p className={styles.trustEyebrow}>TRUST · STRUCTURE REVIEW</p>
+            <h3 id="trust-title">{trust.title}</h3>
+            <p>{trust.summary}</p>
+            <p className={styles.trustBoundary}>{trust.boundaries}</p>
+          </div>
+          <ul className={styles.trustGrid}>
+            {trustMarket.topics.filter(topic => trustRegions.includes(topic.id)).map(topic => <li key={topic.id}>
+              <Link href={orderHref(topic.id)}><span>{topic.label[locale]}</span><ArrowRight size={17} aria-hidden="true" /></Link>
+            </li>)}
+          </ul>
+          <h4 className={styles.trustExistingTitle}>{trust.existing}</h4>
+          <ul className={styles.trustExisting}>
+            {trustMarket.topics.filter(topic => !trustRegions.includes(topic.id)).map(topic => <li key={topic.id}>
+              <Link href={orderHref(topic.id)}><span>{topic.label[locale]}</span><ArrowRight size={17} aria-hidden="true" /></Link>
+            </li>)}
+          </ul>
+          {trustMarket.sources.length > 0 && <details className={styles.references}>
+            <summary>{references}</summary>
+            <ul>{trustMarket.sources.map(source => <li key={source.href}><a href={source.href}>{source.label[locale]}</a></li>)}</ul>
+          </details>}
+        </article>
         <div className={styles.marketGrid}>
           {markets.map(market => <article className={styles.market} key={market.id} id={market.id}>
             <h3>{market.label[locale]}</h3>

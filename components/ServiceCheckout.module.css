@@ -49,3 +49,14 @@
 }
 .priceSummary p { margin: 5px 0 0; }
 .priceAmount { font-size: 1.15rem; font-weight: 700; }
+.checkoutLayout { display: grid; grid-template-columns: minmax(14rem, .85fr) minmax(0, 1.15fr); gap: 1.25rem; align-items: start; }
+.checkoutSummary { position: sticky; top: 6rem; padding: 1.25rem; }
+.checkoutSummary h3 { margin: .45rem 0 .7rem; color: #173d35; font-size: 1.2rem; line-height: 1.35; }
+.summaryEyebrow { color: #9b774b; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.summaryUnit { color: #52605b; font-size: .9rem; }
+.priceAmount span { font-size: .82rem; font-weight: 650; }
+.summaryDetail { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid #d8e1eb; font-size: .9rem; line-height: 1.5; }
+.summaryDetail strong { color: #173d35; }
+.summaryDetail p { color: #52605b; }
+.checkoutPayment { margin-top: 1rem !important; padding: .8rem; border-radius: .6rem; background: #fff; color: #334b43; font-size: .84rem; line-height: 1.5; }
+@media (max-width: 860px) { .checkoutLayout { grid-template-columns: 1fr; } .checkoutSummary { position: static; } }

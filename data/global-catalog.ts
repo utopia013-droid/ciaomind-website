@@ -66,7 +66,13 @@ const marketData: MarketData[] = [
     ["trust-succession","家族传承与信托目标评估","Valutazione di successione familiare e finalità del trust","Family succession and trust objectives review","Évaluation de la succession familiale et des objectifs d’un trust","Prüfung der Familiennachfolge und Trust-Ziele","Evaluación de sucesión familiar y objetivos del fideicomiso"],
     ["trust-governance","受托人、治理与申报评估","Valutazione di trustee, governance e adempimenti","Trustee, governance and reporting review","Évaluation du trustee, de la gouvernance et des déclarations","Prüfung von Trustee, Verwaltung und Meldepflichten","Evaluación de fiduciario, gobernanza y declaraciones"],
     ["trust-holding","信托与公司持有关系评估","Valutazione degli assetti tra trust e società","Trust and company ownership review","Évaluation des liens de détention entre trust et sociétés","Prüfung der Beteiligungsverhältnisse zwischen Trust und Gesellschaft","Evaluación de la titularidad entre fideicomiso y sociedades"],
-  ], ["https://www.gov.uk/trusts-taxes/registering-a-trust"]],
+    ["trust-ky","开曼群岛信托区域评估","Valutazione del trust alle Isole Cayman","Cayman Islands trust review","Évaluation de trust aux Îles Caïmans","Prüfung eines Trusts auf den Caymaninseln","Evaluación de trust en las Islas Caimán"],
+    ["trust-sg","新加坡信托服务提供方核查","Verifica dei fornitori di servizi fiduciari a Singapore","Singapore trust service-provider review","Vérification des prestataires de services fiduciaires à Singapour","Prüfung von Trust-Dienstleistern in Singapur","Revisión de proveedores de servicios fiduciarios en Singapur"],
+    ["trust-hk","香港信托服务提供方核查","Verifica dei fornitori di servizi fiduciari a Hong Kong","Hong Kong trust service-provider review","Vérification des prestataires de services fiduciaires à Hong Kong","Prüfung von Trust-Dienstleistern in Hongkong","Revisión de proveedores de servicios fiduciarios en Hong Kong"],
+    ["trust-bvi","BVI 信托与特殊持有结构评估","Valutazione di trust e strutture speciali BVI","BVI trust and special holding-structure review","Évaluation des trusts et structures spéciales de détention aux BVI","Prüfung von Trusts und besonderen Beteiligungsstrukturen auf den BVI","Evaluación de trusts y estructuras especiales de titularidad en las BVI"],
+    ["trust-uk","英国信托登记与申报评估","Valutazione della registrazione e degli obblighi del trust nel Regno Unito","UK trust registration and reporting review","Évaluation de l’enregistrement et des déclarations d’un trust au Royaume-Uni","Prüfung der Trust-Registrierung und Meldungen im Vereinigten Königreich","Evaluación del registro y las declaraciones de trusts en el Reino Unido"],
+    ["trust-record-review","信托文件与持续记录核查","Verifica degli atti fiduciari e dei registri continuativi","Trust documents and ongoing-record review","Vérification des actes et registres continus du trust","Prüfung von Trust-Dokumenten und laufenden Aufzeichnungen","Revisión de documentos del trust y registros continuos"],
+  ], ["https://www.ciregistry.ky/trusts-register/","https://eservices.mas.gov.sg/fid/","https://www.tcsp.cr.gov.hk/tcspls/search/public-search","https://www.bvifsc.vg/content/vista","https://www.gov.uk/trusts-taxes/registering-a-trust"]],
   ["expansion", ["双向市场拓展","Espansione in entrambe le direzioni","Two-way market expansion","Expansion dans les deux sens","Marktexpansion in beide Richtungen","Expansión en ambas direcciones"], [
     ["cn-outbound","从中国出发：对外拓展评估","Dalla Cina verso l’estero: valutazione dell’espansione","Starting in China: outbound expansion review","Depuis la Chine : évaluation d’une expansion à l’étranger","Ausgehend von China: Prüfung einer Expansion ins Ausland","Desde China: evaluación de expansión al extranjero"],
     ["into-cn","进入中国市场：外资进入与本地设立评估","Ingresso nel mercato cinese: investimenti esteri e costituzione locale","Entering China: foreign investment and local setup review","Entrer sur le marché chinois : investissement étranger et implantation locale","Eintritt in den chinesischen Markt: ausländische Investition und lokale Gründung","Entrada en China: inversión extranjera y constitución local"],
@@ -86,6 +92,8 @@ const officialLabels: Record<string, string> = {
   'www.bvifsc.vg': 'BVI Financial Services Commission',
   'www.ciregistry.ky': 'Cayman Islands General Registry',
   'www.gov.uk': 'GOV.UK',
+  'eservices.mas.gov.sg': 'MAS Financial Institutions Directory',
+  'www.tcsp.cr.gov.hk': 'Hong Kong Companies Registry TCSP Search',
   'www.acra.gov.sg': 'ACRA Singapore',
 };
 

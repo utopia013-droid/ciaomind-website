@@ -18,6 +18,20 @@
 .section { padding: 54px 0; }
 .section h2 { margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.14; }
 .marketGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.trustPanel { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 20px 34px; margin-top: 24px; padding: clamp(22px, 4vw, 38px); border: 1px solid #cbd7ed; border-radius: 18px; background: linear-gradient(125deg, #f2f6ff 0%, #faf8ff 60%, #f5f2f9 100%); box-shadow: 0 16px 42px #233e700d; }
+.trustIntro { grid-row: span 2; }
+.trustEyebrow { margin: 0 0 10px; color: #375784; font-size: 11px; font-weight: 850; letter-spacing: .16em; }
+.trustIntro h3 { margin: 0 0 12px; font-size: clamp(23px, 3vw, 31px); line-height: 1.16; }
+.trustIntro > p:not(.trustEyebrow) { margin: 0 0 12px; color: var(--muted); line-height: 1.65; }
+.trustIntro .trustBoundary { padding: 12px 14px; border-left: 3px solid #758eb5; border-radius: 0 8px 8px 0; background: #ffffffa8; font-size: 13px; }
+.trustGrid, .trustExisting { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 0; padding: 0; list-style: none; }
+.trustGrid li, .trustExisting li { min-width: 0; border: 1px solid #dbe3f0; border-radius: 10px; background: #fff; }
+.trustGrid a, .trustExisting a { display: flex; min-height: 58px; align-items: center; justify-content: space-between; gap: 9px; padding: 10px 12px; color: #233e70; font-size: 13px; font-weight: 700; line-height: 1.4; text-decoration: none; }
+.trustGrid a:hover, .trustExisting a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.trustGrid svg, .trustExisting svg { flex: none; }
+.trustExistingTitle { grid-column: 2; align-self: end; margin: 0 0 -12px; color: var(--muted); font-size: 13px; }
+.trustExisting { grid-column: 2; }
+.trustPanel .references { grid-column: 1 / -1; padding-top: 0; }
 .market { scroll-margin-top: 96px; display: flex; min-width: 0; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
 .market h3 { margin: 0 0 8px; font-size: 20px; }
 .marketNote { min-height: 3.2em; margin-bottom: 14px; font-size: 13px; }
@@ -49,6 +63,12 @@
   .heroCopy h1 { font-size: clamp(36px, 11vw, 58px); }
   .section { padding: 38px 0; }
   .market { padding: 18px; }
+  .trustPanel { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 20px; }
+  .trustIntro { grid-row: auto; }
+  .trustGrid, .trustExisting { grid-template-columns: minmax(0, 1fr); }
+  .trustExistingTitle, .trustExisting { grid-column: 1; }
+  .trustExistingTitle { margin-bottom: -9px; }
+  .trustPanel .references { grid-column: 1; }
   .marketNote { min-height: 0; }
   .steps li { min-height: 0; }
 }

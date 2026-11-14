@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ServiceCheckout from '@/components/ServiceCheckout';
 import { businessServices, resolveBusinessLocale } from '@/data/business-catalog';
 import { structureReview } from '@/data/global-catalog';
+import { getServicePrice } from '@/data/service-prices';
 
 type Props = { params: { lang: string }; searchParams: Record<string, string | string[] | undefined> };
 
@@ -22,6 +23,24 @@ export default function OrderPage({ params, searchParams }: Props) {
   const rawVariant = typeof searchParams.variant === 'string' ? searchParams.variant : '';
   const serviceDefinition = services.find(item => item.id === service);
   const variant = /^[a-z0-9-]{1,48}$/.test(rawVariant) && serviceDefinition?.variants.some(item => item.id === rawVariant) ? rawVariant : '';
+  const pricedPackage = getServicePrice(service, variant);
+  if (pricedPackage) {
+    return (
+      <section className="bg-background-light px-4 pb-16 pt-8 sm:px-8 md:pt-12">
+        <div className="mx-auto max-w-5xl">
+          <Link
+            href={{ pathname: `/${locale}/`, query: source ? { utm_source: source } : undefined, hash: 'pricing' }}
+            className="mb-5 inline-block text-sm font-semibold text-primary-navy underline underline-offset-4"
+          >
+            {{ zh: '← 返回套餐', it: '← Torna ai pacchetti', en: '← Back to packages',
+              fr: '← Retour aux formules', de: '← Zurück zu den Paketen', es: '← Volver a los paquetes' }[locale]}
+          </Link>
+          <ServiceCheckout key={service + ':' + variant} locale={locale} initialService={service} source={source} variant={variant} checkout />
+        </div>
+      </section>
+    );
+  }
+
   const coverage = {
     zh: '受理范围为意大利的企业开办和经营事项。',
     it: 'Accettiamo richieste per l’avvio e la gestione di attività in Italia.',

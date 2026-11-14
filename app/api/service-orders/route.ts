@@ -76,9 +76,14 @@ export async function POST(request: Request) {
     return reply(400, { error: 'invalid_request' });
   }
 
-  const displayedPrice = data.priceVersion === undefined ? undefined : getServicePrice(service, variant);
-  if (data.priceVersion !== undefined && (data.priceVersion !== priceVersion || !displayedPrice)) {
+  const displayedPrice = getServicePrice(service, variant);
+  if (data.priceVersion !== (displayedPrice ? priceVersion : undefined)) {
     return reply(409, { error: 'price_changed' });
+  }
+  const nameConfirmation = field(data.companyConfirmation, 120);
+  const normalizeCompany = (value: string) => value.normalize('NFC').replace(/\s+/g, ' ');
+  if (displayedPrice && normalizeCompany(company) !== normalizeCompany(nameConfirmation)) {
+    return reply(400, { error: 'company_confirmation_required' });
   }
   const quote = displayedPrice ? {
     version: priceVersion,
