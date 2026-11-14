@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CIAOMIND | 企业服务工作台</title>
+<style>
+:root{--bg:#f3f6f4;--ink:#142a26;--muted:#536961;--accent:#145c4d;--line:#d7e2dc}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 "Segoe UI","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg)}button,input,textarea,select{font:inherit}button{cursor:pointer;padding:.65rem 1rem;border:1px solid var(--accent);border-radius:8px;background:#fff;color:var(--accent)}button:hover{background:#e2efe9}button.primary{background:var(--accent);color:white}button.primary:hover{background:#0e463a}header{background:#112c26;color:#fff}.bar,main{max-width:1120px;margin:auto;padding:1.1rem 1.5rem}.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.16em}.badge{border-radius:999px;background:#d9ece1;color:#164c3d;padding:.18rem .65rem;font-size:.83rem;display:inline-block}nav{display:flex;gap:.55rem;flex-wrap:wrap;margin-block:1rem 1.5rem}nav button[aria-current=true]{background:var(--accent);color:white}.hero{padding:2rem;border-radius:16px;background:#dcece4;margin-bottom:1.2rem}.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);margin:.3rem 0}.hero p,h2,h3{margin:.35rem 0 .7rem}.muted,small{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1rem}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:1.2rem;margin-bottom:.9rem}.price{color:var(--accent);font-size:1.2rem;font-weight:700}.row{display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap}.steps{display:flex;gap:.45rem;flex-wrap:wrap;padding:0;list-style:none}.steps li{background:#eef2ef;color:var(--muted);padding:.25rem .55rem;border-radius:6px;font-size:.83rem}.steps li.done{background:#d9ece1;color:#174237}.actions{margin-top:.8rem;display:flex;gap:.5rem;flex-wrap:wrap}label{display:block;margin:.75rem 0}input,textarea,select{display:block;width:100%;padding:.65rem;border:1px solid #9fb4a9;border-radius:6px;color:var(--ink);background:white}dialog{border:1px solid var(--line);border-radius:14px;width:min(92vw,520px);padding:1.4rem;color:var(--ink)}dialog::backdrop{background:#112c2699}footer{margin-top:1.25rem;color:var(--muted);font-size:.85rem}a{color:var(--accent)}#notice{min-height:1.6rem;color:#145c4d}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #c78b20;outline-offset:3px}
+</style>
+<header><div class="bar"><span class="brand">CIAOMIND</span><span class="badge">本地演示 · DEMO</span></div></header>
+<main><nav aria-label="工作台"><button data-view="services">服务目录</button><button data-view="projects">项目进度</button><button data-view="billing">付款与账单</button><button data-view="ops">运营工作台</button></nav>
+<div id="notice" role="status"></div><section id="page"></section>
+<footer>演示数据保存在当前浏览器。请使用虚构信息。运营视图无权限隔离；没有真实收款、自动续订或电子发票。 <a href="/zh/pilot/">返回企业服务</a></footer></main>
+<dialog id="request"><form id="requestForm"><h2>提交服务需求</h2><p id="selected" class="muted"></p><label>示例企业名<input name="company" maxlength="80" placeholder="例如：Demo Brand" required></label><label>项目需求<textarea name="brief" rows="4" maxlength="500" placeholder="例如：验证一个饰品 SKU 在意大利的销售渠道" required></textarea></label><div class="actions"><button class="primary">提交演示需求</button><button type="button" id="close">返回</button></div></form></dialog>
+<script>
+'use strict';
+const catalog=[
+{id:'market',name:'中意市场验证',summary:'围绕一个产品，核对意大利市场的价格、渠道和可验证线索。',deliver:'1 个目标市场 · 1 份证据表和下一步建议',amount:29000},
+{id:'sourcing',name:'供应商与样品筛选',summary:'用同一口径对比供应商，核对 MOQ、报价和样品条件。',deliver:'最多 3 家候选 · 1 份询价对比表',amount:49000},
+{id:'heritage',name:'文化品牌试点',summary:'梳理文化素材来源、授权问题和试点产品范围。',deliver:'1 个素材主题 · 1 份权利待核清单和试点方案',amount:null}];
+const flow=['需求已提交','待确认报价','待付款','交付中','已交付'];
+const key='ciaomind-demo-v1';let orders=[],storageError=false;
+try{let raw=localStorage.getItem(key);if(raw)orders=JSON.parse(raw);if(!Array.isArray(orders))orders=[]}catch{storageError=true;}
+let view='services', service;
+const page=document.querySelector('#page'), dialog=document.querySelector('#request'), form=document.querySelector('#requestForm'), notice=document.querySelector('#notice');
+const euro=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(n/100);
+const enc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const dt=s=>s?new Date(s).toLocaleString('zh-CN',{timeZone:'Europe/Rome'}):'—';
+const svc=o=>catalog.find(s=>s.id===o.service);
+const card=(title,body)=>'<section class="card"><h3>'+title+'</h3>'+body+'</section>';
+const button=(action,label,id='',primary=false)=>'<button type="button" '+(primary?'class="primary" ':'')+'data-action="'+action+'" data-id="'+enc(id)+'">'+label+'</button>';
+function write(next,msg){try{localStorage.setItem(key,JSON.stringify(next));storageError=false;notice.textContent=msg}catch{storageError=true;notice.textContent=msg+'（当前只保存在页面，刷新后可能丢失。）'}orders=next;render();}
+function render(){
+document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.view===view)));
+const lead={
+services:['把需求变成可跟踪的项目','选择服务 → 提交需求 → 确认报价 → 跟踪交付。下方金额仅用于演示。'],
+projects:['项目进度','在这里确认报价和查看交付。可切换到运营工作台进行报价和交付。'],
+billing:['付款与账单','接受报价后生成演示账单。支付确认是模拟操作。'],
+ops:['运营工作台','审核需求、填写报价并记录交付说明。这里模拟团队内部操作。']}[view];
+page.innerHTML='<div class="hero"><span class="badge">中意企业服务 · 试点</span><h1>'+lead[0]+'</h1><p>'+lead[1]+'</p></div>';
+if(view==='services'){page.innerHTML+='<div class="grid">'+catalog.map(s=>card(s.name,'<p>'+s.summary+'</p><p class="muted">'+s.deliver+'</p><p class="price">'+(s.amount==null?'按范围报价':euro(s.amount)+' · 示例')+'</p>'+button('request','提交需求',s.id,true))).join('')+'</div>';return}
+const rows=view==='billing'?orders.filter(o=>o.stage>=2):orders;
+if(view==='billing')page.innerHTML+='<div class="grid">'+card('付款方式','<p>演示模式；未绑定付款方式。</p>')+card('开票资料','<p>使用需求中填写的示例公司名。</p><p class="muted">未注册税务开票资料。</p>')+'</div><h2>账单记录</h2>';
+if(!rows.length){page.innerHTML+=card('暂无记录','<p class="muted">'+(view==='billing'?'在项目进度中确认报价后，账单会出现在这里。':'从服务目录提交第一条演示需求。')+'</p>'+button('toServices','返回服务目录'));return}
+for(const o of rows.slice().reverse()){
+const info='<p class="muted">'+enc(o.company)+' · '+enc(o.id)+'</p>';
+if(view==='billing'){page.innerHTML+=card(enc(svc(o).name),info+'<div class="row"><span class="price">'+euro(o.amount)+'</span><span>'+dt(o.accepted)+'</span><span class="badge">'+(o.paid?'已模拟付款':'待模拟付款')+'</span></div><div class="actions">'+(o.stage===2?button('pay','模拟付款',o.id,true):'')+button('download','下载演示账单',o.id)+'</div>');continue}
+let body=info+'<ol class="steps">'+flow.map((label,i)=>'<li class="'+(i<=o.stage?'done':'')+'" '+(i===o.stage?'aria-current="step"':'')+'>'+label+'</li>').join('')+'</ol><p>'+enc(o.brief)+'</p>';
+if(o.amount!=null)body+='<p class="price">报价 '+euro(o.amount)+'</p>';
+if(o.delivery)body+='<p><strong>交付说明：</strong>'+enc(o.delivery)+'</p>';
+if(view==='projects'){
+if(o.stage===0)body+=button('toOps','去运营台报价');
+if(o.stage===1)body+=button('accept','确认演示报价',o.id,true);
+if(o.stage===2)body+=button('toBilling','查看账单');
+}
+if(view==='ops'&&o.stage===0){body+='<form data-form="quote" data-id="'+enc(o.id)+'"><label>报价金额（欧元）<input name="amount" type="number" min="1" max="100000" step=".01" required value="'+(svc(o).amount==null?'':svc(o).amount/100)+'"></label><button class="primary">提交报价</button></form>';}
+if(view==='ops'&&o.stage===3){body+='<form data-form="delivery" data-id="'+enc(o.id)+'"><label>交付说明<textarea name="delivery" rows="3" maxlength="500" required placeholder="例如：已完成三家供应商对比，建议先确认样品成本。"></textarea></label><button class="primary">确认交付</button></form>';}
+page.innerHTML+=card(enc(svc(o).name),body);
+}}
+function go(v){view=v;notice.textContent='';render();}
+function transition(o,data,msg){write(orders.map(x=>x.id===o.id?{...x,...data}:x),msg);}
+document.querySelector('nav').addEventListener('click',e=>{const v=e.target.closest('[data-view]')?.dataset.view;if(v)go(v);});
+document.querySelector('#close').onclick=()=>dialog.close();
+form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form), company=data.get('company').trim(),brief=data.get('brief').trim();if(!company||!brief){document.querySelector('#selected').textContent='请填写企业名和需求。';return}let id='CM-'+Date.now().toString(36).toUpperCase()+'-'+Math.floor(Math.random()*65536).toString(16).padStart(4,'0').toUpperCase();dialog.close();form.reset();view='projects';write([...orders,{id,service:service.id,company,brief,stage:0,created:new Date().toISOString()}],'演示需求已提交。');});
+page.addEventListener('submit',e=>{const f=e.target;if(!f.dataset.form)return;e.preventDefault();const o=orders.find(x=>x.id===f.dataset.id),data=new FormData(f);if(view!=='ops'||!o)return;
+if(f.dataset.form==='quote'&&o.stage===0){const n=Number(data.get('amount'));if(!Number.isFinite(n)||n<1||n>100000)return;transition(o,{stage:1,amount:Math.round(n*100)},'报价已生成。可在项目进度中确认。');}
+if(f.dataset.form==='delivery'&&o.stage===3){const delivery=data.get('delivery').trim();if(!delivery){notice.textContent='请填写交付说明。';return}transition(o,{stage:4,delivery},'已记录演示交付。');}});
+page.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action,o=orders.find(x=>x.id===b.dataset.id);
+if(a==='request'){service=catalog.find(s=>s.id===b.dataset.id);document.querySelector('#selected').textContent=service.name+' · 只填写虚构资料';dialog.showModal();return;}
+if(a==='toServices')go('services');if(a==='toOps')go('ops');if(a==='toBilling')go('billing');if(!o)return;
+if(a==='accept'&&view==='projects'&&o.stage===1){view='billing';transition(o,{stage:2,accepted:new Date().toISOString()},'报价已确认，演示账单已生成。');}
+if(a==='pay'&&view==='billing'&&o.stage===2)transition(o,{stage:3,paid:new Date().toISOString()},'已模拟付款。可切换到运营工作台记录交付。');
+if(a==='download'&&view==='billing'&&o.stage>=2){const body=['CIAOMIND — DEMO / NON FISCALE','演示账单，不是税务发票',o.id,o.company,svc(o).name,'金额：'+euro(o.amount),'确认：'+dt(o.accepted),'状态：'+(o.paid?'已模拟付款':'待模拟付款')].join('\n');const url=URL.createObjectURL(new Blob([body],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download=o.id+'-DEMO.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+});
+render();if(storageError)notice.textContent='浏览器无法读取本地记录。';
+</script></html>
