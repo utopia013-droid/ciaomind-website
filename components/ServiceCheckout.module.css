@@ -39,3 +39,13 @@
 .secondaryButton:hover { background: #edf3f0; }
 @media (max-width: 640px) { .form { grid-template-columns: 1fr; } .full { grid-column: 1; } .copyButton { margin-left: 0; } .orderBox { align-items: flex-start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .submitButton, .secondaryButton { transition: none; } }
+
+.priceSummary {
+  padding: 18px;
+  border: 1px solid #ccdbea;
+  border-radius: 12px;
+  background: #f2f6fc;
+  color: #14243c;
+}
+.priceSummary p { margin: 5px 0 0; }
+.priceAmount { font-size: 1.15rem; font-weight: 700; }

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import styles from './ServiceCheckout.module.css';
 import { businessServices, type BusinessLocale } from '@/data/business-catalog';
 import { structureReview } from '@/data/global-catalog';
+import { formatServicePrice, getServicePrice, priceVersion, pricingCopy } from '@/data/service-prices';
 
 type Locale = BusinessLocale;
 type Props = { locale: Locale; initialService: string; source: string; variant: string };
@@ -66,6 +67,8 @@ export default function ServiceCheckout({ locale, initialService, source, varian
   const [variant, setVariant] = useState(initialService && services.find(item => item.id === initialService)?.variants.some(item => item.id === variantProp) ? variantProp : '');
   const serviceDefinition = services.find(item => item.id === service);
   const isStructureReview = service === structureReview.id;
+  const selectedPrice = getServicePrice(service, variant);
+  const priceText = pricingCopy[locale];
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [orderNumber, setOrderNumber] = useState('');
@@ -96,6 +99,7 @@ export default function ServiceCheckout({ locale, initialService, source, varian
       locale,
       source: source || undefined,
       variant: variant || undefined,
+      priceVersion: selectedPrice ? priceVersion : undefined,
       website: String(values.get('website') ?? ''),
     };
     const signature = JSON.stringify(payload);
@@ -104,6 +108,13 @@ export default function ServiceCheckout({ locale, initialService, source, varian
     }
     try {
       const response = await fetch('/api/service-orders/', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...payload, requestId: submission.current.requestId }) });
+      if (response.status === 409) {
+        const conflict = await response.json() as { error?: string };
+        if (conflict.error === 'price_changed') {
+          setError(priceText.changed);
+          return;
+        }
+      }
       if (response.status !== 200 && response.status !== 201) throw new Error('order-rejected');
       const result = await response.json() as OrderResponse;
       if (typeof result.orderNumber !== 'string' || !result.orderNumber.trim()) throw new Error('invalid-response');
@@ -141,6 +152,7 @@ export default function ServiceCheckout({ locale, initialService, source, varian
     <p className={styles.eyebrow}>{t.eyebrow}</p>
     <h2 className={styles.title} id="order-success-title">{isStructureReview ? t.reviewSuccessTitle : t.successTitle}</h2>
     <p className={styles.description}>{isStructureReview ? t.reviewSuccess : t.success}</p>
+    {selectedPrice && <p className={styles.description}>{selectedPrice.label[locale]} · {priceText.from} {formatServicePrice(selectedPrice.amountCents, locale)} · {selectedPrice.unit[locale]} · {priceText.tax}</p>}
     <div className={styles.orderBox}>
       <span className={styles.orderLabel}>{isStructureReview ? t.caseNumber : t.order}</span>
       <output className={styles.orderNumber} aria-label={isStructureReview ? t.caseNumber : t.order}>{orderNumber}</output>
@@ -157,18 +169,24 @@ export default function ServiceCheckout({ locale, initialService, source, varian
     <form ref={formRef} onSubmit={submit} className={styles.form} noValidate>
       <div className={styles.field}>
         <label htmlFor="service-order-service">{t.service} <span aria-hidden="true">*</span></label>
-        <select id="service-order-service" name="service" value={service} onChange={e => { setService(e.target.value); setVariant(''); }} required>
+        <select id="service-order-service" name="service" value={service} disabled={busy} onChange={e => { setService(e.target.value); setVariant(''); }} required>
           <option value="">{t.choose}</option>
           {services.map(item => <option value={item.id} key={item.id}>{item.name[locale]}</option>)}
         </select>
       </div>
       {serviceDefinition?.variants.length ? <div className={styles.field}>
         <label htmlFor="service-order-variant">{isStructureReview ? t.reviewVariant : t.variant} {isStructureReview ? <span aria-hidden="true">*</span> : null}</label>
-        <select id="service-order-variant" name="variant" value={variant} onChange={e => setVariant(e.target.value)} required={isStructureReview}>
+        <select id="service-order-variant" name="variant" value={variant} disabled={busy} onChange={e => setVariant(e.target.value)} required={isStructureReview}>
           <option value="">{t.chooseVariant}</option>
           {serviceDefinition.variants.map(item => <option value={item.id} key={item.id}>{item.label[locale]}</option>)}
         </select>
       </div> : null}
+      {selectedPrice && <aside className={styles.priceSummary + ' ' + styles.full} aria-live="polite">
+        <strong>{selectedPrice.label[locale]}</strong>
+        <p className={styles.priceAmount}>{priceText.from} {formatServicePrice(selectedPrice.amountCents, locale)} · {selectedPrice.unit[locale]} · {priceText.tax}</p>
+        <p>{selectedPrice.includes[locale]}</p>
+        <p>{selectedPrice.excludes[locale]}</p>
+      </aside>}
       <div className={styles.field}>
         <label htmlFor="service-order-company">{isStructureReview ? t.reviewCompany : t.company} <span aria-hidden="true">*</span></label>
         <input id="service-order-company" name="company" autoComplete="organization" maxLength={120} required aria-describedby="service-order-errors" />
@@ -192,8 +210,8 @@ export default function ServiceCheckout({ locale, initialService, source, varian
       </div>
       <div className={styles.full}>
         {error ? <p id="service-order-errors" className={styles.error} role="alert">{error}</p> : <span id="service-order-errors" className={styles.srOnly}>{t.required}</span>}
-        <button type="submit" className={styles.submitButton} disabled={busy || !service}>{busy ? (isStructureReview ? t.reviewSubmitting : t.submitting) : (isStructureReview ? t.reviewSubmit : t.submit)}</button>
-        <p className={styles.notice}>{isStructureReview ? t.reviewNotice : t.noPayment}</p>
+        <button type="submit" className={styles.submitButton} disabled={busy || !service}>{busy ? (isStructureReview ? t.reviewSubmitting : t.submitting) : (isStructureReview ? t.reviewSubmit : selectedPrice ? priceText.submit : t.submit)}</button>
+        <p className={styles.notice}>{isStructureReview ? t.reviewNotice : selectedPrice ? priceText.quote : t.noPayment}</p>
         <p className={styles.privacy}>{t.privacy} <a href={`/${locale}/privacy/`}>{t.privacyLink}</a></p>
       </div>
     </form>

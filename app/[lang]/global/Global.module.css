@@ -18,7 +18,7 @@
 .section { padding: 54px 0; }
 .section h2 { margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.14; }
 .marketGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
-.market { display: flex; min-width: 0; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.market { scroll-margin-top: 96px; display: flex; min-width: 0; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
 .market h3 { margin: 0 0 8px; font-size: 20px; }
 .marketNote { min-height: 3.2em; margin-bottom: 14px; font-size: 13px; }
 .italyLink { display: flex; min-height: 52px; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; padding: 8px 12px; border-radius: 8px; background: #f0f3fa; color: #233e70; font-size: 14px; font-weight: 700; line-height: 1.45; }

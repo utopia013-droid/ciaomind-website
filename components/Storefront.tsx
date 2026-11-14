@@ -5,6 +5,7 @@ import {
   CreditCard, FileText, Handshake, Home, MessageCircle, Sparkles, Users,
 } from 'lucide-react';
 import { businessGroups, businessServices, resolveBusinessLocale } from '@/data/business-catalog';
+import { formatServicePrice, servicePrices } from '@/data/service-prices';
 import { locales, localeTags } from '@/lib/i18n';
 import styles from './Storefront.module.css';
 
@@ -16,7 +17,7 @@ export type StorefrontProps = {
 const copy = {
   zh: {
     title: '在意大利开办和管理企业',
-    intro: '从开办公司到日常经营，先选择你要办理的事项。CIAOMIND 帮你梳理需求、材料和下一步。',
+    intro: '从意大利企业开办与经营，到新加坡及其他地区的跨境业务和财富规划，先选择你要办理的事项。CIAOMIND 帮你梳理需求、材料和下一步。',
     start: '开始下单', browse: '查看全部服务', pricing: '报价与流程', notes: '常见问题', guide: '办理指南',
     service: '选择服务', details: '选择办理事项', order: '提交订单', quoted: '范围确认后报价',
     summary: '按事项选择服务',
@@ -34,7 +35,7 @@ const copy = {
   },
   it: {
     title: 'Apri e gestisci la tua attività in Italia',
-    intro: 'Dall’avvio dell’impresa alla gestione quotidiana. Scegli il servizio e CIAOMIND ti aiuta a chiarire esigenze, documenti e prossimi passi.',
+    intro: 'Dall’avvio e dalla gestione d’impresa in Italia alle attività transfrontaliere e alla pianificazione patrimoniale a Singapore e in altri mercati. Scegli il servizio e CIAOMIND ti aiuta a chiarire esigenze, documenti e prossimi passi.',
     start: 'Inizia un ordine', browse: 'Esplora i servizi', pricing: 'Preventivi e passaggi', notes: 'Domande frequenti', guide: 'Guide pratiche',
     service: 'Scegli il servizio', details: 'Scegli la pratica', order: 'Invia un ordine', quoted: 'Preventivo dopo la definizione del perimetro',
     summary: 'Scegli il servizio per la tua pratica',
@@ -53,7 +54,7 @@ const copy = {
   ...{
   "en": {
     "title": "Start and run your business in Italy",
-    "intro": "Choose what you need, from forming a company to handling day-to-day operations. CIAOMIND helps you clarify the scope, documents and next steps.",
+    "intro": "Choose what you need, from starting and running a business in Italy to cross-border business and wealth planning in Singapore and other markets. CIAOMIND helps clarify the scope, documents and next steps.",
     "start": "Start an order",
     "browse": "Browse services",
     "pricing": "Quotes and steps",
@@ -103,7 +104,7 @@ const copy = {
   },
   "fr": {
     "title": "Créez et gérez votre activité en Italie",
-    "intro": "De la création d’une société à sa gestion quotidienne, choisissez la démarche qui vous concerne. CIAOMIND vous aide à préciser le besoin, les documents et les prochaines étapes.",
+    "intro": "De la création et la gestion d’une entreprise en Italie aux activités transfrontalières et à la planification patrimoniale à Singapour et sur d’autres marchés, choisissez votre démarche. CIAOMIND vous aide à préciser le besoin, les documents et les prochaines étapes.",
     "start": "Commencer une commande",
     "browse": "Voir les services",
     "pricing": "Devis et étapes",
@@ -153,7 +154,7 @@ const copy = {
   },
   "de": {
     "title": "Ihr Unternehmen in Italien gründen und führen",
-    "intro": "Von der Gründung bis zum laufenden Betrieb. Wählen Sie Ihr Anliegen. CIAOMIND hilft Ihnen, Umfang, Unterlagen und nächste Schritte zu klären.",
+    "intro": "Von der Gründung und Führung eines Unternehmens in Italien bis zu grenzüberschreitenden Geschäften und Vermögensplanung in Singapur und anderen Märkten. CIAOMIND hilft Ihnen, Umfang, Unterlagen und nächste Schritte zu klären.",
     "start": "Auftrag starten",
     "browse": "Dienste ansehen",
     "pricing": "Angebote und Ablauf",
@@ -203,7 +204,7 @@ const copy = {
   },
   "es": {
     "title": "Crea y gestiona tu empresa en Italia",
-    "intro": "Desde la constitución hasta la gestión diaria, elige el trámite que necesitas. CIAOMIND te ayuda a concretar el alcance, los documentos y los próximos pasos.",
+    "intro": "Desde crear y gestionar una empresa en Italia hasta los negocios transfronterizos y la planificación patrimonial en Singapur y otros mercados. CIAOMIND te ayuda a concretar el alcance, los documentos y los próximos pasos.",
     "start": "Iniciar un pedido",
     "browse": "Ver los servicios",
     "pricing": "Presupuestos y pasos",
@@ -254,12 +255,20 @@ const copy = {
 }
 };
 const globalLink: Record<string, { title: string; text: string; cta: string }> = {
-  zh: { title: '跨境公司与信托架构', text: '香港、美国、英属维尔京群岛、开曼及其他市场。按办理地和架构提交评估。', cta: '查看地区与架构' },
-  it: { title: 'Società internazionali e trust', text: 'Hong Kong, Stati Uniti, Isole Vergini Britanniche, Cayman e altri mercati. Richiedi una valutazione per giurisdizione e struttura.', cta: 'Esplora giurisdizioni e strutture' },
-  en: { title: 'International companies and trusts', text: 'Hong Kong, the United States, the British Virgin Islands, Cayman and more. Request a review by jurisdiction and structure.', cta: 'Explore jurisdictions and structures' },
-  fr: { title: 'Sociétés internationales et trusts', text: 'Hong Kong, États-Unis, Îles Vierges britanniques, Caïmans et autres marchés. Demandez une évaluation par juridiction et structure.', cta: 'Voir les juridictions et structures' },
-  de: { title: 'Internationale Gesellschaften und Trusts', text: 'Hongkong, USA, Britische Jungferninseln, Kaimaninseln und weitere Märkte. Wählen Sie Rechtsordnung und Struktur für Ihre Anfrage.', cta: 'Rechtsordnungen und Strukturen ansehen' },
-  es: { title: 'Sociedades internacionales y fideicomisos', text: 'Hong Kong, Estados Unidos, Islas Vírgenes Británicas, Caimán y otros mercados. Solicita una evaluación por jurisdicción y estructura.', cta: 'Explorar jurisdicciones y estructuras' },
+  zh: { title: '跨境企业与财富规划', text: '新加坡、香港、美国、英属维尔京群岛、开曼及其他市场。提交目标和地区，申请企业或财富架构评估。', cta: '查看地区与架构' },
+  it: { title: 'Attività internazionali e pianificazione patrimoniale', text: 'Singapore, Hong Kong, Stati Uniti, Isole Vergini Britanniche, Cayman e altri mercati. Indica obiettivi e giurisdizione per una valutazione aziendale o patrimoniale.', cta: 'Esplora giurisdizioni e strutture' },
+  en: { title: 'Cross-border business and wealth planning', text: 'Singapore, Hong Kong, the United States, the British Virgin Islands, Cayman and more. Share your goals and jurisdiction for a business or wealth structure review.', cta: 'Explore jurisdictions and structures' },
+  fr: { title: 'Activités transfrontalières et planification patrimoniale', text: 'Singapour, Hong Kong, États-Unis, Îles Vierges britanniques, Caïmans et autres marchés. Indiquez vos objectifs et la juridiction pour une évaluation.', cta: 'Voir les juridictions et structures' },
+  de: { title: 'Grenzüberschreitende Geschäfte und Vermögensplanung', text: 'Singapur, Hongkong, USA, Britische Jungferninseln, Kaimaninseln und weitere Märkte. Nennen Sie Ziel und Rechtsordnung für eine Prüfung der Unternehmens- oder Vermögensstruktur.', cta: 'Rechtsordnungen und Strukturen ansehen' },
+  es: { title: 'Negocios transfronterizos y planificación patrimonial', text: 'Singapur, Hong Kong, Estados Unidos, Islas Vírgenes Británicas, Caimán y otros mercados. Indica tus objetivos y jurisdicción para una evaluación empresarial o patrimonial.', cta: 'Explorar jurisdicciones y estructuras' },
+};
+const priceCopy = {
+  zh: { title: '清晰起步价', intro: '选好套餐即可提交订单。团队确认适用范围和书面报价后再安排付款。', from: '起', beforeVat: '未含 IVA', submit: '提交套餐订单', period: '服务周期', included: '包含', excluded: '另计费用' },
+  it: { title: 'Prezzi di partenza chiari', intro: 'Invia una richiesta per uno dei pacchetti base. Il team confermerà il perimetro; l’invio non comporta un addebito.', from: 'da', beforeVat: 'IVA esclusa', submit: 'Invia richiesta per il pacchetto', period: 'Periodo', included: 'Incluso', excluded: 'Costi separati' },
+  en: { title: 'Clear starting prices', intro: 'Submit a request for one of these starter packages. The team will confirm the scope; submitting does not charge you.', from: 'From', beforeVat: 'before VAT', submit: 'Submit package request', period: 'Service period', included: 'Included', excluded: 'Separate fees' },
+  fr: { title: 'Tarifs de départ clairs', intro: 'Envoyez une demande pour l’une de ces formules de base. L’équipe confirmera le périmètre ; l’envoi ne déclenche aucun paiement.', from: 'À partir de', beforeVat: 'hors TVA', submit: 'Demander cette formule', period: 'Période', included: 'Inclus', excluded: 'Frais en supplément' },
+  de: { title: 'Klare Einstiegspreise', intro: 'Senden Sie eine Anfrage für eines dieser Basispakete. Das Team bestätigt den Umfang; beim Absenden wird nichts berechnet.', from: 'Ab', beforeVat: 'zzgl. MwSt.', submit: 'Paket anfragen', period: 'Leistungszeitraum', included: 'Enthalten', excluded: 'Zusätzliche Kosten' },
+  es: { title: 'Precios iniciales claros', intro: 'Envía una solicitud para uno de estos paquetes básicos. El equipo confirmará el alcance; el envío no genera ningún cargo.', from: 'Desde', beforeVat: 'IVA no incluido', submit: 'Solicitar este paquete', period: 'Periodo del servicio', included: 'Incluye', excluded: 'Costes aparte' },
 };
 const icons = [Building2, CreditCard, Users, Calculator, FileText, MessageCircle, ClipboardCheck, Home, Handshake, Sparkles];
 export function storefrontMetadata(language: string, path: 'home' | 'business'): Metadata {
@@ -278,13 +287,16 @@ export function storefrontMetadata(language: string, path: 'home' | 'business'):
 export function Storefront({ params, searchParams }: StorefrontProps) {
   const lang = resolveBusinessLocale(params.lang);
   const t = copy[lang];
-  const source = searchParams.utm_source;
-  const campaign = typeof source === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(source) ? source : '';
+  const utm: Record<string, string> = {};
+  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+    const value = searchParams[key];
+    if (typeof value === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(value)) utm[key] = value;
+  }
   const checkout = (service?: string, variant?: string) => {
     const query = new URLSearchParams();
     if (service) query.set('service', service);
     if (variant) query.set('variant', variant);
-    if (campaign) query.set('utm_source', campaign);
+    Object.entries(utm).forEach(([key, value]) => query.set(key, value));
     return `/${lang}/order/${query.size ? '?' + query : ''}`;
   };
 
@@ -295,7 +307,8 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
           <h1 lang={localeTags[lang]}>{t.title}</h1>
           <p>{t.intro}</p>
           <div className={styles.actions}>
-            <Link className={styles.primary} href={checkout()}>{t.start}<ArrowRight size={18} aria-hidden /></Link>
+            <a className={styles.primary} href="#pricing">{t.start}<ArrowRight size={18} aria-hidden /></a>
+            <Link href={{ pathname: `/${lang}/global/`, query: Object.keys(utm).length ? utm : undefined }} className={styles.textLink}>{globalLink[lang].cta}</Link>
             <a className={styles.textLink} href="#open">{t.browse}</a>
           </div>
         </div>
@@ -311,11 +324,31 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
       </div>
     </div>
 
+    <section className={styles.section + ' ' + styles.pricingSection} id="pricing" aria-labelledby="pricing-title">
+      <div className={styles.inner}>
+        <h2 id="pricing-title">{priceCopy[lang].title}</h2>
+        <p className={styles.intro}>{priceCopy[lang].intro}</p>
+        <div className={styles.priceCards}>
+          {servicePrices.map(price => <article className={styles.priceCard} key={`${price.service}-${price.variant}`}>
+            <p className={styles.priceFrom}>{priceCopy[lang].from}</p>
+            <h3>{price.label[lang]}</h3>
+            <p className={styles.amount}>{formatServicePrice(price.amountCents, lang)} <span>{priceCopy[lang].beforeVat}</span></p>
+            <p className={styles.priceUnit}><strong>{priceCopy[lang].period}:</strong> {price.unit[lang]}</p>
+            <div className={styles.priceDetails}>
+              <p><strong>{priceCopy[lang].included}:</strong> {price.includes[lang]}</p>
+              <p><strong>{priceCopy[lang].excluded}:</strong> {price.excludes[lang]}</p>
+            </div>
+            <Link className={styles.priceCta} href={checkout(price.service, price.variant)}>{priceCopy[lang].submit}<ArrowRight size={17} aria-hidden /></Link>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
     <section className={styles.section + ' ' + styles.tinted} aria-labelledby="global-structures-title">
       <div className={styles.inner}>
         <h2 id="global-structures-title">{globalLink[lang].title}</h2>
         <p className={styles.intro}>{globalLink[lang].text}</p>
-        <Link href={{ pathname: `/${lang}/global/`, query: campaign ? { utm_source: campaign } : undefined }} className={styles.textLink}>
+        <Link href={{ pathname: `/${lang}/global/`, query: Object.keys(utm).length ? utm : undefined }} className={styles.textLink}>
           {globalLink[lang].cta}<ArrowRight size={16} aria-hidden />
         </Link>
       </div>
@@ -343,9 +376,9 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
       </div>
     </section>)}
 
-    <section className={styles.section + ' ' + styles.tinted} id="pricing">
+    <section className={styles.section + ' ' + styles.tinted}>
       <div className={styles.inner}>
-        <h2>{t.pricing}</h2>
+        <h2>{t.order}</h2>
         <p className={styles.intro}>{t.quoted}</p>
         <ol className={styles.process}>{t.steps.map(step => <li key={step}>{step}</li>)}</ol>
         <Link className={styles.primary} href={checkout()}>{t.order}<ArrowRight aria-hidden size={16} /></Link>

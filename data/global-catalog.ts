@@ -46,6 +46,11 @@ const marketData: MarketData[] = [
     ["hk-secretary","公司秘书与注册地址评估","Valutazione di segreteria societaria e sede legale","Company secretary and registered office review","Évaluation du secrétariat et du siège social","Prüfung der Gesellschaftssekretariats- und Sitzdienste","Evaluación de secretaría societaria y domicilio social"],
     ["hk-annual","年审与持续合规评估","Valutazione degli adempimenti annuali","Annual filings and ongoing compliance review","Évaluation des déclarations annuelles et de la conformité","Prüfung laufender Pflichten und Jahresmeldungen","Evaluación de obligaciones anuales y cumplimiento"],
   ], ["https://www.cr.gov.hk/en/services/register-company.htm","https://www.cr.gov.hk/en/legislation/scr/faq.htm"]],
+  ["sg", ["新加坡","Singapore","Singapore","Singapour","Singapur","Singapur"], [
+    ["sg-formation","新加坡本地公司设立评估","Valutazione della costituzione di una società locale a Singapore","Singapore local company formation review","Évaluation de création d’une société locale à Singapour","Prüfung einer lokalen Unternehmensgründung in Singapur","Evaluación de constitución de una sociedad local en Singapur"],
+    ["sg-foreign-company","外国公司进入新加坡评估","Valutazione dell’ingresso di una società estera a Singapore","Foreign company entry into Singapore review","Évaluation de l’implantation d’une société étrangère à Singapour","Prüfung des Markteintritts eines ausländischen Unternehmens in Singapur","Evaluación de entrada de una empresa extranjera en Singapur"],
+    ["sg-compliance","新加坡公司持续合规评估","Valutazione della conformità continuativa a Singapore","Singapore ongoing company compliance review","Évaluation de la conformité continue d’une société à Singapour","Prüfung der laufenden Unternehmenspflichten in Singapur","Evaluación del cumplimiento continuo de una sociedad en Singapur"],
+  ], ["https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/","https://www.acra.gov.sg/manage/companies/service-transaction-fees/"]],
   ["us", ["美国","Stati Uniti","United States","États-Unis","USA","Estados Unidos"], [
     ["us-llc","美国 LLC 设立与州别评估","Valutazione LLC e scelta dello Stato","US LLC formation and state review","Évaluation d’une LLC et de l’État américain","Prüfung einer LLC und des US-Bundesstaats","Evaluación de una LLC y del estado de constitución"],
     ["us-corp","美国 Corporation 设立评估","Valutazione di una corporation statunitense","US corporation formation review","Évaluation de création d’une corporation américaine","Prüfung einer US-Corporation-Gründung","Evaluación de constitución de una corporación estadounidense"],
@@ -62,6 +67,16 @@ const marketData: MarketData[] = [
     ["trust-governance","受托人、治理与申报评估","Valutazione di trustee, governance e adempimenti","Trustee, governance and reporting review","Évaluation du trustee, de la gouvernance et des déclarations","Prüfung von Trustee, Verwaltung und Meldepflichten","Evaluación de fiduciario, gobernanza y declaraciones"],
     ["trust-holding","信托与公司持有关系评估","Valutazione degli assetti tra trust e società","Trust and company ownership review","Évaluation des liens de détention entre trust et sociétés","Prüfung der Beteiligungsverhältnisse zwischen Trust und Gesellschaft","Evaluación de la titularidad entre fideicomiso y sociedades"],
   ], ["https://www.gov.uk/trusts-taxes/registering-a-trust"]],
+  ["expansion", ["双向市场拓展","Espansione in entrambe le direzioni","Two-way market expansion","Expansion dans les deux sens","Marktexpansion in beide Richtungen","Expansión en ambas direcciones"], [
+    ["cn-outbound","从中国出发：对外拓展评估","Dalla Cina verso l’estero: valutazione dell’espansione","Starting in China: outbound expansion review","Depuis la Chine : évaluation d’une expansion à l’étranger","Ausgehend von China: Prüfung einer Expansion ins Ausland","Desde China: evaluación de expansión al extranjero"],
+    ["into-cn","进入中国市场：外资进入与本地设立评估","Ingresso nel mercato cinese: investimenti esteri e costituzione locale","Entering China: foreign investment and local setup review","Entrer sur le marché chinois : investissement étranger et implantation locale","Eintritt in den chinesischen Markt: ausländische Investition und lokale Gründung","Entrada en China: inversión extranjera y constitución local"],
+    ["other-expansion","其他起点或目标市场：跨境拓展评估","Altri paesi di partenza o destinazione: valutazione dell’espansione internazionale","Other starting points or target markets: cross-border expansion review","Autres pays de départ ou marchés cibles : évaluation d’une expansion transfrontalière","Andere Ausgangsorte oder Zielmärkte: Prüfung einer grenzüberschreitenden Expansion","Otros puntos de partida o mercados objetivo: evaluación de expansión transfronteriza"],
+  ], []],
+  ["wealth", ["财富规划与持牌顾问转介","Pianificazione patrimoniale e invio a consulenti autorizzati","Wealth planning and licensed adviser referrals","Planification patrimoniale et orientation vers des conseillers agréés","Vermögensplanung und Vermittlung an zugelassene Berater","Planificación patrimonial y derivación a asesores autorizados"], [
+    ["wealth-planning","财富规划需求梳理与顾问转介","Raccolta delle esigenze patrimoniali e invio a un consulente","Wealth planning needs intake and adviser referral","Recueil des besoins de planification patrimoniale et orientation vers un conseiller","Erfassung des Vermögensplanungsbedarfs und Vermittlung an einen Berater","Recopilación de necesidades patrimoniales y derivación a un asesor"],
+    ["family-office","家族办公室需求梳理与适当专业人士转介","Esigenze di family office e invio ai professionisti competenti","Family office needs intake and referral to appropriate professionals","Recueil des besoins d’un family office et orientation vers les professionnels compétents","Erfassung des Family-Office-Bedarfs und Vermittlung an passende Fachleute","Recopilación de necesidades de family office y derivación a profesionales adecuados"],
+    ["licensed-referral","持牌金融顾问转介需求","Esigenza di contatto con un consulente finanziario autorizzato","Licensed financial adviser referral needs","Besoins d’orientation vers un conseiller financier agréé","Bedarf an Vermittlung zu einem zugelassenen Finanzberater","Necesidad de derivación a un asesor financiero autorizado"],
+  ], []],
 ];
 
 const guide = labels(['官方参考', 'Fonte ufficiale', 'Official reference', 'Source officielle', 'Offizielle Quelle', 'Fuente oficial']);
@@ -71,6 +86,7 @@ const officialLabels: Record<string, string> = {
   'www.bvifsc.vg': 'BVI Financial Services Commission',
   'www.ciregistry.ky': 'Cayman Islands General Registry',
   'www.gov.uk': 'GOV.UK',
+  'www.acra.gov.sg': 'ACRA Singapore',
 };
 
 export const globalMarkets: Market[] = marketData.map(([id, title, entries, official]) => ({

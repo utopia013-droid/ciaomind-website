@@ -3,6 +3,7 @@ import { isIP } from 'node:net';
 import { NextResponse } from 'next/server';
 import { businessServices } from '@/data/business-catalog';
 import { structureReview } from '@/data/global-catalog';
+import { getServicePrice, priceVersion } from '@/data/service-prices';
 import { locales, type Locale } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
@@ -75,6 +76,18 @@ export async function POST(request: Request) {
     return reply(400, { error: 'invalid_request' });
   }
 
+  const displayedPrice = data.priceVersion === undefined ? undefined : getServicePrice(service, variant);
+  if (data.priceVersion !== undefined && (data.priceVersion !== priceVersion || !displayedPrice)) {
+    return reply(409, { error: 'price_changed' });
+  }
+  const quote = displayedPrice ? {
+    version: priceVersion,
+    currency: 'EUR',
+    amountCents: displayedPrice.amountCents,
+    period: displayedPrice.period,
+    tax: 'excluded',
+  } : undefined;
+
   const { ORDER_INTAKE_URL: url, ORDER_INTAKE_KEY: key, ORDER_INTAKE_SECRET: secret } = process.env;
   if (!url || !key || !secret) return reply(503, { error: 'order_unavailable' });
 
@@ -88,7 +101,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         secret,
         ip_hash: ipHash,
-        order_data: { requestId, service, variant, company, name, email, brief, locale, source },
+        order_data: { requestId, service, variant, company, name, email, brief, locale, source, quote },
       }),
       cache: 'no-store',
       signal: AbortSignal.timeout(8000),
