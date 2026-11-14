@@ -1,0 +1,41 @@
+.card {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.75rem);
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, .09);
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 50px rgba(10, 22, 40, .08);
+}
+.eyebrow { margin: 0 0 .55rem; color: #9b774b; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.title { margin: 0; color: #173d35; font-size: clamp(1.65rem, 4vw, 2.25rem); line-height: 1.2; font-weight: 800; }
+.description { margin: .8rem 0 1.7rem; max-width: 42rem; color: #52605b; line-height: 1.65; }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; }
+.field { display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
+.field label { color: #173d35; font-size: .92rem; font-weight: 700; }
+.field label span { color: #a6473b; }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 3rem; padding: .75rem .85rem; border: 1px solid #cbd3cf; border-radius: .65rem;
+  background: #fff; color: #183b33; font: inherit; line-height: 1.45;
+}
+.field textarea { min-height: 8rem; resize: vertical; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible, .copyButton:focus-visible, .submitButton:focus-visible, .secondaryButton:focus-visible { outline: 3px solid #a88456; outline-offset: 2px; }
+.full { grid-column: 1 / -1; }
+.hint { margin: .1rem 0 0; color: #65716c; font-size: .83rem; line-height: 1.5; }
+.notice { margin: .8rem 0 0; padding: .8rem 1rem; border-left: 3px solid #9b774b; border-radius: .25rem; background: #f7f5ef; color: #334b43; font-size: .9rem; line-height: 1.55; }
+.privacy { margin: .85rem 0 0; color: #65716c; font-size: .84rem; }
+.privacy a { color: #173d35; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.submitButton, .secondaryButton { display: inline-flex; justify-content: center; align-items: center; width: 100%; min-height: 3.2rem; padding: .8rem 1.2rem; border: 0; border-radius: .7rem; background: #173d35; color: #fff; font: inherit; font-weight: 750; cursor: pointer; transition: background .15s ease, transform .15s ease; }
+.submitButton:hover:not(:disabled), .secondaryButton:hover { background: #24584b; transform: translateY(-1px); }
+.submitButton:disabled { cursor: not-allowed; opacity: .55; }
+.error { margin: 0 0 .7rem; color: #9d3028; font-weight: 650; line-height: 1.5; }
+.honeypot, .srOnly { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+.successMark { display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: 1.1rem; border-radius: 50%; background: #e7f2ed; color: #236147; font-size: 1.5rem; font-weight: 800; }
+.orderBox { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin: 1.4rem 0; padding: 1rem; border: 1px solid #d7e2dc; border-radius: .8rem; background: #f7faf8; }
+.orderLabel { width: 100%; color: #65716c; font-size: .85rem; font-weight: 700; }
+.orderNumber { overflow-wrap: anywhere; color: #173d35; font-size: 1.1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.copyButton { margin-left: auto; padding: .55rem .8rem; border: 1px solid #173d35; border-radius: .55rem; background: #fff; color: #173d35; font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; }
+.secondaryButton { width: auto; background: transparent; color: #173d35; border: 1px solid #173d35; }
+.secondaryButton:hover { background: #edf3f0; }
+@media (max-width: 640px) { .form { grid-template-columns: 1fr; } .full { grid-column: 1; } .copyButton { margin-left: 0; } .orderBox { align-items: flex-start; flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .submitButton, .secondaryButton { transition: none; } }
