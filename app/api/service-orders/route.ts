@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import { businessServices } from '@/data/business-catalog';
 import { structureReview } from '@/data/global-catalog';
 import { getServicePrice, priceVersion } from '@/data/service-prices';
+import { readCampaign } from '@/lib/campaign';
 import { locales, type Locale } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
@@ -68,7 +69,10 @@ export async function POST(request: Request) {
   const brief = field(data.brief, 1200);
   const locale = field(data.locale, 2);
   const requestId = field(data.requestId, 36);
-  const source = field(data.source, 80);
+  const campaign = data.campaign && typeof data.campaign === 'object' && !Array.isArray(data.campaign)
+    ? readCampaign(data.campaign as Record<string, unknown>)
+    : {};
+  const source = campaign.utm_source || field(data.source, 80);
   if (!selectedService || (service === structureReview.id && !variant) || (data.variant && !selectedService.variants.some(item => item.id === variant)) ||
       !company || !name || !/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email) || !brief ||
       !locales.includes(locale as Locale) || !uuid.test(requestId) ||
@@ -106,7 +110,10 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         secret,
         ip_hash: ipHash,
-        order_data: { requestId, service, variant, company, name, email, brief, locale, source, quote },
+        order_data: {
+          requestId, service, variant, company, name, email, brief, locale, source, quote,
+          campaign: Object.keys(campaign).length ? campaign : undefined,
+        },
       }),
       cache: 'no-store',
       signal: AbortSignal.timeout(8000),

@@ -7,6 +7,8 @@ import {
 import { businessGroups, businessServices, resolveBusinessLocale } from '@/data/business-catalog';
 import { formatServicePrice, servicePrices } from '@/data/service-prices';
 import { locales, localeTags } from '@/lib/i18n';
+import { readCampaign } from '@/lib/campaign';
+import { marketingMetadata } from '@/lib/marketing-metadata';
 import styles from './Storefront.module.css';
 
 export type StorefrontProps = {
@@ -283,6 +285,7 @@ export function storefrontMetadata(language: string, path: 'home' | 'business'):
   const lang = resolveBusinessLocale(language);
   const url = (locale: string) => `/${locale}/${path === 'business' ? 'business/' : ''}`;
   return {
+    ...marketingMetadata(lang, url(lang), copy[lang].title, copy[lang].intro),
     title: copy[lang].title,
     description: copy[lang].intro,
     alternates: {
@@ -295,11 +298,7 @@ export function storefrontMetadata(language: string, path: 'home' | 'business'):
 export function Storefront({ params, searchParams, showHero = true }: StorefrontProps & { showHero?: boolean }) {
   const lang = resolveBusinessLocale(params.lang);
   const t = copy[lang];
-  const utm: Record<string, string> = {};
-  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
-    const value = searchParams[key];
-    if (typeof value === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(value)) utm[key] = value;
-  }
+  const utm = readCampaign(searchParams);
   const checkout = (service?: string, variant?: string) => {
     const query = new URLSearchParams();
     if (service) query.set('service', service);

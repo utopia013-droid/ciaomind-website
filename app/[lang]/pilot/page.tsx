@@ -3,12 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowDown, ArrowRight, Check, Package, ScrollText } from 'lucide-react';
 import { locales, localeTags, type Locale } from '@/lib/i18n';
+import { readCampaign } from '@/lib/campaign';
+import { marketingMetadata } from '@/lib/marketing-metadata';
 import { pilotContent } from './pilot-content';
 import styles from './Pilot.module.css';
 
 type Props = { params: { lang: Locale }; searchParams: Record<string, string | string[] | undefined> };
 
-const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'] as const;
 const collectionUrl = 'https://www.metmuseum.org/art/collection/search/460197';
 
 export function generateMetadata({ params: { lang } }: Props): Metadata {
@@ -16,6 +17,7 @@ export function generateMetadata({ params: { lang } }: Props): Metadata {
   const languages = Object.fromEntries(locales.map(locale => [localeTags[locale], `/${locale}/pilot/`]));
 
   return {
+    ...marketingMetadata(lang, `/${lang}/pilot/`, copy.title, copy.intro),
     title: copy.title,
     description: copy.intro,
     alternates: {
@@ -27,11 +29,7 @@ export function generateMetadata({ params: { lang } }: Props): Metadata {
 
 export default function Pilot({ params: { lang }, searchParams }: Props) {
   const copy = pilotContent[lang];
-  const attribution = new URLSearchParams();
-  for (const key of utmKeys) {
-    const value = searchParams[key];
-    if (typeof value === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(value)) attribution.set(key, value);
-  }
+  const campaign = readCampaign(searchParams);
 
   const entries = [
     { role: 'brand', copy: copy.brand, Icon: Package },
@@ -72,8 +70,7 @@ export default function Pilot({ params: { lang }, searchParams }: Props) {
           <h2 id="pilot-request">{copy.entriesTitle}</h2>
           <div className={styles.entryGrid}>
             {entries.map(({ role, copy: entry, Icon }) => {
-              const query = new URLSearchParams({ role });
-              for (const [key, value] of attribution) query.set(key, value);
+              const query = new URLSearchParams({ ...campaign, role });
 
               return (
                 <article className={styles.entry} key={role}>

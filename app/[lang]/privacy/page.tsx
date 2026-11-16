@@ -29,6 +29,15 @@ const orderData = {
   },
 };
 
+const campaignData = {
+  zh: '试点申请也通过同一系统受理。若申请链接带有推广标记，我们会随申请保存渠道、活动和推广素材等标记，用于统计各渠道带来的申请。',
+  it: 'Anche le candidature al pilota passano dallo stesso sistema. Se il link contiene parametri di campagna, li salviamo con la richiesta per contare le candidature per canale, campagna e contenuto.',
+  en: 'Pilot applications use the same system. If the link includes campaign tags, we save them with the application to count applications by channel, campaign and content.',
+  fr: 'Les candidatures au pilote utilisent le même système. Si le lien contient des paramètres de campagne, nous les enregistrons avec la demande pour compter les candidatures par canal, campagne et contenu.',
+  de: 'Bewerbungen für das Pilotprojekt nutzen dasselbe System. Enthält der Link Kampagnenparameter, speichern wir diese mit der Bewerbung, um Bewerbungen nach Kanal, Kampagne und Inhalt zu zählen.',
+  es: 'Las solicitudes del piloto usan el mismo sistema. Si el enlace incluye parámetros de campaña, los guardamos con la solicitud para contar las solicitudes por canal, campaña y contenido.',
+};
+
 export default function LegalPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations('legal');
   const locale = resolveBusinessLocale(lang);
@@ -47,7 +56,8 @@ export default function LegalPage({ params: { lang } }: { params: { lang: string
       <h1 className="text-3xl mb-8">{title}</h1>
       <p className="leading-relaxed mb-8">{description}</p>
       <h2 className="text-xl mb-3">{order.title}</h2>
-      <p className="leading-relaxed mb-8">{order.text}</p>
+      <p className="leading-relaxed mb-4">{order.text}</p>
+      <p className="leading-relaxed mb-8">{campaignData[locale]}</p>
       <p>{company.name} · P. IVA {company.vat}</p>
       <p>{company.address}</p>
       <a className="underline" href={`mailto:${company.email}`}>{company.email}</a>

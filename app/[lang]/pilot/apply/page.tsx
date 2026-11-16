@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { locales, localeTags, type Locale } from '@/lib/i18n';
+import { readCampaign } from '@/lib/campaign';
 import HeritagePilotForm from './HeritagePilotForm';
 
 type Props = {
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: pageCopy[locale].title,
     description: pageCopy[locale].intro,
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `/${locale}/pilot/apply/`,
       languages: Object.fromEntries(locales.map(lang => [localeTags[lang], `/${lang}/pilot/apply/`])),
@@ -72,8 +74,7 @@ export default function HeritagePilotApply({ params, searchParams }: Props) {
   const locale = getLocale(params.lang);
   const copy = pageCopy[locale];
   const role = searchParams.role === 'rights-holder' ? 'rights-holder' : 'brand';
-  const rawSource = typeof searchParams.utm_source === 'string' ? searchParams.utm_source : '';
-  const source = /^[A-Za-z0-9_.-]{1,80}$/.test(rawSource) ? rawSource : '';
+  const campaign = readCampaign(searchParams);
 
   return (
     <div className="min-h-screen bg-background-light">
@@ -96,7 +97,7 @@ export default function HeritagePilotApply({ params, searchParams }: Props) {
               ))}
             </ol>
           </div>
-          <HeritagePilotForm locale={locale} initialRole={role} source={source} quoteNotice={copy.quote} />
+          <HeritagePilotForm locale={locale} initialRole={role} campaign={campaign} quoteNotice={copy.quote} />
         </div>
       </section>
     </div>

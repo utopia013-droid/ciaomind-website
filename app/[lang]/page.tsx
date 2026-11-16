@@ -2,17 +2,20 @@ import OrganizationData from '@/components/OrganizationData';
 import HeritageHome, { heritageHomeMetadata } from '@/components/HeritageHome';
 import { Storefront, type StorefrontProps } from '@/components/Storefront';
 import { resolveBusinessLocale } from '@/data/business-catalog';
+import { readCampaign } from '@/lib/campaign';
+import { marketingMetadata } from '@/lib/marketing-metadata';
 
 export function generateMetadata({ params }: StorefrontProps) {
-  return heritageHomeMetadata(resolveBusinessLocale(params.lang));
+  const locale = resolveBusinessLocale(params.lang);
+  const metadata = heritageHomeMetadata(locale);
+  return { ...metadata, ...marketingMetadata(locale, `/${locale}/`, metadata.title, metadata.description) };
 }
 
 export default function HomePage(props: StorefrontProps) {
-  const rawSource = props.searchParams.utm_source;
-  const source = typeof rawSource === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(rawSource) ? rawSource : '';
+  const campaign = readCampaign(props.searchParams);
   return <>
     <OrganizationData lang={props.params.lang} />
-    <HeritageHome locale={resolveBusinessLocale(props.params.lang)} source={source} />
+    <HeritageHome locale={resolveBusinessLocale(props.params.lang)} campaign={campaign} />
     <Storefront {...props} showHero={false} />
   </>;
 }

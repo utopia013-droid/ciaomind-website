@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowRight, Globe2, ShieldCheck } from 'lucide-react';
 import { globalMarkets } from '@/data/global-catalog';
 import { locales, localeTags, type Locale } from '@/lib/i18n';
+import { readCampaign } from '@/lib/campaign';
+import { marketingMetadata } from '@/lib/marketing-metadata';
 import styles from './Global.module.css';
 
 type Props = { params: { lang: string }; searchParams: Record<string, string | string[] | undefined> };
@@ -46,6 +48,7 @@ function resolveLocale(value: string): Locale {
 export function generateMetadata({ params }: Props): Metadata {
   const locale = resolveLocale(params.lang);
   return {
+    ...marketingMetadata(locale, `/${locale}/global/`, pageCopy[locale].title, pageCopy[locale].meta),
     title: pageCopy[locale].title,
     description: pageCopy[locale].meta,
     alternates: {
@@ -58,11 +61,9 @@ export function generateMetadata({ params }: Props): Metadata {
 export default function GlobalDirectory({ params, searchParams }: Props) {
   const locale = resolveLocale(params.lang);
   const t = pageCopy[locale];
-  const rawSource = searchParams.utm_source;
-  const source = typeof rawSource === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(rawSource) ? rawSource : '';
+  const campaign = readCampaign(searchParams);
   const orderHref = (variant: string) => {
-    const query = new URLSearchParams({ service: 'structure-review', variant });
-    if (source) query.set('utm_source', source);
+    const query = new URLSearchParams({ ...campaign, service: 'structure-review', variant });
     return `/${locale}/order/?${query.toString()}`;
   };
 
@@ -136,7 +137,7 @@ export default function GlobalDirectory({ params, searchParams }: Props) {
         <div className={styles.marketGrid}>
           {markets.map(market => <article className={styles.market} key={market.id} id={market.id}>
             <h3>{market.label[locale]}</h3>
-            {market.id === 'it' && <Link className={styles.italyLink} href={`/${locale}/${source ? `?utm_source=${encodeURIComponent(source)}` : ''}#open`}>
+            {market.id === 'it' && <Link className={styles.italyLink} href={{ pathname: `/${locale}/business/`, query: campaign, hash: 'open' }}>
               <span>{t.italyNote}</span><ArrowRight size={17} aria-hidden="true" />
             </Link>}
             {market.id !== 'it' && <p className={styles.marketNote}>{market.id === 'wealth' ? t.wealthNote : t.evaluationNote}</p>}

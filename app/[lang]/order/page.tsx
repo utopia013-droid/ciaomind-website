@@ -6,6 +6,7 @@ import { businessServices, resolveBusinessLocale } from '@/data/business-catalog
 import { structureReview } from '@/data/global-catalog';
 import { getServicePrice } from '@/data/service-prices';
 import { isCheckoutDemoEnabled } from '@/lib/checkout-session';
+import { readCampaign } from '@/lib/campaign';
 
 type Props = { params: { lang: string }; searchParams: Record<string, string | string[] | undefined> };
 
@@ -20,8 +21,7 @@ export default function OrderPage({ params, searchParams }: Props) {
   const rawService = typeof searchParams.service === 'string' ? searchParams.service : '';
   const services = [...businessServices, structureReview];
   const service = services.some(item => item.id === rawService) ? rawService : '';
-  const rawSource = typeof searchParams.utm_source === 'string' ? searchParams.utm_source : '';
-  const source = /^[A-Za-z0-9_.-]{1,80}$/.test(rawSource) ? rawSource : '';
+  const campaign = readCampaign(searchParams);
   const rawVariant = typeof searchParams.variant === 'string' ? searchParams.variant : '';
   const serviceDefinition = services.find(item => item.id === service);
   const variant = /^[a-z0-9-]{1,48}$/.test(rawVariant) && serviceDefinition?.variants.some(item => item.id === rawVariant) ? rawVariant : '';
@@ -31,7 +31,7 @@ export default function OrderPage({ params, searchParams }: Props) {
       <section className="bg-background-light px-4 pb-16 pt-8 sm:px-8 md:pt-12">
         <div className="mx-auto max-w-5xl">
           <Link
-            href={{ pathname: `/${locale}/`, query: source ? { utm_source: source } : undefined, hash: 'pricing' }}
+            href={{ pathname: `/${locale}/business/`, query: campaign, hash: 'pricing' }}
             className="mb-5 inline-block text-sm font-semibold text-primary-navy underline underline-offset-4"
           >
             {{ zh: '← 返回套餐', it: '← Torna ai pacchetti', en: '← Back to packages',
@@ -98,12 +98,12 @@ export default function OrderPage({ params, searchParams }: Props) {
           <p className="mt-4 max-w-2xl text-white/80 leading-relaxed">{pageIntro}</p>
           <p className="mt-3 font-semibold text-white">{scopeNote}</p>
           <Link href={`/${locale}/global/`} className="inline-flex mt-3 text-sm font-semibold text-white underline underline-offset-4">{{ zh: '查看可选司法辖区', it: 'Consulta le giurisdizioni disponibili', en: 'View available jurisdictions', fr: 'Voir les juridictions disponibles', de: 'Verfügbare Rechtsordnungen ansehen', es: 'Ver jurisdicciones disponibles' }[locale]}</Link>
-          <Link href={{ pathname: `/${locale}/`, query: source ? { utm_source: source } : undefined }} className="inline-flex mt-6 text-sm font-semibold text-white underline underline-offset-4">{copy.back}</Link>
+          <Link href={{ pathname: `/${locale}/`, query: campaign }} className="inline-flex mt-6 text-sm font-semibold text-white underline underline-offset-4">{copy.back}</Link>
         </div>
       </section>
       <section className="section bg-background-light">
         <div className="container max-w-4xl">
-          <ServiceCheckout locale={locale} initialService={service} source={source} variant={variant} />
+          <ServiceCheckout locale={locale} initialService={service} campaign={campaign} variant={variant} />
         </div>
       </section>
     </>

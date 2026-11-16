@@ -15,12 +15,12 @@ const labels: Record<Locale, { pages: Record<(typeof companyPages)[number], stri
 };
 
 const descriptions: Record<Locale, string> = {
-  zh: '连接意大利与中国的企业、机构与专业服务。',
-  it: 'Mettiamo in relazione imprese, istituzioni e servizi professionali tra Italia e Cina.',
-  en: 'Connecting businesses, institutions, and professional services across Italy and China.',
-  fr: 'Relier entreprises, institutions et services professionnels entre l’Italie et la Chine.',
-  de: 'Wir verbinden Unternehmen, Institutionen und professionelle Dienstleistungen in Italien und China.',
-  es: 'Conectamos empresas, instituciones y servicios profesionales entre Italia y China.',
+  zh: 'Heritage Economy OS 帮助品牌和权利方评估文化素材授权及产品开发。CIAOMIND 也提供企业与跨境服务入口。',
+  it: 'Heritage Economy OS aiuta marchi e titolari dei diritti a valutare licenze culturali e sviluppo prodotto. CIAOMIND propone anche percorsi per imprese e progetti internazionali.',
+  en: 'Heritage Economy OS helps brands and rights holders explore cultural licensing and product development. CIAOMIND also provides access to business and cross-border services.',
+  fr: 'Heritage Economy OS aide marques et ayants droit à évaluer les licences culturelles et le développement de produits. CIAOMIND propose aussi des services aux entreprises et des parcours internationaux.',
+  de: 'Heritage Economy OS hilft Marken und Rechteinhabern, kulturelle Lizenzen und Produktentwicklung zu prüfen. CIAOMIND bietet auch Zugänge zu Unternehmensleistungen und internationalen Projekten.',
+  es: 'Heritage Economy OS ayuda a marcas y titulares de derechos a evaluar licencias culturales y desarrollo de productos. CIAOMIND también ofrece acceso a servicios empresariales e internacionales.',
 };
 
 export default function Footer() {

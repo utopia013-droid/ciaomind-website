@@ -6,7 +6,7 @@ import type { Locale } from '@/lib/i18n';
 import styles from './HeritagePilotForm.module.css';
 
 type Role = 'brand' | 'rights-holder';
-type Props = { locale: Locale; initialRole: Role; source: string; quoteNotice: string };
+type Props = { locale: Locale; initialRole: Role; campaign: Record<string, string>; quoteNotice: string };
 
 const copy: Record<Locale, {
   formTitle: string; role: string; brand: string; rightsHolder: string; organization: string; contact: string; email: string;
@@ -69,7 +69,7 @@ const copy: Record<Locale, {
   },
 };
 
-export default function HeritagePilotForm({ locale, initialRole, source, quoteNotice }: Props) {
+export default function HeritagePilotForm({ locale, initialRole, campaign, quoteNotice }: Props) {
   const t = copy[locale];
   const [role, setRole] = useState<Role>(initialRole);
   const [busy, setBusy] = useState(false);
@@ -106,7 +106,7 @@ export default function HeritagePilotForm({ locale, initialRole, source, quoteNo
       email: String(values.get('email') ?? '').trim(),
       brief: `Heritage Economy OS / ${roleValue}\n${briefText}`,
       locale,
-      source: source || undefined,
+      campaign,
       website: String(values.get('website') ?? ''),
     };
     if (!briefText || payload.brief.length > 1200) {

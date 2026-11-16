@@ -8,7 +8,7 @@ import { structureReview } from '@/data/global-catalog';
 import { formatServicePrice, getServicePrice, priceVersion, pricingCopy } from '@/data/service-prices';
 
 type Locale = BusinessLocale;
-type Props = { locale: Locale; initialService: string; source: string; variant: string; checkout?: boolean };
+type Props = { locale: Locale; initialService: string; campaign: Record<string, string>; variant: string; checkout?: boolean };
 type OrderResponse = { orderNumber?: unknown };
 type TextCopy = {
   eyebrow: string; title: string; intro: string; service: string; choose: string; variant: string; chooseVariant: string; company: string; name: string; email: string; brief: string;
@@ -81,7 +81,7 @@ const copy = {
   },
 } satisfies Record<Locale, TextCopy>;
 
-export default function ServiceCheckout({ locale, initialService, source, variant: variantProp, checkout = false }: Props) {
+export default function ServiceCheckout({ locale, initialService, campaign, variant: variantProp, checkout = false }: Props) {
   const t = copy[locale];
   const services = [...businessServices, structureReview];
   const [service, setService] = useState(initialService);
@@ -131,7 +131,7 @@ export default function ServiceCheckout({ locale, initialService, source, varian
       email: String(values.get('email') ?? '').trim(),
       brief: String(values.get('brief') ?? '').trim(),
       locale,
-      source: source || undefined,
+      campaign,
       variant: variant || undefined,
       priceVersion: selectedPrice ? priceVersion : undefined,
       website: String(values.get('website') ?? ''),
@@ -273,7 +273,7 @@ export default function ServiceCheckout({ locale, initialService, source, varian
       </div>
       <div className={styles.full}>
         {error ? <p id="service-order-errors" className={styles.error} role="alert">{error}</p> : <span id="service-order-errors" className={styles.srOnly}>{t.required}</span>}
-        {selectedPrice && !isCheckout ? <Link className={styles.submitButton} href={`/${locale}/order/?${new URLSearchParams({ service, variant, ...(source ? { utm_source: source } : {}) })}`}>{t.checkoutLink}</Link> : <button type="submit" className={styles.submitButton} disabled={busy || !service}>{busy ? (isStructureReview ? t.reviewSubmitting : t.submitting) : (isStructureReview ? t.reviewSubmit : isCheckout ? t.checkoutSubmit : t.submit)}</button>}
+        {selectedPrice && !isCheckout ? <Link className={styles.submitButton} href={`/${locale}/order/?${new URLSearchParams({ ...campaign, service, variant })}`}>{t.checkoutLink}</Link> : <button type="submit" className={styles.submitButton} disabled={busy || !service}>{busy ? (isStructureReview ? t.reviewSubmitting : t.submitting) : (isStructureReview ? t.reviewSubmit : isCheckout ? t.checkoutSubmit : t.submit)}</button>}
         {!isCheckout ? <p className={styles.notice}>{isStructureReview ? t.reviewNotice : selectedPrice ? priceText.quote : t.noPayment}</p> : null}
         <p className={styles.privacy}>{t.privacy} <a href={`/${locale}/privacy/`}>{t.privacyLink}</a></p>
       </div>
