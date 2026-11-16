@@ -50,7 +50,7 @@ export default function ContactPage({ params: { lang } }: { params: { lang: stri
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-navy mb-1">{t('contact.email')}</h3>
-                    <p className="text-text-secondary">{company.email}</p>
+                    <a className="text-text-secondary underline underline-offset-4" href={`mailto:${company.email}`}>{company.email}</a>
                   </div>
                 </div>
 
@@ -60,7 +60,7 @@ export default function ContactPage({ params: { lang } }: { params: { lang: stri
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-navy mb-1">{t('contact.phone')}</h3>
-                    <p className="text-text-secondary">{company.phone}</p>
+                    <a className="text-text-secondary underline underline-offset-4" href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
                   </div>
                 </div>
 

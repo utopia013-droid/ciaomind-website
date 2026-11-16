@@ -1,19 +1,21 @@
 import OrganizationData from '@/components/OrganizationData';
-import Link from 'next/link';
-import { roundtable } from '@/data/milan-roundtable';
-import { pageMetadata } from '@/lib/seo';
-export function generateMetadata({ params: { lang } }: { params: { lang: string } }) { return pageMetadata(lang, ''); }
-const content = {
-zh: { title: ['让文化的深度，','成为未来的可能。'], intro:'从意大利出发，连接中国。以数字技术延续文化的生命力，让知识、创意与交流拥有更广阔的空间。', discover:'走进 CIAOMIND', scroll:'探索我们的世界', about:'我们的理念', statement:'以文化为根，\n以创新向前。', body:'文化承载记忆，也孕育新的表达。CIAOMIND 关注文化遗产数字化、数字教育与 AI 应用，以及中意文化交流，探索人与知识、传统与技术之间的连接。', more:'了解我们的理念', worlds:'我们的探索领域', worldIntro:'三个方向，共同指向更开放、更可参与的文化体验。', cards:[['文化遗产数字化','让记忆拥有新的表达','探索数字叙事、内容整理与互动呈现，让文化内容更易理解、分享与体验。'],['数字教育与 AI','让好奇心走得更远','围绕真实学习场景，探索数字工具与 AI 应用，帮助知识跨越语言与形式的边界。'],['中意文化交流','让相遇成为连接','从文化理解出发，讨论跨文化内容、交流活动与项目合作的可能。']], explore:'探索这一领域', perspective:'我们的视角', quote:'有价值的创新，\n始于对文化与人的理解。', detail:'从具体需求出发，以交流建立共识，再以适合的技术和内容形式推进项目。', team:'认识我们的团队', news:'公司动态', date:'2025年12月18日', milestone:'CIAOMIND 完成公司登记', newsBody:'在意大利科莫，开启文化、教育与数字技术的探索。', newsLink:'查看公司动态', contact:'让下一次对话，\n成为新的开始。', contactBody:'无论你来自文化机构、教育领域或企业，欢迎与我们讨论你的想法。', contactLink:'与我们联系'},
-it: { title:['La cultura ispira.','Il futuro prende forma.'], intro:'Dall’Italia alla Cina. Esploriamo il digitale per dare nuova vita alla cultura e aprire spazi alla conoscenza, alla creatività e al dialogo.', discover:'Scopri CIAOMIND', scroll:'Esplora il nostro mondo', about:'La nostra visione', statement:'Radici nella cultura.\nSguardo al futuro.', body:'La cultura custodisce la memoria e genera nuove espressioni. CIAOMIND esplora il patrimonio culturale digitale, l’educazione e le applicazioni AI, e il dialogo tra Italia e Cina.', more:'La nostra filosofia', worlds:'I nostri ambiti', worldIntro:'Tre direzioni per esperienze culturali più aperte e partecipate.', cards:[['Patrimonio culturale','Nuove forme alla memoria','Narrazione digitale, organizzazione dei contenuti ed esperienze interattive per comprendere e condividere la cultura.'],['Educazione e AI','Più spazio alla curiosità','Strumenti digitali e applicazioni AI a partire dai bisogni di apprendimento, oltre le barriere linguistiche e dei formati.'],['Dialogo Italia–Cina','Dall’incontro alla connessione','Contenuti interculturali, incontri e possibilità di collaborazione basati sulla comprensione reciproca.']], explore:'Esplora questo ambito', perspective:'Il nostro approccio', quote:'L’innovazione nasce\ndall’ascolto delle persone.', detail:'Partire dai bisogni concreti, costruire una comprensione condivisa e scegliere contenuti e tecnologie adatti al progetto.', team:'Le persone di CIAOMIND', news:'Dal nostro mondo', date:'18 dicembre 2025', milestone:'CIAOMIND: la registrazione della società', newsBody:'A Como, un percorso tra cultura, educazione e tecnologie digitali.', newsLink:'Leggi le novità', contact:'Ogni possibilità inizia\ncon una conversazione.', contactBody:'Lavori nella cultura, nell’educazione o in un’impresa? Parliamo delle tue idee.', contactLink:'Entra in contatto'}
-};
-export default function HomePage({params:{lang}}:{params:{lang:string}}) {
-const c=content[lang==='it'?'it':'zh']; const article=roundtable[lang==='it'?'it':'zh']; const link=(p:string)=>`/${lang}/${p}/`;
-return <div className="editorial-home"><OrganizationData lang={lang}/>
-<section className="heritage-hero"><div className="hero-art" aria-hidden="true"><div className="arch arch-one"/><div className="arch arch-two"/><div className="arch arch-three"/><div className="art-orbit"/><div className="art-floor"/><span className="art-caption">COMO — ITALIA<br/>A DIALOGUE WITH THE FUTURE</span></div><div className="hero-editorial-content"><p className="eyebrow">CULTURE · INTELLIGENCE · CONNECTION</p><h1>{c.title[0]}<br/><em>{c.title[1]}</em></h1><p className="hero-intro">{c.intro}</p><Link className="editorial-link light" href={link('about')}>{c.discover}<span aria-hidden="true">↗</span></Link></div><a className="hero-scroll" href="#our-world">{c.scroll}<span aria-hidden="true">↓</span></a><div className="hero-edition" aria-hidden="true">01 / 03 — CULTURE</div></section>
-<section id="our-world" className="editorial-section vision-section"><div><p className="eyebrow">01 — CIAOMIND</p><p className="section-label">{c.about}</p></div><div><h2 className="editorial-title preline">{c.statement}</h2><p className="editorial-body">{c.body}</p><Link className="editorial-link" href={link('about')}>{c.more}<span aria-hidden="true">↗</span></Link></div></section>
-<section className="worlds-section editorial-section"><div className="section-heading"><div><p className="eyebrow">02 — OUR WORLD</p><h2 className="editorial-title">{c.worlds}</h2></div><p>{c.worldIntro}</p></div><div className="world-grid">{c.cards.map((card,i)=><Link href={link('services')} className={`world-card world-${i}`} key={card[0]}><div className="world-visual" aria-hidden="true"><span className="visual-symbol">{['文','∞','↔'][i]}</span><span className="visual-index">0{i+1}</span></div><div className="world-copy"><p className="eyebrow">{card[1]}</p><h3>{card[0]}</h3><p>{card[2]}</p><span className="card-discover">{c.explore}<span aria-hidden="true">↗</span></span></div></Link>)}</div></section>
-<section className="perspective-section"><div className="perspective-art" aria-hidden="true"><div/><span>CULTURA<br/>SENZA<br/><i>CONFINI.</i></span></div><div className="perspective-copy"><p className="eyebrow">03 — {c.perspective}</p><h2 className="editorial-title preline">{c.quote}</h2><p className="editorial-body">{c.detail}</p><Link className="editorial-link" href={link('team')}>{c.team}<span aria-hidden="true">↗</span></Link></div></section>
-<section className="editorial-section journal-section"><div className="section-heading"><h2 className="editorial-title">{c.news}</h2><Link className="editorial-link" href={link('news')}>{c.newsLink}<span aria-hidden="true">↗</span></Link></div><Link href={link(`news/${roundtable.slug}`)} className="journal-entry"><time dateTime={roundtable.published}>20.10.2026</time><div><h3>{article.title}</h3><p>{article.summary}</p></div><span aria-hidden="true">↗</span></Link><Link href={link('news')} className="journal-entry"><time dateTime="2025-12-18">{c.date}</time><div><h3>{c.milestone}</h3><p>{c.newsBody}</p></div><span aria-hidden="true">↗</span></Link></section>
-<section className="invitation-section"><p className="eyebrow">LET’S CREATE A DIALOGUE</p><h2 className="editorial-title preline">{c.contact}</h2><p>{c.contactBody}</p><Link className="editorial-link light" href={link('contact')}>{c.contactLink}<span aria-hidden="true">↗</span></Link></section>
-</div>; }
+import HeritageHome, { heritageHomeMetadata } from '@/components/HeritageHome';
+import { Storefront, type StorefrontProps } from '@/components/Storefront';
+import { resolveBusinessLocale } from '@/data/business-catalog';
+import { readCampaign } from '@/lib/campaign';
+import { marketingMetadata } from '@/lib/marketing-metadata';
+
+export function generateMetadata({ params }: StorefrontProps) {
+  const locale = resolveBusinessLocale(params.lang);
+  const metadata = heritageHomeMetadata(locale);
+  return { ...metadata, ...marketingMetadata(locale, `/${locale}/`, metadata.title, metadata.description) };
+}
+
+export default function HomePage(props: StorefrontProps) {
+  const campaign = readCampaign(props.searchParams);
+  return <>
+    <OrganizationData lang={props.params.lang} />
+    <HeritageHome locale={resolveBusinessLocale(props.params.lang)} campaign={campaign} />
+    <Storefront {...props} showHero={false} />
+  </>;
+}

@@ -1,0 +1,15 @@
+.top { display: flex; min-height: 5rem; align-items: center; justify-content: space-between; gap: 1.25rem; }
+.desktop { display: none; align-items: center; gap: clamp(.65rem, 1.7vw, 1.6rem); }
+.navLink { display: inline-flex; min-height: 2.75rem; align-items: center; font-size: .94rem; font-weight: 650; }
+.apply { display: inline-flex; min-height: 2.75rem; align-items: center; justify-content: center; padding: .55rem .9rem; border-radius: .45rem; background: #173d35; color: #fffbf2; font-size: .92rem; font-weight: 750; }
+.nav .apply:hover { background: #285446; color: #fff; }
+.language { min-height: 2.75rem; padding: .5rem; border: 1px solid #173d354f; border-radius: .4rem; background: #faf9f5; color: #173d35; font-size: .9rem; }
+.toggle { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .45rem; }
+.mobile { display: grid; gap: .55rem; max-height: calc(100dvh - 5rem); overflow: auto; padding: .65rem 0 1rem; border-top: 1px solid #173d3530; }
+.mobile[hidden] { display: none; }
+.mobile .language { justify-self: start; margin-top: .25rem; }
+
+@media (min-width: 1024px) {
+  .desktop { display: flex; }
+  .toggle, .mobile { display: none; }
+}

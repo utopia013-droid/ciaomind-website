@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales, type Locale } from '@/lib/i18n';
+import { locales, localeTags, type Locale } from '@/lib/i18n';
 import { company } from '@/data/company';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import '../globals.css';
-export function generateStaticParams() { return [{ lang: 'zh' }, { lang: 'it' }]; }
+export function generateStaticParams() { return locales.map(lang => ({ lang })); }
 export function generateMetadata({ params: { lang } }: { params: { lang: string } }): Metadata {
   const zh = lang === 'zh';
   return {
@@ -23,8 +23,12 @@ export function generateMetadata({ params: { lang } }: { params: { lang: string 
 export default async function LocaleLayout({ children, params: { lang } }: { children: React.ReactNode; params: { lang: string } }) {
   if (!locales.includes(lang as Locale)) notFound();
   const messages = await getMessages();
-  return <html lang={lang === 'zh' ? 'zh-CN' : 'it'}><body>
-    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:p-4">{lang === 'zh' ? '跳到正文' : 'Vai al contenuto'}</a>
+  const skipText: Record<Locale, string> = {
+    zh: '跳到正文', it: 'Vai al contenuto', en: 'Skip to content',
+    fr: 'Aller au contenu', de: 'Zum Inhalt', es: 'Saltar al contenido',
+  };
+  return <html lang={localeTags[lang as Locale]}><body>
+    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:p-4">{skipText[lang as Locale]}</a>
     <NextIntlClientProvider messages={messages} locale={lang}>
       <div className="min-h-screen flex flex-col"><Header /><main id="main-content" className="flex-1 pt-20">{children}</main><Footer /></div>
     </NextIntlClientProvider>
