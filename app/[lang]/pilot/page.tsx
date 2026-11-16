@@ -1,115 +1,127 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Check, ClipboardList, ScanSearch, Layers3 } from 'lucide-react';
-import ContactForm from '@/components/ContactForm';
-import { company } from '@/data/company';
+import { ArrowDown, ArrowRight, Check, Package, ScrollText } from 'lucide-react';
+import { locales, localeTags, type Locale } from '@/lib/i18n';
+import { pilotContent } from './pilot-content';
+import styles from './Pilot.module.css';
 
-type Props = { params: { lang: string }; searchParams: Record<string, string | string[] | undefined> };
-const text = {
-  zh: {
-    title: '进入中意市场，先验证一个项目',
-    intro: '把一个市场问题变成明确的交付：验证需求、比较供应商，或梳理文化品牌试点。',
-    action: '选择试点', process: '合作流程', demoTitle: '看看项目如何推进', demoBody: '用虚构信息体验从需求到报价、项目进度和账单的完整流程。',
-    demo: '打开项目与账单演示', services: '从一个目标开始', quote: '确认范围后书面报价', select: '选择服务',
-    steps: ['选择试点', '确认范围与报价', '执行与交付'], form: '告诉我们你要验证什么',
-    defaultBrief: '目标市场：\n产品或项目：\n希望验证的问题：\n计划时间：',
-    choose: '未选择具体服务', selected: '意向服务', condition: '此页用于咨询。范围、费用和交付日期以双方确认的书面报价为准。',
-    offerings: [
-      ['市场验证', '围绕一个产品和目标市场，核查公开价格、渠道和可验证线索。', '证据表与下一步建议'],
-      ['供应商初筛', '按照统一口径梳理候选供应商、最低起订量和样品条件。', '候选名单与询价对比表'],
-      ['文化品牌试点', '从一个文化主题出发，梳理材料来源、权利待核事项和产品方向。', '来源清单与试点范围'],
-    ],
-  },
-  it: {
-    title: 'Italia e Cina: parti da un progetto pilota',
-    intro: 'Trasforma una domanda concreta in un risultato verificabile: mercato, fornitori o un progetto per il tuo brand culturale.',
-    action: 'Scegli il progetto', process: 'Come funziona', demoTitle: 'Scopri come si segue un progetto', demoBody: 'Una dimostrazione con dati fittizi: dalla richiesta al preventivo, alla consegna e al riepilogo dei pagamenti.',
-    demo: 'Apri la demo del portale', services: 'Inizia da un obiettivo', quote: 'Preventivo scritto dopo la definizione del perimetro', select: 'Seleziona il servizio',
-    steps: ['Scegli il progetto', 'Conferma perimetro e preventivo', 'Ricevi il risultato'], form: 'Raccontaci cosa vuoi verificare',
-    defaultBrief: 'Mercato obiettivo:\nProdotto o progetto:\nDomanda da verificare:\nTempistiche:',
-    choose: 'Servizio da definire', selected: 'Servizio di interesse', condition: 'Questa pagina raccoglie richieste. Perimetro, prezzo e tempi sono definiti nel preventivo concordato.',
-    offerings: [
-      ['Analisi di mercato', 'Esaminiamo prezzi pubblici, canali e fonti verificabili per un prodotto e un mercato.', 'Tabella delle evidenze e prossimi passi'],
-      ['Selezione preliminare dei fornitori', 'Confrontiamo fornitori candidati, quantitativi minimi e condizioni per i campioni.', 'Elenco dei candidati e confronto delle offerte'],
-      ['Progetto per brand culturali', 'Partiamo da un tema culturale per mappare fonti, diritti da verificare e ipotesi di prodotto.', 'Registro delle fonti e perimetro del progetto'],
-    ],
-  },
-};
-const services = ['market', 'sourcing', 'heritage'];
-const icons = [ScanSearch, ClipboardList, Layers3];
+type Props = { params: { lang: Locale }; searchParams: Record<string, string | string[] | undefined> };
+
 const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'] as const;
+const collectionUrl = 'https://www.metmuseum.org/art/collection/search/460197';
 
-export function generateMetadata({ params }: Props): Metadata {
-  const lang = params.lang === 'it' ? 'it' : 'zh';
+export function generateMetadata({ params: { lang } }: Props): Metadata {
+  const copy = pilotContent[lang];
+  const languages = Object.fromEntries(locales.map(locale => [localeTags[locale], `/${locale}/pilot/`]));
+
   return {
-    title: text[lang].title,
-    description: text[lang].intro,
-    alternates: { canonical: `/${lang}/pilot/`, languages: { 'zh-CN': '/zh/pilot/', it: '/it/pilot/' } },
+    title: copy.title,
+    description: copy.intro,
+    alternates: {
+      canonical: `/${lang}/pilot/`,
+      languages: { ...languages, 'x-default': '/zh/pilot/' },
+    },
   };
 }
 
-export default function Pilot({ params, searchParams }: Props) {
-  const lang = params.lang === 'it' ? 'it' : 'zh';
-  const t = text[lang];
-  const serviceIndex = typeof searchParams.service === 'string' ? services.indexOf(searchParams.service) : -1;
+export default function Pilot({ params: { lang }, searchParams }: Props) {
+  const copy = pilotContent[lang];
   const attribution = new URLSearchParams();
   for (const key of utmKeys) {
     const value = searchParams[key];
     if (typeof value === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(value)) attribution.set(key, value);
   }
-  const campaign = attribution.toString();
-  const requestContext = [`${t.selected}: ${t.offerings[serviceIndex]?.[0] ?? t.choose}`, ...Array.from(attribution, ([key, value]) => `${key}: ${value}`)].join('\n');
 
-  return <>
-    <section className="bg-primary-navy text-white py-16 md:py-24">
-      <div className="container">
-        <p className="uppercase tracking-widest text-sm text-white/80 mb-5">CIAOMIND · {lang === 'zh' ? '中意企业试点' : 'Progetti Italia – Cina'}</p>
-        <h1 className="text-4xl md:text-6xl font-bold max-w-4xl leading-tight">{t.title}</h1>
-        <p className="mt-5 text-xl text-white/90 max-w-2xl">{t.intro}</p>
-        <a href="#pilot-services" className="inline-flex items-center gap-2 mt-8 rounded-lg bg-white px-5 py-3 font-bold text-primary-navy">{t.action}<ArrowUpRight size={18} aria-hidden /></a>
-      </div>
-    </section>
-    <section className="section bg-background-light scroll-mt-24" id="pilot-services">
-      <div className="container">
-        <h2 className="text-3xl font-bold mb-6">{t.services}</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {t.offerings.map(([name, summary, deliverable], i) => {
-            const Icon = icons[i];
-            const query = new URLSearchParams(campaign);
-            query.set('service', services[i]);
-            return <article key={services[i]} className="card flex flex-col gap-4">
-              <Icon className="text-primary-coral" aria-hidden />
-              <h3 className="text-xl font-bold">{name}</h3>
-              <p>{summary}</p><p className="flex items-start gap-2"><Check size={18} className="shrink-0 mt-1 text-primary-coral" aria-hidden />{deliverable}</p>
-              <p className="text-sm text-text-secondary mt-auto">{t.quote}</p>
-              <Link className="btn-primary self-start" href={`/${lang}/pilot/?${query}#pilot-request`}>{t.select}<span className="sr-only">: {name}</span></Link>
-            </article>;
-          })}
+  const entries = [
+    { role: 'brand', copy: copy.brand, Icon: Package },
+    { role: 'rights-holder', copy: copy.rightsHolder, Icon: ScrollText },
+  ];
+
+  return (
+    <div className={styles.pilot}>
+      <section className={styles.hero} aria-labelledby="pilot-title">
+        <div className={styles.heroCopy}>
+          <p className={styles.kicker}>Heritage Economy OS</p>
+          <h1 id="pilot-title">{copy.title}</h1>
+          <p className={styles.intro}>{copy.intro}</p>
+          <p className={styles.market}>{copy.market}</p>
+          <a className={styles.heroAction} href="#pilot-services">
+            {copy.explore}
+            <ArrowDown size={17} aria-hidden />
+          </a>
         </div>
-      </div>
-    </section>
-    <section className="section bg-white">
-      <div className="container">
-        <h2 className="text-3xl font-bold mb-6">{t.process}</h2>
-        <ol className="grid md:grid-cols-3 gap-4">
-          {t.steps.map((step, i) => <li key={step} className="border rounded-xl p-5"><span className="text-primary-coral font-bold mr-3">0{i + 1}</span>{step}</li>)}
-        </ol>
-        <aside className="mt-8 rounded-xl bg-background-light p-6">
-          <h3 className="text-xl font-bold">{t.demoTitle}</h3><p className="my-2">{t.demoBody}</p>
-          <Link href={`/${lang}/portal/`} className="underline font-semibold">{t.demo}</Link>
-        </aside>
-      </div>
-    </section>
-    <section className="section bg-background-light scroll-mt-24" id="pilot-request">
-      <div className="container">
-        <div className="max-w-2xl mx-auto mb-6">
-          <h2 className="text-3xl font-bold mb-2">{t.form}</h2>
-          <p className="mb-3">{t.condition}</p>
-          <p className="font-semibold">{t.selected}：{t.offerings[serviceIndex]?.[0] ?? t.choose}</p>
+        <figure className={styles.heroFigure}>
+          <div className={styles.imageFrame}>
+            <Image
+              src="/images/heritage/maiolica-1530.webp"
+              alt={copy.imageAlt}
+              fill
+              priority
+              sizes="(max-width: 820px) 100vw, 42vw"
+            />
+          </div>
+          <figcaption>
+            <a href={collectionUrl}>{copy.imageCaption}</a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section className={styles.entries} id="pilot-services" aria-labelledby="pilot-request">
+        <div className={styles.wrap}>
+          <h2 id="pilot-request">{copy.entriesTitle}</h2>
+          <div className={styles.entryGrid}>
+            {entries.map(({ role, copy: entry, Icon }) => {
+              const query = new URLSearchParams({ role });
+              for (const [key, value] of attribution) query.set(key, value);
+
+              return (
+                <article className={styles.entry} key={role}>
+                  <Icon className={styles.entryIcon} size={27} strokeWidth={1.4} aria-hidden />
+                  <h3>{entry.title}</h3>
+                  <p>{entry.description}</p>
+                  <Link className={styles.entryAction} href={`/${lang}/pilot/apply/?${query}`}>
+                    {entry.action}
+                    <ArrowRight size={18} aria-hidden />
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+          <p className={styles.terms}>{copy.terms}</p>
         </div>
-        <ContactForm key={requestContext} locale={lang} requestContext={requestContext} defaultMessage={t.defaultBrief} />
-        <p className="max-w-2xl mx-auto mt-4 text-sm text-text-secondary">{company.name}</p>
-      </div>
-    </section>
-  </>;
+      </section>
+
+      <section className={styles.workflow} id="pilot-process" aria-labelledby="pilot-process-title">
+        <div className={styles.wrap}>
+          <h2 id="pilot-process-title">{copy.processTitle}</h2>
+          <p className={styles.processIntro}>{copy.processIntro}</p>
+          <div className={styles.workflowGrid}>
+            <ol className={styles.steps} role="list">
+              {copy.steps.map((step, index) => (
+                <li key={step.title}>
+                  <span className={styles.stepNumber} aria-hidden>{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <aside className={styles.deliverables} aria-labelledby="pilot-deliverables-title">
+              <h3 id="pilot-deliverables-title">{copy.deliverablesTitle}</h3>
+              <ul role="list">
+                {copy.deliverables.map(item => (
+                  <li key={item}>
+                    <Check size={18} strokeWidth={1.8} aria-hidden />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }

@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { locales } from './lib/i18n';
 
 const localize = createMiddleware({ locales, defaultLocale: 'zh' });
-const legacyPages = /^\/(en|fr|de|es)\/(about|contact|news|pilot|services|team|terms|portal)(?:\/|$)/;
+const legacyPages = /^\/(en|fr|de|es)\/(about|contact|news|services|team|terms|portal)(?:\/|$)/;
 
 export default function middleware(request: NextRequest) {
   if (legacyPages.test(request.nextUrl.pathname)) {

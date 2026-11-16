@@ -24,7 +24,12 @@ const globalLabel: Record<Locale, string> = {
   fr: 'International et trusts', de: 'International und Trusts', es: 'Internacional y fideicomisos',
 };
 
-const companyOnlyPaths = new Set(['about', 'services', 'team', 'news', 'contact', 'pilot', 'terms', 'portal']);
+const pilotLabel: Record<Locale, string> = {
+  zh: '文化 IP 试点', it: 'Pilota patrimonio culturale', en: 'Cultural IP pilot',
+  fr: 'Pilote patrimoine', de: 'Kulturerbe-Pilot', es: 'Piloto de patrimonio',
+};
+
+const companyOnlyPaths = new Set(['about', 'services', 'team', 'news', 'contact', 'terms', 'portal']);
 
 export default function Header() {
   const locale = useLocale() as Locale;
@@ -59,6 +64,7 @@ export default function Header() {
   const navigation = (mobile: boolean) => (
     <>
       <div className={mobile ? 'space-y-2' : 'flex items-center gap-1'}>
+        <Link href={`/${locale}/pilot/`} onClick={() => mobile && setOpen(false)} className={mobile ? 'block rounded-lg border border-white/20 px-4 py-3 font-semibold hover:bg-white/10' : 'rounded-lg px-2 py-2 font-semibold hover:bg-white/10'}>{pilotLabel[locale]}</Link>
         {groups.map(group => (
           <div key={group.id} className={mobile ? 'relative flex items-center rounded-lg border border-white/15 px-2' : 'group relative flex items-center'}>
             <Link href={sectionHref(group.id)} onClick={() => mobile && setOpen(false)} className={mobile ? 'flex-1 rounded-lg px-2 py-3 font-medium hover:bg-white/10' : 'rounded-lg px-2 py-2 hover:bg-white/10'}>{label(group.title)}</Link>

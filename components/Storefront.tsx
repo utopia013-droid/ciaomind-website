@@ -292,7 +292,7 @@ export function storefrontMetadata(language: string, path: 'home' | 'business'):
   };
 }
 
-export function Storefront({ params, searchParams }: StorefrontProps) {
+export function Storefront({ params, searchParams, showHero = true }: StorefrontProps & { showHero?: boolean }) {
   const lang = resolveBusinessLocale(params.lang);
   const t = copy[lang];
   const utm: Record<string, string> = {};
@@ -309,7 +309,7 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
   };
 
   return <div className={styles.store}>
-    <div className={styles.hero}>
+    {showHero && <div className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.heroCopy}>
           <h1 lang={localeTags[lang]}>{t.title}</h1>
@@ -330,7 +330,7 @@ export function Storefront({ params, searchParams }: StorefrontProps) {
           )}
         </div>
       </div>
-    </div>
+    </div>}
 
     <section className={styles.section + ' ' + styles.pricingSection} id="pricing" aria-labelledby="pricing-title">
       <div className={styles.inner}>
