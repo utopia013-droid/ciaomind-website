@@ -77,15 +77,15 @@ export default function HeritagePilotApply({ params, searchParams }: Props) {
 
   return (
     <div className="min-h-screen bg-background-light">
-      <section className="bg-primary-navy py-14 text-white md:py-20">
-        <div className="container">
+      <section className="bg-[#16352c] px-5 py-12 text-white sm:px-8 md:py-16">
+        <div className="mx-auto max-w-5xl">
           <p className="mb-4 text-sm uppercase tracking-[.16em] text-white/75">CIAOMIND · Heritage Economy OS</p>
           <h1 className="max-w-4xl text-3xl font-bold leading-tight md:text-5xl">{copy.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/90">{copy.intro}</p>
         </div>
       </section>
-      <section className="section">
-        <div className="container">
+      <section className="px-4 py-10 sm:px-6 sm:py-14">
+        <div className="mx-auto max-w-5xl">
           <div className="mx-auto mb-8 max-w-3xl">
             <h2 className="mb-5 text-2xl font-bold">{copy.process}</h2>
             <ol className="grid gap-3 md:grid-cols-3">
