@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { company } from '@/data/company';
+import {strategyLocales} from '@/data/strategy-locales';
 export default function Footer() {
-  const locale = useLocale(); const t = useTranslations();
+  const locale = useLocale(); const t = useTranslations(); const loc=strategyLocales[(locale in strategyLocales?locale:'en') as keyof typeof strategyLocales];
   const paths = ['about', 'services', 'team', 'contact'] as const;
   return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
       <div><Link href={`/${locale}/`} className="text-2xl font-bold">CIAOMIND</Link>
         <p className="mt-4 max-w-lg text-white/80">{t('footer.description')}</p>
-        <address className="not-italic mt-5 text-white/80 space-y-2"><p>{company.name}</p><p>{t('contact.address')}: {company.address}</p>
+        <address className="not-italic mt-5 text-white/80 space-y-2"><p>{company.name}</p><p>{loc.location}: {company.address}</p><p>{loc.registered}: Via Vandelli 20, 22100 Como (CO), Italia</p>
           <p>P. IVA {company.vat} · REA {company.rea}</p><p><a href={`mailto:${company.email}`}>{company.email}</a></p><p>PEC: <a href={`mailto:${company.pec}`}>{company.pec}</a></p>
         </address>
       </div>
