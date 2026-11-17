@@ -2,9 +2,11 @@ import { getRequestConfig } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n';
 import zh from '../messages/zh.json';
 import it from '../messages/it.json';
-const messages = { zh, it };
-export default getRequestConfig(async ({ requestLocale }) => {
-  const requested = await requestLocale;
-  const locale: Locale = locales.includes(requested as Locale) ? requested as Locale : 'zh';
-  return { locale, timeZone: 'Europe/Rome', messages: messages[locale] };
-});
+import en from '../messages/en.json';
+import fr from '../messages/fr.json';
+import de from '../messages/de.json';
+import es from '../messages/es.json';
+import pt from '../messages/pt.json';
+import ja from '../messages/ja.json';
+const messages={zh,it,en,fr,de,es,pt,ja};
+export default getRequestConfig(async ({requestLocale})=>{const requested=await requestLocale;const locale:Locale=locales.includes(requested as Locale)?requested as Locale:'en';return {locale,timeZone:'Europe/Rome',messages:messages[locale]};});
