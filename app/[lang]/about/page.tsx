@@ -7,7 +7,7 @@ export default function AboutPage({ params: { lang } }: { params: { lang: string
   const t = useTranslations();
 
   const c = innerPageLocales[lang as keyof typeof innerPageLocales]?.about;
-  if(c) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{c[0]}</h1></div></section><section className="section bg-white"><div className="container-modern max-w-4xl space-y-8"><p className="text-xl">{c[1]}</p><h2 className="text-2xl">{c[0]}</h2><div className="grid md:grid-cols-2 gap-6">{team.map(member=><TeamMember key={member.id} id={member.id} locale={lang}/>)}</div></div></section></>;
+  if(c) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{c[0]}</h1></div></section><section className="section bg-white"><div className="container-modern max-w-4xl space-y-8"><p className="text-xl">{c[1]}</p><h2 className="text-2xl">{c[0]}</h2><div className="grid md:grid-cols-2 gap-6">{[1,3].map(i=><article className="card" key={i}><h3 className="text-xl">{innerPageLocales[lang as keyof typeof innerPageLocales].team[i]}</h3><p>{innerPageLocales[lang as keyof typeof innerPageLocales].team[i+1]}</p></article>)}</div></div></section></>;
   return (
     <>
       {/* Hero Section */}
