@@ -11,7 +11,7 @@ const descriptions: Record<string, {zh:string;it:string}> = {
  about:{zh:'了解 CIAOMIND S.B. S.R.L. 的文化与科技理念、企业背景、愿景与使命，以及面向中意文化交流的项目方向。',it:'Scopri CIAOMIND S.B. S.R.L., la sua visione tra cultura e tecnologia, la missione e gli ambiti di collaborazione tra Italia e Cina.'},
  services:{zh:'探索 CIAOMIND 的三个项目方向：文化遗产数字化、数字教育与 AI 应用、中意文化交流。与团队讨论具体需求与合作方式。',it:'Esplora i tre ambiti CIAOMIND: patrimonio culturale digitale, educazione e AI, dialogo Italia–Cina. Confrontiamoci sulle esigenze del tuo progetto.'},
  team:{zh:'认识 CIAOMIND 的公司代表与业务参与成员，了解团队在文化交流、跨境业务与数字化项目中的关注方向。',it:'Conosci le persone di CIAOMIND, la rappresentante della società e i membri coinvolti nello sviluppo di progetti culturali e digitali.'},
- contact:{zh:'联系 CIAOMIND：邮箱 luxyoo.italy@gmail.com，电话 +39 392 463 9169。欢迎讨论文化、教育与中意交流项目。',it:'Contatta CIAOMIND . Email luxyoo.italy@gmail.com, telefono +39 392 463 9169. Parliamo di cultura, educazione e dialogo Italia–Cina.'},
+ contact:{zh:'联系 CIAOMIND：邮箱 info@ciaomind.com，电话 +39 392 463 9169。欢迎讨论文化、教育与中意交流项目。',it:'Contatta CIAOMIND . Email info@ciaomind.com, telefono +39 392 463 9169. Parliamo di cultura, educazione e dialogo Italia–Cina.'},
  news:{zh:'查看 CIAOMIND 公司动态与已核实的企业里程碑，了解文化、教育和数字技术方向的最新公开信息。',it:'Leggi le notizie di CIAOMIND e le tappe societarie verificate, con aggiornamenti pubblici su cultura, educazione e tecnologie digitali.'},
  privacy:{zh:'了解 CIAOMIND 网站联系工具如何运作，以及邮件草稿和个人信息的基本处理说明。',it:'Informazioni sul funzionamento dei contatti CIAOMIND, sulle bozze email e sul trattamento dei dati attraverso il sito.'},
  terms:{zh:'CIAOMIND 网站内容与联系工具的使用说明，以及公司联系信息。',it:'Informazioni sull’uso dei contenuti e degli strumenti di contatto del sito CIAOMIND.'},
