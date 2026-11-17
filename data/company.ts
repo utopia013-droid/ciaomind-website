@@ -1,7 +1,7 @@
 export const company = {
   name: 'CIAOMIND S.B. S.R.L.',  vat: '04260950136',
   rea: 'CO - 431951',
-  pec: 'ciaomindsrl@pec.it',
+  pec: 'ciaomind@pec.it',
   email: 'info@ciaomind.com',
   phone: '+39 392 463 9169',
   website: 'https://www.ciaomind.com',
