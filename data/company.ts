@@ -1,7 +1,5 @@
 export const company = {
-  name: 'CIAOMIND S.B. S.R.L.',
-  address: 'Via Oroboni 78/A, 44122 Ferrara (FE), Italia',
-  vat: '04260950136',
+  name: 'CIAOMIND S.B. S.R.L.',  vat: '04260950136',
   rea: 'CO - 431951',
   pec: 'ciaomindsrl@pec.it',
   email: 'luxyoo.italy@gmail.com',
