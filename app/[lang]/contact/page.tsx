@@ -1,3 +1,4 @@
+import { innerPageLocales } from '@/data/inner-page-locales';
 import { useTranslations } from 'next-intl';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
@@ -6,6 +7,8 @@ import { company } from '@/data/company';
 export default function ContactPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 
+  const c = innerPageLocales[lang as keyof typeof innerPageLocales]?.contact;
+  if(c) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{c[0]}</h1><p className="mt-5">{c[1]}</p></div></section><section className="section bg-white"><div className="container-modern grid md:grid-cols-2 gap-8"><div className="space-y-5"><h2 className="text-2xl">{c[5]}</h2><p>{c[2]}: {company.address}</p><p>{c[3]}: <a className="underline" href={`mailto:${company.email}`}>{company.email}</a></p><p>{c[4]}: {company.phone}</p><p>{c[6]}</p></div><ContactForm locale={lang}/></div></section></>;
   return (
     <>
       {/* Hero Section */}
