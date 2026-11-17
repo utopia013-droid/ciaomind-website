@@ -4,7 +4,7 @@ import { company } from '@/data/company';
 import {strategyLocales} from '@/data/strategy-locales';
 export default function Footer() {
   const locale = useLocale(); const t = useTranslations(); const loc=strategyLocales[(locale in strategyLocales?locale:'en') as keyof typeof strategyLocales];
-  const paths = ['about', 'services', 'team', 'contact'] as const;
+  const paths = ['about', 'services', 'news', 'team', 'contact'] as const;
   return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
       <div><Link href={`/${locale}/`} className="text-2xl font-bold">CIAOMIND</Link>
