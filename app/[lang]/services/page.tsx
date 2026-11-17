@@ -1,3 +1,4 @@
+import { innerPageLocales } from '@/data/inner-page-locales';
 import { useTranslations } from 'next-intl';
 import ServiceCard from '@/components/ServiceCard';
 import { services } from '@/data/services';
@@ -5,6 +6,8 @@ import { services } from '@/data/services';
 export default function ServicesPage({ params: { lang } }: { params: { lang: string } }) {
   const t = useTranslations();
 
+  const c = innerPageLocales[lang as keyof typeof innerPageLocales]?.services;
+  if(c) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{c[0]}</h1></div></section><section className="section bg-white"><div className="container-modern grid md:grid-cols-3 gap-8">{[1,2,3].map((i)=><article className="card" key={i}><h2 className="text-2xl mb-5">{c[i]}</h2><p>{c[i+3]}</p></article>)}</div></section></>;
   return (
     <>
       {/* Hero Section */}
