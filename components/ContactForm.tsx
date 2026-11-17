@@ -1,5 +1,5 @@
-import { innerPageLocales } from '@/data/inner-page-locales';
 'use client';
+import { innerPageLocales } from '@/data/inner-page-locales';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { company } from '@/data/company';
