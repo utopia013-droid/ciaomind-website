@@ -1,9 +1,10 @@
+import {newsTranslations} from '@/data/news-translations';
 import { innerPageLocales } from '@/data/inner-page-locales';
 import Link from 'next/link';
 import { roundtable } from '@/data/milan-roundtable';
 export default function NewsPage({ params: { lang } }: { params: { lang: string } }) {
  const zh = lang === 'zh';
- const c = roundtable[zh ? 'zh' : 'it'];
+ const c = lang in newsTranslations ? newsTranslations[lang as keyof typeof newsTranslations] : roundtable[zh ? 'zh' : 'it'];
 const localized = innerPageLocales[lang as keyof typeof innerPageLocales]?.news;
  if(localized) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{localized[0]}</h1></div></section><section className="section bg-white"><div className="container-modern max-w-3xl space-y-8"><article className="card"><time dateTime={roundtable.published}>20.10.2026</time><h2 className="text-2xl my-4"><Link href={`/${lang}/news/${roundtable.slug}/`}>{c.title}</Link></h2><p>{c.summary}</p><Link className="underline mt-5 inline-block" href={`/${lang}/news/${roundtable.slug}/`}>{localized[1]}</Link></article><article className="card"><time dateTime="2025-12-18">18.12.2025</time><h2 className="text-2xl my-4">{localized[2]}</h2><p>{localized[3]}</p></article></div></section></>;
  return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{zh ? '公司动态' : 'Notizie della società'}</h1></div></section>
