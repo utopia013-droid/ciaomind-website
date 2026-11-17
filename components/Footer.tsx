@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BrandLogo from './BrandLogo';
 import { useLocale, useTranslations } from 'next-intl';
 import { company } from '@/data/company';
 
@@ -7,7 +8,7 @@ export default function Footer() {
   const paths = ['about', 'services', 'news', 'team', 'contact'] as const;
   return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
-      <div><Link href={`/${locale}/`} className="text-2xl font-bold">CIAOMIND</Link>
+      <div><Link href={`/${locale}/`} className="footer-brand" aria-label="CIAOMIND"><BrandLogo /></Link>
         <p className="mt-4 max-w-lg text-white/80">{t('footer.description')}</p>
         <address className="not-italic mt-5 text-white/80 space-y-2"><p>{company.name}</p>
           <p>P. IVA {company.vat} · REA {company.rea}</p><p><a href={`mailto:${company.email}`}>{company.email}</a></p><p>PEC: <a href={`mailto:${company.pec}`}>{company.pec}</a></p>
@@ -20,3 +21,4 @@ export default function Footer() {
     </div><div className="container-modern border-t border-white/20 py-6 text-sm text-white/75">© {company.year} {company.name}. {t('footer.rights')}</div>
   </footer>;
 }
+

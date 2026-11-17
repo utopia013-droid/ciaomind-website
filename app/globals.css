@@ -357,3 +357,39 @@ main:not(:has(.editorial-home)) section.bg-white { background:#faf9f5; }
 main:not(:has(.editorial-home)) .bg-background-light { background:#eeece3; }
 #our-world { scroll-margin-top:80px; }
 
+/* CIAOMIND unified green / white motion identity. */
+.brand-logo { display:block; width:100%; height:auto; overflow:visible; --brand-white-scale:.6; --brand-core-scale:0; }
+.brand-outer, .brand-core { fill:#1c4036; }
+.brand-white { fill:#fff; }
+.brand-white,.brand-core { transform-box:view-box; transform-origin:54px 54px; transition:transform 480ms cubic-bezier(.22,1,.36,1); }
+.brand-white { transform:scale(var(--brand-white-scale,.6)); }
+.brand-core { transform:scale(var(--brand-core-scale,0)); }
+.brand-letters { fill:currentColor; transition:fill 480ms ease; }
+.brand-logo-inverse { color:#fff; --brand-white-scale:1; --brand-core-scale:.6; }
+.site-header { --brand-white-scale:.6; --brand-core-scale:0; transition:background-color 500ms ease,color 500ms ease,border-color 500ms ease; }
+.site-header .brand-mark { display:block; flex-shrink:0; width:144px; height:auto; color:inherit; letter-spacing:normal; line-height:1; border:0; }
+.site-header .brand-mark:hover { color:inherit; background:transparent; }
+.site-header .brand-logo { --brand-white-scale:inherit; --brand-core-scale:inherit; }
+.site-header[data-brand-mode='rest'] { color:#1c4036; }
+header.site-header[data-brand-mode='expanded'],header.site-header[data-brand-mode='returning'] { background:#1c4036; color:#fff; border-bottom-color:#ffffff26; }
+.site-header:not([data-brand-mode='rest']) a:hover,.site-header:not([data-brand-mode='rest']) button:hover { color:#fff; background:#ffffff10; }
+.site-header:not([data-brand-mode='rest']) .brand-mark:hover { background:transparent; }
+.site-header:not([data-brand-mode='rest']) a[aria-current='page'] { border-color:#ffffff80; }
+.site-header:not([data-brand-mode='rest']) .language-switch,.site-header:not([data-brand-mode='rest']) #mobile-navigation { border-color:#ffffff40; }
+.site-header:not([data-brand-mode='rest']) :focus-visible { outline-color:#fff; }
+.footer-brand { display:block; width:166px; color:#1c4036; }
+.footer-brand:hover { color:#1c4036; }
+.brand-intro { position:fixed; inset:0; z-index:80; display:grid; place-items:center; background:#faf9f5; color:#1c4036; pointer-events:none; animation:brand-intro-exit 420ms ease 1450ms both; }
+.brand-intro .brand-logo { width:clamp(250px,40vw,420px); }
+.brand-intro .brand-symbol { animation:brand-symbol-enter 900ms cubic-bezier(.22,1,.36,1) both; transform-origin:54px 54px; }
+.brand-intro .brand-white { animation:brand-center-open 780ms cubic-bezier(.22,1,.36,1) 100ms both; }
+.brand-intro .brand-ciao { animation:brand-word-enter 650ms cubic-bezier(.22,1,.36,1) 330ms both; }
+.brand-intro .brand-mind { animation:brand-word-enter 650ms cubic-bezier(.22,1,.36,1) 460ms both; }
+@keyframes brand-symbol-enter { 0% { opacity:0; transform:translateX(96px) scale(.3) rotate(-25deg); } 30% { opacity:1; } 48% { transform:translateX(96px) scale(1) rotate(0); } 100% { opacity:1; transform:translateX(0) scale(1) rotate(0); } }
+@keyframes brand-center-open { from { transform:scale(0); } to { transform:scale(.6); } }
+@keyframes brand-word-enter { from { opacity:0; transform:translateX(-14px); } to { opacity:1; transform:translateX(0); } }
+@keyframes brand-intro-exit { 0% { opacity:1; visibility:visible; } 100% { opacity:0; visibility:hidden; } }
+@media(max-width:640px) { .site-header .brand-mark { width:133px; } .footer-brand { width:152px; } }
+@media(prefers-reduced-motion:reduce) { .brand-intro { display:none; } .brand-white,.brand-core,.brand-letters,.site-header { transition:none; } }
+
+
