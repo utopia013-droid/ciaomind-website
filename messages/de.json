@@ -1,0 +1,181 @@
+{
+  "common": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "services": "Leistungen",
+    "team": "Team",
+    "contact": "Kontakt",
+    "news": "Aktuelles",
+    "language": "Sprache"
+  },
+  "hero": {
+    "title": "Reale Organisationen. Vertrauenswürdige KI verbindet.",
+    "subtitle": "CIAOMIND Heritage Economy OS untersucht die Zusammenarbeit zwischen autorisierten Kulturgütern, realen Partnern und menschlich beaufsichtigten KI-Prozessen. Wir beginnen mit einer Ressource, einem Prototyp und einem Markt.",
+    "cta": "Scopri i nostri ambiti"
+  },
+  "home": {
+    "services": {
+      "title": "I Nostri Servizi",
+      "description": "Partiamo dalle esigenze concrete per definire obiettivi, risultati e percorso di lavoro.",
+      "badge": "Ambiti di progetto",
+      "viewAll": "Tutti gli ambiti"
+    },
+    "whyUs": {
+      "title": "Perché Sceglierci",
+      "points": {
+        "1": {
+          "title": "Collegare Italia e Cina",
+          "description": "Costruiamo una comprensione condivisa di lingua, cultura ed esigenze."
+        },
+        "2": {
+          "title": "Cultura e tecnologia",
+          "description": "Valutiamo strumenti e formati digitali adatti ai contenuti culturali."
+        },
+        "3": {
+          "title": "Obiettivi chiari",
+          "description": "Definiamo ambito, risultati intermedi e criteri di verifica."
+        },
+        "4": {
+          "title": "Collaborazione mirata",
+          "description": "Concordiamo competenze e collaborazione in base al progetto."
+        },
+        "5": {
+          "title": "Rispetto della privacy",
+          "description": "Utilizziamo materiali e dati personali solo quando necessari."
+        },
+        "6": {
+          "title": "Un passo alla volta",
+          "description": "Partiamo da una verifica circoscritta prima delle fasi successive."
+        }
+      },
+      "subtitle": "Comunicazione chiara e prossimi passi concreti."
+    },
+    "team": {
+      "title": "Conosci il Nostro Team",
+      "description": "Conosci la rappresentante della società e chi contribuisce allo sviluppo dei progetti.",
+      "badge": "Persone",
+      "viewAll": "Conosci il team"
+    },
+    "cta": {
+      "title": "Lassen Sie uns einen konkreten Fall prüfen.",
+      "description": "Wir freuen uns auf den Austausch mit Kulturinstitutionen, Forschung und KMU.",
+      "button": "Contattaci Subito",
+      "secondaryButton": "Esplora gli ambiti"
+    }
+  },
+  "services": {
+    "title": "Unsere Arbeitsfelder",
+    "ai_skills": {
+      "title": "Vertrauenswürdige KI-Abläufe",
+      "description": "Verifizierte Identitäten, berechtigte APIs, Prüfprotokolle und menschliche Freigaben.",
+      "features": {
+        "1": "Analisi delle esigenze AI",
+        "2": "Organizzazione dei contenuti digitali",
+        "3": "Scenari educativi"
+      }
+    },
+    "tea_culture": {
+      "title": "Grenzüberschreitende Vermittlung",
+      "description": "Designer, Hersteller, Marken und Vertrieb nach Bedarf und Lieferzeit vernetzen.",
+      "features": {
+        "1": "Comunicazione cinese-italiana",
+        "2": "Ideazione di temi culturali",
+        "3": "Confronto sui progetti"
+      }
+    },
+    "culture_tech": {
+      "title": "Kulturerbe-Pilot",
+      "description": "45-tägige bezahlte Validierung als Hypothese: eine autorisierte Ressource, ein Prototyp, ein Markt.",
+      "features": {
+        "1": "Organizzazione dei materiali culturali",
+        "2": "Pianificazione di esposizioni digitali",
+        "3": "Accessibilità dei contenuti"
+      }
+    },
+    "cta_description": "Ambito, costi e tempi vengono concordati dopo il confronto iniziale."
+  },
+  "about": {
+    "title": "Chi Siamo",
+    "company_name": "CIAOMIND S.B. S.R.L.",
+    "description": "CIAOMIND S.B. S.R.L. è stata costituita in Italia nel 2025, con sede legale a Como, e si dedica al rapporto tra cultura e tecnologia.",
+    "vision": "Visione",
+    "vision_text": "Wir verbinden Rechteinhaber, Designer, Hersteller und Käufer in nachvollziehbaren Abläufen. KI unterstützt Recherche und Koordination; Menschen genehmigen Rechte und Verpflichtungen.",
+    "mission": "Missione",
+    "mission_text": "CIAOMIND Heritage Economy OS untersucht die Zusammenarbeit zwischen autorisierten Kulturgütern, realen Partnern und menschlich beaufsichtigten KI-Prozessen. Wir beginnen mit einer Ressource, einem Prototyp und einem Markt.",
+    "values_title": "I Nostri Valori",
+    "value1_title": "Rispetto",
+    "value1_desc": "Rispettare il valore unico e le tradizioni di ogni cultura",
+    "value2_title": "Innovazione",
+    "value2_desc": "Esplorare costantemente nuovi modi di espressione culturale",
+    "value3_title": "Professionalità",
+    "value3_desc": "Affrontare ogni progetto con spirito professionale",
+    "value4_title": "Collaborazione",
+    "value4_desc": "Credere nella forza della collaborazione per creare un futuro migliore",
+    "story_title": "Risorse culturali e connessioni digitali",
+    "description2": "Gli ambiti statutari comprendono la digitalizzazione del patrimonio culturale, artistico e artigianale, l’educazione digitale e l’inclusione sociale, con attenzione alla cooperazione tra Europa e Cina.",
+    "description3": "Partiamo dalle esigenze del progetto per concordare contenuti, strumenti e modalità di collaborazione."
+  },
+  "team": {
+    "title": "Il team",
+    "description": "Conosci la rappresentante della società e chi contribuisce allo sviluppo dei progetti.",
+    "join_us": "Parliamo di collaborazione",
+    "join_description": "Contattaci per confrontarci su un progetto concreto.",
+    "members": {
+      "cheng_zhiyuan": {
+        "name": "Cheng Zhiyuan",
+        "role": "Socio",
+        "bio": "Ha esperienze nel commercio transfrontaliero e nella distribuzione del lusso e contribuisce all’esplorazione di progetti culturali e digitali tra Italia e Cina."
+      },
+      "huang_huanying": {
+        "name": "Huang Huanying",
+        "role": "Amministratrice unica e rappresentante legale",
+        "bio": "Ricopre le funzioni di amministrazione e rappresentanza della società, con attenzione a cultura, comunicazione e progetti digitali."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "message": "Lasciaci un Messaggio",
+    "your_name": "Il Tuo Nome",
+    "your_email": "La Tua Email",
+    "your_message": "Il Tuo Messaggio",
+    "send": "Apri la posta",
+    "address": "Indirizzo di contatto",
+    "email": "Email",
+    "phone": "Telefono",
+    "working_hours": "Orari di Lavoro",
+    "weekdays": "Lunedì - Venerdì",
+    "weekend": "Sabato - Domenica",
+    "closed": "Chiuso",
+    "our_location": "La Nostra Posizione",
+    "hero_description": "Wir freuen uns auf den Austausch mit Kulturinstitutionen, Forschung und KMU.",
+    "contact_info": "Recapiti",
+    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
+    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
+    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
+    "privacy_link": "Informazioni sulla privacy"
+  },
+  "footer": {
+    "description": "Wir verbinden Rechteinhaber, Designer, Hersteller und Käufer in nachvollziehbaren Abläufen. KI unterstützt Recherche und Koordination; Menschen genehmigen Rechte und Verpflichtungen.",
+    "quick_links": "Link Rapidi",
+    "contact_us": "Contattaci",
+    "follow_us": "Seguici",
+    "rights": "Tutti i diritti riservati"
+  },
+  "news": {
+    "title": "Centro Notizie",
+    "description": "Resta aggiornato sulle ultime novita ed eventi internazionali di CIAOMIND",
+    "latest": "Ultime Notizie",
+    "readMore": "Leggi Tutto",
+    "backToList": "Torna alle Notizie",
+    "publishedOn": "Pubblicato il",
+    "location": "Luogo",
+    "article_section": "Notizie e Eventi"
+  },
+  "legal": {
+    "privacyTitle": "Privacy e contatti",
+    "termsTitle": "Informazioni sul sito",
+    "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
+    "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
+  }
+}
