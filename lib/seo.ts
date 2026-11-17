@@ -17,8 +17,8 @@ const descriptions: Record<string, {zh:string;it:string}> = {
  terms:{zh:'CIAOMIND 网站内容与联系工具的使用说明，以及公司联系信息。',it:'Informazioni sull’uso dei contenuti e degli strumenti di contatto del sito CIAOMIND.'},
 };
 export function pageMetadata(lang: string, path: string): Metadata {
- const locale=lang==='it'?'it':'zh'; const name=pageNames[path]?.[locale] ?? 'CIAOMIND';
- const title=`CIAOMIND | ${name}`; const description=descriptions[path]?.[locale];
+ const locale=lang==='zh'?'zh':'it'; const name=pageNames[path]?.[locale] ?? 'CIAOMIND';
+ const title=lang==='zh'||lang==='it'?`CIAOMIND | ${name}`:'CIAOMIND | Heritage Economy OS · Trusted AI Workflows'; const description=lang==='zh'||lang==='it'?descriptions[path]?.[locale]:'Exploring rights-cleared cultural resources, cross-border partners and human-supervised trusted AI workflows.';
  const localized=(language:string)=>`${company.website}/${language}/${path?`${path}/`:''}`;
- return {title:{absolute:title},description,alternates:{canonical:localized(locale),languages:{'zh-CN':localized('zh'),it:localized('it'),'x-default':localized('zh')}},openGraph:{title,description,url:localized(locale),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png`,width:1200,height:630,alt:'CIAOMIND — Culture, Intelligence, Connection'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png`]}};
+ return {title:{absolute:title},description,alternates:{canonical:localized(lang),languages:{'zh-CN':localized('zh'),it:localized('it'),en:localized('en'),fr:localized('fr'),de:localized('de'),es:localized('es'),pt:localized('pt'),ja:localized('ja'),'x-default':localized('en')}},openGraph:{title,description,url:localized(locale),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png`,width:1200,height:630,alt:'CIAOMIND — Culture, Intelligence, Connection'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png`]}};
 }
