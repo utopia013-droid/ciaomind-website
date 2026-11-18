@@ -2,7 +2,9 @@ import {newsTranslations} from '@/data/news-translations';
 import { innerPageLocales } from '@/data/inner-page-locales';
 import Link from 'next/link';
 import { roundtable } from '@/data/milan-roundtable';
-export default function NewsPage({ params: { lang } }: { params: { lang: string } }) {
+export default async function NewsPage({ params: paramsPromise }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+
  const zh = lang === 'zh';
  const c = lang in newsTranslations ? newsTranslations[lang as keyof typeof newsTranslations] : roundtable[zh ? 'zh' : 'it'];
 const localized = innerPageLocales[lang as keyof typeof innerPageLocales]?.news;

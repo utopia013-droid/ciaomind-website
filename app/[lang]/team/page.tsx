@@ -1,10 +1,12 @@
 import { innerPageLocales } from '@/data/inner-page-locales';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import TeamMember from '@/components/TeamMember';
 import { team } from '@/data/team';
 
-export default function TeamPage({ params: { lang } }: { params: { lang: string } }) {
-  const t = useTranslations();
+export default async function TeamPage({ params: paramsPromise }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+
+  const t = await getTranslations();
 
   const c = innerPageLocales[lang as keyof typeof innerPageLocales]?.team;
   if(c) return <><section className="section bg-primary-navy text-white"><div className="container-modern"><h1 className="text-4xl text-white">{c[0]}</h1></div></section><section className="section bg-white"><div className="container-modern grid md:grid-cols-2 gap-8">{[1,3].map(i=><article key={i} className="card"><h2 className="text-2xl">{c[i]}</h2><p className="mt-4">{c[i+1]}</p></article>)}</div></section></>;

@@ -3,7 +3,7 @@
 import { useEffect, type RefObject } from 'react';
 
 /** Direction-sensitive center-out reveal; writes only to the shared header. */
-export function useBrandScroll(ref: RefObject<HTMLElement>) {
+export function useBrandScroll(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const header = ref.current;
     if (!header) return;

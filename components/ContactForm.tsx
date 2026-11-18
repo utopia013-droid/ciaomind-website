@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { company } from '@/data/company';
 export default function ContactForm({ locale }: { locale: string }) {
-  const t = useTranslations('contact'); const localized = innerPageLocales[locale as keyof typeof innerPageLocales]?.contact; const label=(key:string,index:number)=>localized?localized[index]:t(key as any); const [opened, setOpened] = useState(false);
+  const t = useTranslations('contact'); const localized = innerPageLocales[locale as keyof typeof innerPageLocales]?.contact; const label=(key:string,index:number)=>localized?localized[index]:t(key); const [opened, setOpened] = useState(false);
   function compose(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget);
     const subject = encodeURIComponent(`CIAOMIND — ${String(data.get('name') ?? '')}`);

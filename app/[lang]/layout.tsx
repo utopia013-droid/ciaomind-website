@@ -9,7 +9,9 @@ import BrandIntro from '@/components/BrandIntro';
 import Footer from '@/components/Footer';
 import '../globals.css';
 export function generateStaticParams() { return locales.map(lang=>({lang})); }
-export function generateMetadata({ params: { lang } }: { params: { lang: string } }): Metadata {
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await paramsPromise;
+
   const zh = lang === 'zh';
   return {
     metadataBase: new URL(company.website),
@@ -21,7 +23,9 @@ export function generateMetadata({ params: { lang } }: { params: { lang: string 
     robots: { index: true, follow: true },
   };
 }
-export default async function LocaleLayout({ children, params: { lang } }: { children: React.ReactNode; params: { lang: string } }) {
+export default async function LocaleLayout({ children, params: paramsPromise }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+
   if (!locales.includes(lang as Locale)) notFound();
   const messages = await getMessages();
   return <html lang={lang === 'zh' ? 'zh-CN' : lang}><body>

@@ -39,10 +39,14 @@ const copy = {
     cta: 'Parliamo del tuo progetto', note: 'Questa pagina illustra una visione progettuale; non garantisce finanziamenti, consulenze regolamentate, prestazioni sanitarie o approvazioni amministrative.'
   }
 };
-export function generateMetadata({params:{lang}}:{params:{lang:string}}): Metadata {
+export async function generateMetadata({params: paramsPromise}:{params:Promise<{lang:string}>}): Promise<Metadata> {
+  const {lang} = await paramsPromise;
+
   const it=lang==='it';return {title:it?'La nostra visione | CIAOMIND':'智能协同平台愿景 | CIAOMIND',description:it?copy.it.subtitle:copy.zh.subtitle};
 }
-export default function VisionPage({params:{lang}}:{params:{lang:string}}){
+export default async function VisionPage({params: paramsPromise}:{params:Promise<{lang:string}>}){
+  const {lang} = await paramsPromise;
+
   const c=lang==='it'?copy.it:copy.zh;
   return <div className="bg-[#F8F9FA] text-[#0F234B]">
     <section className="bg-[#0F234B] text-white px-6 py-20 md:py-28"><div className="max-w-5xl mx-auto">

@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { company } from '@/data/company';
 import { roundtable, roundtableImages } from '@/data/milan-roundtable';
 
-export function generateMetadata({ params: { lang } }: { params: { lang: string } }): Metadata {
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await paramsPromise;
+
   const c = (lang in newsTranslations ? newsTranslations[lang as keyof typeof newsTranslations] : roundtable[lang === 'zh' ? 'zh' : 'it']);
   const url = `${company.website}/${lang}/news/${roundtable.slug}/`;
   return {
@@ -16,7 +18,9 @@ export function generateMetadata({ params: { lang } }: { params: { lang: string 
     twitter: { card: 'summary_large_image', title: c.title, description: c.summary, images: [`${company.website}/images/news/${roundtable.slug}/group.jpg`] },
   };
 }
-export default function MilanRoundtable({ params: { lang } }: { params: { lang: string } }) {
+export default async function MilanRoundtable({ params: paramsPromise }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+
   const zh = lang === 'zh';
   const c = (lang in newsTranslations ? newsTranslations[lang as keyof typeof newsTranslations] : roundtable[zh ? 'zh' : 'it']);
   const localized = innerPageLocales[lang as keyof typeof innerPageLocales]?.news;
