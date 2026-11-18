@@ -30,6 +30,10 @@ test('Business OS SQL permissions, audit, money, stages and public intake', asyn
       grant usage on schema auth to anon,authenticated; grant execute on function auth.uid() to anon,authenticated;`);
     const migration = fs.readdirSync(path.join(__dirname, '../supabase/migrations')).find(name => name.endsWith('_business_os.sql'));
     await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', migration), 'utf8'));
+    const notesMigration = fs.readdirSync(path.join(__dirname, '../supabase/migrations')).find(name => name.endsWith('_business_os_status_notes.sql'));
+    await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', notesMigration), 'utf8'));
+    const namesMigration = fs.readdirSync(path.join(__dirname, '../supabase/migrations')).find(name => name.endsWith('_business_os_member_names.sql'));
+    await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', namesMigration), 'utf8'));
     await db.query('insert into auth.users values($1),($2),($3),($4),($5)', [owner, manager, contributor, viewer, outsider]);
     await db.query('insert into public.bos_tenants(id,name) values($1,$2),($3,$4)', [team, 'Synthetic team A', otherTeam, 'Synthetic team B']);
     await db.query("insert into public.bos_tenant_members values($1,$2,'owner'),($1,$3,'manager'),($1,$4,'contributor'),($1,$5,'viewer'),($6,$7,'owner')", [team, owner, manager, contributor, viewer, otherTeam, outsider]);
@@ -37,6 +41,20 @@ test('Business OS SQL permissions, audit, money, stages and public intake', asyn
     await db.query('insert into public.bos_projects(id,tenant_id,title,client_name,owner_id) values($1,$2,$3,$4,$5)', [project, team, 'Synthetic pilot', 'Synthetic customer', owner]);
     await act(null, 'postgres');
     await db.query("insert into public.bos_project_members values($1,$2,$3,'contributor'),($1,$2,$4,'viewer')", [project, team, contributor, viewer]);
+    await t.test('administrator display labels preserve directory RLS and cannot be edited by members', async () => {
+      await act(null, 'postgres');
+      await db.query('update public.bos_tenant_members set display_name=$1 where tenant_id=$2 and user_id=$3', ['Synthetic contributor', team, contributor]);
+      await rejected('update public.bos_tenant_members set display_name=$1 where tenant_id=$2 and user_id=$3', ['x'.repeat(161), team, contributor]);
+      await act(contributor);
+      const directory = (await db.query('select user_id,display_name,role from public.bos_tenant_members where tenant_id=$1', [team])).rows;
+      assert.deepEqual(directory, [{ user_id: contributor, display_name: 'Synthetic contributor', role: 'contributor' }]);
+      await rejected('update public.bos_tenant_members set display_name=$1 where tenant_id=$2 and user_id=$3', ['Self-edited identity', team, contributor]);
+      await act(owner);
+      assert.equal((await db.query('select user_id from public.bos_tenant_members where tenant_id=$1', [team])).rows.length, 4);
+      await rejected('update public.bos_tenant_members set display_name=$1 where tenant_id=$2 and user_id=$3', ['App edit still forbidden', team, owner]);
+      await act(outsider);
+      assert.equal((await db.query('select display_name from public.bos_tenant_members where tenant_id=$1', [team])).rows.length, 0);
+    });
     await t.test('outsider cannot read or insert another tenant project', async () => {
       await act(outsider);
       assert.equal((await db.query('select * from public.bos_projects where id=$1', [project])).rows.length, 0);
@@ -62,6 +80,35 @@ test('Business OS SQL permissions, audit, money, stages and public intake', asyn
     });
     const record = async (kind, amount = 0) => (await db.query("insert into public.bos_records(tenant_id,project_id,kind,title,notes,evidence_url,amount_minor) values($1,$2,$3,$3,'Synthetic evidence for tests','https://example.org/evidence',$4) returning id", [team, project, kind, amount])).rows[0].id;
     const approve = async id => db.query("update public.bos_records set status='approved' where id=$1", [id]);
+    await t.test('evidence accepts email addresses in paths and queries but rejects authority credentials and whitespace', async () => {
+      await act(owner);
+      const insertEvidence = url => db.query("insert into public.bos_records(tenant_id,project_id,kind,title,notes,evidence_url) values($1,$2,'note','Synthetic status source','Synthetic source URL regression',$3) returning evidence_url", [team, project, url]);
+      for (const url of ['https://mail.google.com/mail/u/info@ciaomind.com/#all/abc', 'https://example.org/?email=a@b.it']) {
+        assert.equal((await insertEvidence(url)).rows[0].evidence_url, url);
+      }
+      for (const url of ['https://user:pass@example.org/evil', 'https://example.org/path with spaces', 'https://-invalid.example/source']) {
+        await assert.rejects(insertEvidence(url));
+      }
+    });
+    await t.test('status notes are readable evidence requiring second-person review without financial or stage effects', async () => {
+      await act(owner);
+      const note = await record('note');
+      const stored = (await db.query('select kind,status,amount_minor,currency,reviewed_by from public.bos_records where id=$1', [note])).rows[0];
+      assert.equal(stored.kind, 'note');
+      assert.equal(stored.status, 'submitted');
+      assert.equal(Number(stored.amount_minor), 0);
+      assert.equal(stored.currency, 'EUR');
+      assert.equal(stored.reviewed_by, null);
+      await assert.rejects(record('note', 1));
+      await rejected("update public.bos_records set status='approved' where id=$1", [note]);
+      await act(manager);
+      await approve(note);
+      assert.equal((await db.query('select stage from public.bos_projects where id=$1', [project])).rows[0].stage, 'prospect');
+      const balance = (await db.query("select coalesce(sum(amount_minor) filter(where kind in ('quote','contract','receipt')),0) as financial_total from public.bos_records where project_id=$1 and status='approved'", [project])).rows[0];
+      assert.equal(Number(balance.financial_total), 0);
+      // The approved note remains in this project throughout the stage/receipt tests below.
+      // Those tests still require every existing evidence gate and the final outstanding cent.
+    });
     let rights;
     await t.test('review requires a second manager; audit cannot be forged or rewritten', async () => {
       await act(owner); rights = await record('rights');

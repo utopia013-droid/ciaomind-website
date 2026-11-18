@@ -1,6 +1,6 @@
 /** Deterministic rules. No model, external request, payment or dispatch happens here. */
 export const projectStages = ['prospect', 'discovery', 'quote', 'sample', 'contract', 'delivery', 'acceptance', 'collected', 'closed'] as const;
-export const recordKinds = ['rights', 'compliance', 'quote', 'sample', 'contract', 'acceptance', 'receipt', 'candidate'] as const;
+export const recordKinds = ['rights', 'compliance', 'quote', 'sample', 'contract', 'acceptance', 'receipt', 'candidate', 'note'] as const;
 export type ProjectStage = typeof projectStages[number];
 export type RecordKind = typeof recordKinds[number];
 export type Role = 'owner' | 'manager' | 'contributor' | 'viewer';
