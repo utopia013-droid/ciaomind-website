@@ -45,4 +45,8 @@ export type Project = { id: string; tenant_id: string; title: string; client_nam
 export type Task = { id: string; project_id: string; title: string; owner_id: string; due_on: string; dependency_id: string | null; status: 'open' | 'done' };
 export type BusinessRecord = GateRecord & { id: string; project_id: string; title: string; evidence_url: string; notes: string; created_by: string; reviewed_by: string | null; created_at: string; criteria: CandidateCriteria | null };
 export type Audit = { id: string; project_id: string; actor_id: string; action: string; created_at: string; entity_id: string };
-export type Intake = { id: string; tenant_id: string; company_name: string; contact_email: string; kind: string; brief: string; status: string; created_at: string; project_id: string | null };
+export type Intake = {
+  id: string; tenant_id: string; company_name: string; contact_email: string; kind: string;
+  brief: string; status: string; created_at: string; project_id: string | null;
+  network_area: string | null; referrer: { name: string } | null;
+};
