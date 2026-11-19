@@ -72,10 +72,10 @@ export default function VideoShelf({ locale, copy, narration }: ShelfProps) {
                   <iframe key={mode} src={externalPlayer(topic, mode, locale)} title={title} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
                 ) : (
                   <video key={mediaPath} ref={node => { players.current[topic] = node; }}
-                    src={mediaPath + '.mp4'} poster={mediaPath + '.webp'} controls playsInline preload="none"
+                    src={mediaPath + '.mp4?edition=2'} poster={mediaPath + '.webp'} controls playsInline preload="none"
                     aria-label={`${local.title} · ${narrationLanguages[audio]}`}
                     onPlay={() => { pauseOther(topic); setSelected(null); }}>
-                    <track kind="captions" src={mediaPath + '.vtt'} srcLang={audio === 'zh' ? 'zh-CN' : 'en'} label={narrationLanguages[audio]} default />
+                    <track kind="captions" src={mediaPath + '.vtt?edition=2'} srcLang={audio === 'zh' ? 'zh-CN' : 'en'} label={narrationLanguages[audio]} default />
                   </video>
                 )}
               </div>
