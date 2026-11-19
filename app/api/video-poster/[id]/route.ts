@@ -1,13 +1,15 @@
 import { serviceVideos } from '@/data/service-videos';
+import { ecosystemVideos } from '@/data/industry-videos';
 
-const ids = new Set<string>(Object.values(serviceVideos).map(film => film.id));
+const ids = new Set<string>([...Object.values(serviceVideos), ...ecosystemVideos].map(film => film.id));
 
-// Only the two editorial covers are public. Visitor headers never reach the image host.
+// Only curated video covers are public. Visitor headers never reach the image host.
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!ids.has(id)) return new Response(null, { status: 404 });
-  try {
-    const image = await fetch(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, {
+  for (const quality of ['maxresdefault', 'hqdefault']) {
+   try {
+    const image = await fetch(`https://i.ytimg.com/vi/${id}/${quality}.jpg`, {
       next: { revalidate: 86400 }, signal: AbortSignal.timeout(6000), redirect: 'error',
     });
     if (image.ok && image.headers.get('content-type')?.startsWith('image/jpeg')) {
@@ -17,7 +19,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
       } });
     }
   } catch {
-    // The play control remains available when the publisher's poster is unreachable.
+    // Try the standard cover if the high-resolution version is unavailable.
+   }
   }
   return new Response(null, { status: 503, headers: { 'Cache-Control': 'no-store' } });
 }

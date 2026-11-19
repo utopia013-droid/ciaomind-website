@@ -2,6 +2,7 @@ import Link from 'next/link';
 import BrandLogo from './BrandLogo';
 import { useLocale, useTranslations } from 'next-intl';
 import { company } from '@/data/company';
+import { getEcosystemCopy } from '@/data/heritage-value';
 
 export default function Footer() {
   const locale = useLocale(); const t = useTranslations();
@@ -9,7 +10,7 @@ export default function Footer() {
   return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
       <div><Link href={`/${locale}/`} className="footer-brand" aria-label="CIAOMIND"><BrandLogo /></Link>
-        <p className="mt-4 max-w-lg text-white/80">{t('footer.description')}</p>
+        <p className="mt-4 max-w-lg text-white/80">{getEcosystemCopy(locale).intro}</p>
         <address className="not-italic mt-5 text-white/80 space-y-2"><p>{company.name}</p>
           <p>P. IVA {company.vat} · REA {company.rea}</p><p><a href={`mailto:${company.email}`}>{company.email}</a></p><p>PEC: <a href={`mailto:${company.pec}`}>{company.pec}</a></p>
         </address>

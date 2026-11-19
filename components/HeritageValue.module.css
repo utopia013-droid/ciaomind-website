@@ -1,0 +1,51 @@
+.page { background:#f7f5ef; color:#173d35; }
+.homeHero.homeHero { height:auto; min-height:calc(100svh - 80px); max-height:none; }
+.hero { padding:clamp(3rem,7vw,6.5rem) max(5vw,calc((100vw - 76rem)/2)); background:#173d35; color:#f7f5ef; }
+.page .hero h1 { font-size:clamp(2.4rem,5.2vw,4.8rem); line-height:1.15; max-width:64rem; color:inherit; margin:0 0 1.4rem; }
+.hero p { max-width:60rem; font-size:clamp(1rem,1.6vw,1.2rem); line-height:1.8; }
+.section { padding:clamp(2.75rem,6vw,5.5rem) max(5vw,calc((100vw - 76rem)/2)); color:#173d35; background:#f7f5ef; scroll-margin-top:6rem; }
+.sectionHeading { display:grid; grid-template-columns:1.15fr 1fr; gap:1.5rem 4rem; align-items:start; margin-bottom:2.5rem; }
+.section h2,.technology h2,.services h2 { color:inherit; font-size:clamp(1.9rem,3.6vw,3.2rem); line-height:1.22; margin:0; }
+.sectionHeading p,.section p,.technology p,.services p { font-size:1rem; line-height:1.85; margin:0; }
+.path { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid #b6c0b2; }
+.path li { border-bottom:1px solid #b6c0b2; min-width:0; }
+.path a { display:block; height:100%; padding:1.6rem 1.6rem 1.6rem 0; }
+.path li:not(:nth-child(3n+1)) { padding-left:1.6rem; border-left:1px solid #b6c0b2; }
+.path h3 { font-size:1.4rem; color:inherit; display:flex; align-items:baseline; justify-content:space-between; gap:1rem; line-height:1.35; margin:0 0 .85rem; }
+.path p { color:#455c50; font-size:.95rem; }
+.path a:hover h3,.link:hover { text-decoration:underline; text-underline-offset:.25rem; }
+.section .loop { background:#e6ece1; border-left:3px solid #758c68; margin:1.4rem 0; padding:.9rem 1.2rem; }
+.link { display:inline-flex; align-items:center; gap:1rem; font-weight:600; padding:.7rem 0; }
+.technology { background:#e6ece1; padding:clamp(2.75rem,6vw,5rem) max(5vw,calc((100vw - 76rem)/2)); color:#173d35; }
+.technology h2 { margin-bottom:2rem; }
+.twoColumns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem 4rem; }
+.twoColumns h3 { font-size:1.5rem; margin:0 0 .8rem; color:inherit; }
+.services { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.5rem,4vw,4rem); padding:clamp(2.75rem,6vw,5rem) max(5vw,calc((100vw - 76rem)/2)); }
+.services article { border-top:1px solid #a4b09e; padding-top:1.5rem; scroll-margin-top:7rem; }
+.services h2 { font-size:clamp(1.8rem,3vw,2.6rem); margin-bottom:1rem; }
+.services p { margin-bottom:1.5rem; }
+.actions { display:flex; flex-wrap:wrap; gap:.7rem 1.5rem; align-items:center; }
+.button { display:inline-flex; align-items:center; justify-content:space-between; gap:1.2rem; padding:.8rem 1.2rem; background:#173d35; color:white; line-height:1.5; }
+.button:hover { background:#315f4e; }
+.roles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.roles a { display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:1.6rem; background:#fffdf8; border:1px solid #c8cebf; padding:1.6rem; }
+.roles h3 { font-size:1.35rem; color:inherit; line-height:1.4; margin:0; }
+.roles span { font-size:.9rem; }
+.roles a:hover { background:#e6ece1; }
+.capital { margin-top:2rem; padding-top:1.4rem; border-top:1px solid #c8cebf; display:grid; grid-template-columns:1.5fr 1fr; gap:1.5rem; align-items:center; }
+.capital .link { justify-self:end; }
+.section .note { margin-top:1.5rem; font-size:.85rem; color:#526257; }
+.section :is(a,button):focus-visible,.page a:focus-visible { outline:3px solid #99713b; outline-offset:4px; }
+@media(max-width:900px) {
+ .path { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .path li:not(:nth-child(3n+1)) { padding-left:0; border-left:0; }
+ .path li:nth-child(even) { padding-left:1.3rem; border-left:1px solid #b6c0b2; }
+ .roles { grid-template-columns:1fr; }
+}
+@media(max-width:600px) {
+ .sectionHeading,.services,.twoColumns,.capital { grid-template-columns:1fr; }
+ .path { grid-template-columns:1fr; }
+ .path li:nth-child(even) { padding-left:0; border-left:0; }
+ .path a { padding:1.25rem 0; }
+ .capital .link { justify-self:start; }
+}

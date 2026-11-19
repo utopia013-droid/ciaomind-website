@@ -1,3 +1,4 @@
+import { getEcosystemCopy } from '@/data/heritage-value';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
@@ -13,12 +14,13 @@ export async function generateMetadata({ params: paramsPromise }: { params: Prom
   const { lang } = await paramsPromise;
 
   const zh = lang === 'zh';
+  const core = getEcosystemCopy(lang);
   return {
     metadataBase: new URL(company.website),
     verification: { google: 'BCzndz9cNhhBv22fXOGM9UqXwErfYZrQyzxGFtn-WjQ' },
     icons: { icon: [{ url: '/brand/ciaomind-icon-green.svg', type: 'image/svg+xml' }], apple: '/brand/ciaomind-icon-green.png' },
-    title: { default: zh ? 'CIAOMIND｜文化与可信 AI 协作' : lang==='it' ? 'CIAOMIND | Heritage Economy e AI affidabile' : 'CIAOMIND | Heritage Economy OS · Trusted AI Workflows', template: '%s | CIAOMIND' },
-    description: zh ? '文化 IP 商业化、跨境匹配与可信 AI 工作流的试点探索。' : 'CIAOMIND Heritage Economy OS: a pilot for rights-cleared cultural assets, real-world partners and human-supervised AI workflows.',
+    title: { default: `CIAOMIND | ${core.title}`, template: '%s | CIAOMIND' },
+    description: core.intro,
     openGraph: { siteName: company.name, type: 'website', locale: zh ? 'zh_CN' : 'it_IT' },
     robots: { index: true, follow: true },
   };

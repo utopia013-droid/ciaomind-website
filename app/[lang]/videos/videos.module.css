@@ -10,6 +10,9 @@
 .page .heading h1 { font-size: clamp(2.7rem, 6vw, 5.1rem); line-height: 1.1; color: var(--ink); margin: 0 0 1rem; }
 .heading p { font-size: clamp(1rem, 1.6vw, 1.21rem); line-height: 1.65; color: #465c53; max-width: 54rem; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.8rem, 4vw, 3.75rem); }
+.topicNav { display:flex; flex-wrap:wrap; gap:.6rem 1.5rem; padding:0 0 1.8rem; }
+.topicNav a { padding:.55rem .9rem; border:1px solid #a7b19e; line-height:1.6; }
+.topicNav a:hover { background:#e6ece1; }
 .card { display: flex; flex-direction: column; min-width: 0; border-top: 1px solid #97a69a; scroll-margin-top: 6rem; }
 .page .card h2 { font-size: clamp(1.5rem, 2.7vw, 2.25rem); line-height: 1.2; margin: 1.1rem 0 1.3rem; color: var(--ink); }
 .screen { position: relative; width: 100%; aspect-ratio: 16/9; min-height: 200px; background: #213e35; overflow: hidden; }
