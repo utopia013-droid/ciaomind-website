@@ -4,7 +4,7 @@ type Stage = readonly [string, string];
 export type EcosystemText = {
   hero: string[]; intro: string; title: string; mission: string; pathTitle: string; pathIntro: string;
   stages: Stage[]; cards: Stage[]; rolesTitle: string; roles: string[]; rolesIntro: string;
-  contact: string; explore: string; videos: string; libraryTitle: string; libraryIntro: string;
+  brief: string; contact: string; explore: string; videos: string; libraryTitle: string; libraryIntro: string;
   all: string; watch: string; play: string; close: string; chapter: string; notice: string;
   capital: string; status: string; formation: string; heritage: string; loop: string;
   technologyTitle: string; technology: Stage[];
@@ -20,31 +20,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "从文化保护到产业协同",
     "mission": "CIAOMIND 以文化遗产、文化要素与知识产权保护为起点，探索数字化、精益制造、品牌营销和经营管理的连接，让产业发展持续支持文化保护与新的创造。 以 AI 与物联网连接区域文化、品牌、供应链和更广阔的市场。",
     "pathTitle": "连接文化与产业的价值链",
-    "pathIntro": "从一项权利清晰的文化资源和一个具体项目开始，逐步连接专业伙伴、交付流程和经营数据。",
+    "pathIntro": "把文化资源转为可交付项目：先确认权利，再连接设计、制造与市场；用统一的运营与财务记录评估复制条件，并商定收益回投文化保护的方式。",
     "stages": [
       [
         "保护与数字化",
-        "确认来源、持有者、授权范围与利益分配，建立可追踪的数字档案。"
+        "核实来源、持有者、授权范围与利益分配，形成供设计和开发使用的数字档案。"
       ],
       [
         "设计与精益制造",
-        "连接设计师、工匠与制造商，推进材料选择、打样、质量和交付协同。"
+        "把获授权素材转为设计简报、样品和规格，确认材料、质量、成本与交付条件。"
       ],
       [
         "品牌与市场",
-        "围绕文化故事与客户需求，协同品牌定位、内容营销、渠道和售后反馈。"
+        "把样品和文化表达连接目标客户、品牌与渠道，以市场反馈检验需求。"
       ],
       [
-        "运营与财务",
-        "以共同的项目、订单与成本口径，跟踪责任、进度、收入和现金流。"
+        "运营与财务标准化",
+        "统一项目、订单和成本口径，记录交付、收入、现金流与责任，为评估提供依据。"
       ],
       [
-        "扩张与资本合作",
-        "在验证经营模式后，评估标准化复制、合作重组与融资准备。"
+        "规模化与资本评估",
+        "依据权利、合同、履约和单项目经济性，评估复制、产业协同重组与资金用途。"
       ],
       [
-        "循环与再投入",
-        "探索维修、再制造、再销售，以及对文化保护和工艺传承的持续投入。"
+        "循环与收益回投",
+        "评估维修、再制造与再销售；约定收益分配与保护投入，并记录实际回投。"
       ]
     ],
     "cards": [
@@ -64,8 +64,11 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "rolesTitle": "从你的角色进入合作",
     "roles": [
       "文化机构与权利持有者",
-      "区域品牌、设计师与市场运营方",
-      "工匠、制造商与产业伙伴"
+      "区域品牌与设计师",
+      "工匠与制造商",
+      "品牌营销与渠道运营方",
+      "区域产业与协调组织",
+      "资本与财务合作方"
     ],
     "rolesIntro": "带上你的资源、目标、合作范围与当前难点。我们从需求梳理和伙伴沟通开始。",
     "contact": "讨论合作项目",
@@ -83,7 +86,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "合作方式与交付范围按具体项目确认。",
     "formation": "咨询企业设立",
     "heritage": "咨询文化与产业合作",
-    "loop": "以循环发展为指导，让经营收益持续支持文化保护。",
+    "loop": "权利与来源 → 产品与市场 → 可核查经营记录 → 规模化评估 → 按约定回投保护与传承。每一步以项目证据和参与方确认为条件。",
     "technologyTitle": "AI 与物联网贯穿其中",
     "technology": [
       [
@@ -94,7 +97,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "物联网与数据连接",
         "按项目探索实物采集、环境与设备状态、生产追踪和产品溯源。"
       ]
-    ]
+    ],
+    "brief": "说明这一环节的需求"
   },
   "en": {
     "hero": [
@@ -105,31 +109,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "From cultural protection to industrial collaboration",
     "mission": "CIAOMIND explores how protecting cultural heritage, cultural resources and intellectual property can connect digitisation, lean production, brand development and business management, supporting preservation and new creative work. Connect regional culture, brands, supply chains and wider markets through AI and IoT.",
     "pathTitle": "A value chain to build step by step",
-    "pathIntro": "Start with a clearly authorised cultural resource and a defined project, then connect specialist partners, delivery processes and business records.",
+    "pathIntro": "Turn cultural resources into a defined project: confirm rights, connect design, production and markets, then use consistent operating and financial records to assess repeatability and agree how returns can support preservation.",
     "stages": [
       [
         "Protect & digitise",
-        "Establish provenance, custodians, permissions and benefit sharing. Build traceable digital records."
+        "Verify provenance, custodians, permissions and benefit sharing; prepare digital records for design and development."
       ],
       [
         "Design & lean production",
-        "Connect designers, artisans and manufacturers around materials, prototypes, quality and delivery."
+        "Turn authorised resources into a design brief, prototype and specifications; agree materials, quality, cost and delivery."
       ],
       [
         "Brands & markets",
-        "Connect cultural storytelling and customer needs with positioning, marketing, channels and service feedback."
+        "Connect the prototype and cultural story to customers, brands and channels, using market feedback to test demand."
       ],
       [
-        "Operations & finance",
-        "Track ownership, delivery, revenue and cash flow through shared project, order and cost definitions."
+        "Standardise operations & finance",
+        "Use shared project, order and cost definitions to record delivery, revenue, cash flow and accountability."
       ],
       [
-        "Growth & capital partnerships",
-        "After validating the operating model, assess repeatable processes, partnerships and financing readiness."
+        "Assess scale & capital",
+        "Use rights, contracts, fulfilment and project economics to assess repeatability, industry restructuring and funding needs."
       ],
       [
-        "Circulation & reinvestment",
-        "Explore repair, remanufacturing, resale and continued investment in cultural preservation and craft skills."
+        "Circulate & reinvest returns",
+        "Assess repair, remanufacturing and resale; agree benefit sharing and preservation funding, and record actual reinvestment."
       ]
     ],
     "cards": [
@@ -149,8 +153,11 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "rolesTitle": "Join from your area of expertise",
     "roles": [
       "Cultural institutions & rights holders",
-      "Regional brands, designers & market operators",
-      "Artisans, manufacturers & industry partners"
+      "Regional brands & designers",
+      "Artisans & manufacturers",
+      "Brand marketing & channel operators",
+      "Regional industry & coordination organisations",
+      "Capital & financial partners"
     ],
     "rolesIntro": "Share your resources, goals, proposed scope and current challenges. We begin with a needs review and partner conversations.",
     "contact": "Discuss a partnership",
@@ -168,7 +175,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "Partnership terms and deliverables are agreed for each project.",
     "formation": "Discuss company formation",
     "heritage": "Discuss culture & industry",
-    "loop": "Guided by circular development, reinvest business value in cultural preservation.",
+    "loop": "Rights and provenance → products and markets → verifiable business records → scale assessment → agreed reinvestment in preservation and skills. Each step depends on project evidence and partner agreement.",
     "technologyTitle": "AI and IoT across the value chain",
     "technology": [
       [
@@ -179,7 +186,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT & connected data",
         "Explore physical capture, environmental and equipment data, production tracking and product traceability by project."
       ]
-    ]
+    ],
+    "brief": "Describe this stage"
   },
   "it": {
     "hero": [
@@ -190,31 +198,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "Dalla tutela culturale alla collaborazione industriale",
     "mission": "CIAOMIND esplora come la tutela del patrimonio, delle risorse culturali e della proprietà intellettuale possa collegare digitalizzazione, produzione snella, marchi e gestione, sostenendo conservazione e nuova creatività. Collegare cultura territoriale, marchi, filiere e mercati più ampi con AI e IoT.",
     "pathTitle": "Una filiera da costruire passo dopo passo",
-    "pathIntro": "Partire da una risorsa culturale autorizzata e da un progetto definito, per collegare professionisti, processi e dati gestionali.",
+    "pathIntro": "Dalle risorse culturali a un progetto definito: verificare i diritti, collegare design, produzione e mercato, poi usare registri operativi e finanziari coerenti per valutarne la replicabilità e concordare il sostegno alla tutela.",
     "stages": [
       [
         "Tutela e digitalizzazione",
-        "Verificare provenienza, titolari, autorizzazioni e condivisione dei benefici. Creare archivi digitali tracciabili."
+        "Verificare provenienza, custodi, autorizzazioni e ripartizione dei benefici; preparare archivi digitali per design e sviluppo."
       ],
       [
         "Design e produzione snella",
-        "Collegare designer, artigiani e produttori su materiali, prototipi, qualità e consegne."
+        "Tradurre risorse autorizzate in brief, prototipi e specifiche; concordare materiali, qualità, costi e consegna."
       ],
       [
         "Marchi e mercati",
-        "Unire racconto culturale e bisogni dei clienti con posizionamento, marketing, canali e assistenza."
+        "Collegare prototipi e racconto culturale a clienti, marchi e canali, verificando la domanda con riscontri di mercato."
       ],
       [
-        "Gestione e finanza",
-        "Seguire responsabilità, avanzamento, ricavi e cassa con criteri comuni per progetti, ordini e costi."
+        "Standardizzare gestione e finanza",
+        "Usare criteri condivisi per progetti, ordini e costi, registrando consegne, ricavi, flussi di cassa e responsabilità."
       ],
       [
-        "Crescita e capitale",
-        "Dopo la validazione del modello, valutare processi replicabili, partnership e preparazione finanziaria."
+        "Valutare scala e capitale",
+        "Valutare replicabilità, riorganizzazione industriale e impiego dei fondi sulla base di diritti, contratti, consegne ed economia del progetto."
       ],
       [
         "Circolarità e reinvestimento",
-        "Esplorare riparazione, rigenerazione, rivendita e investimenti continuativi nella tutela e nei mestieri."
+        "Valutare riparazione, rigenerazione e rivendita; concordare benefici e fondi per la tutela e registrare i reinvestimenti effettivi."
       ]
     ],
     "cards": [
@@ -234,8 +242,11 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "rolesTitle": "Collaborare a partire dalle proprie competenze",
     "roles": [
       "Istituzioni culturali e titolari dei diritti",
-      "Marchi territoriali, designer e operatori commerciali",
-      "Artigiani, produttori e partner industriali"
+      "Marchi regionali e designer",
+      "Artigiani e produttori",
+      "Operatori di marketing e canali commerciali",
+      "Organizzazioni industriali territoriali e di coordinamento",
+      "Partner finanziari e di capitale"
     ],
     "rolesIntro": "Condividi risorse, obiettivi, ambito e difficoltà. Iniziamo dall’analisi delle esigenze e dal confronto con i partner.",
     "contact": "Parliamo di una collaborazione",
@@ -253,7 +264,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "Modalità di collaborazione e risultati sono concordati per ogni progetto.",
     "formation": "Consulenza per la costituzione",
     "heritage": "Parliamo di cultura e industria",
-    "loop": "La circolarità guida il reinvestimento del valore economico nella tutela culturale.",
+    "loop": "Diritti e provenienza → prodotti e mercati → dati gestionali verificabili → valutazione della scala → reinvestimento concordato in tutela e competenze. Ogni passaggio richiede evidenze e accordi tra i partner.",
     "technologyTitle": "AI e IoT lungo la filiera",
     "technology": [
       [
@@ -264,7 +275,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT e dati connessi",
         "Esplorare acquisizione fisica, dati ambientali e dei macchinari, avanzamento e tracciabilità per progetto."
       ]
-    ]
+    ],
+    "brief": "Descrivi questa fase"
   },
   "fr": {
     "hero": [
@@ -275,31 +287,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "De la protection culturelle à la coopération industrielle",
     "mission": "CIAOMIND explore les liens entre protection du patrimoine et de la propriété intellectuelle, numérisation, production allégée, marques et gestion, pour soutenir la conservation et la création. Relier cultures territoriales, marques, filières et marchés plus larges grâce à l’IA et à l’IoT.",
     "pathTitle": "Une chaîne de valeur à construire progressivement",
-    "pathIntro": "Partir d’une ressource culturelle autorisée et d’un projet défini, puis relier professionnels, livrables et données de gestion.",
+    "pathIntro": "Transformer une ressource culturelle en projet défini : vérifier les droits, relier création, production et marché, puis utiliser des données opérationnelles et financières cohérentes pour évaluer la réplication et convenir du soutien à la préservation.",
     "stages": [
       [
         "Protéger et numériser",
-        "Vérifier provenance, titulaires, autorisations et partage des bénéfices. Créer des archives traçables."
+        "Vérifier provenance, détenteurs, autorisations et partage des bénéfices ; préparer les archives numériques pour la création."
       ],
       [
-        "Design et production allégée",
-        "Relier designers, artisans et fabricants autour des matériaux, prototypes, qualité et livraisons."
+        "Design et production au plus juste",
+        "Traduire les ressources autorisées en brief, prototype et spécifications ; convenir des matériaux, de la qualité, des coûts et délais."
       ],
       [
         "Marques et marchés",
-        "Relier récit culturel et besoins clients au positionnement, au marketing, aux canaux et au service."
+        "Relier le prototype et le récit culturel aux clients, marques et canaux ; tester la demande par les retours du marché."
       ],
       [
-        "Gestion et finances",
-        "Suivre responsabilités, avancement, revenus et trésorerie selon des critères communs."
+        "Standardiser gestion et finances",
+        "Adopter des définitions communes des projets, commandes et coûts pour suivre livraisons, recettes, trésorerie et responsabilités."
       ],
       [
-        "Croissance et capital",
-        "Après validation du modèle, évaluer réplication, partenariats et préparation au financement."
+        "Évaluer échelle et capitaux",
+        "Évaluer réplication, réorganisation industrielle et emploi des fonds à partir des droits, contrats, livraisons et résultats du projet."
       ],
       [
         "Circularité et réinvestissement",
-        "Explorer réparation, reconditionnement, revente et soutien continu à la conservation et aux métiers."
+        "Évaluer réparation, reconditionnement et revente ; convenir du partage des bénéfices et consigner les réinvestissements dans la préservation."
       ]
     ],
     "cards": [
@@ -318,9 +330,12 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     ],
     "rolesTitle": "Collaborer selon votre expertise",
     "roles": [
-      "Institutions culturelles et titulaires de droits",
-      "Marques territoriales, designers et acteurs du marché",
-      "Artisans, fabricants et partenaires industriels"
+      "Institutions culturelles et ayants droit",
+      "Marques régionales et designers",
+      "Artisans et fabricants",
+      "Responsables marketing et canaux de vente",
+      "Organisations industrielles régionales et de coordination",
+      "Partenaires financiers et investisseurs"
     ],
     "rolesIntro": "Présentez vos ressources, objectifs, périmètre et difficultés pour engager le dialogue.",
     "contact": "Discuter d’un partenariat",
@@ -338,7 +353,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "Les modalités et livrables sont convenus pour chaque projet.",
     "formation": "Parler de création d’entreprise",
     "heritage": "Parler de culture et d’industrie",
-    "loop": "Réinvestir la valeur économique dans la protection culturelle selon une démarche circulaire.",
+    "loop": "Droits et provenance → produits et marchés → données vérifiables → évaluation de la réplication → réinvestissement convenu dans la préservation et les savoir-faire. Chaque étape dépend des preuves et des accords du projet.",
     "technologyTitle": "L’IA et l’IoT tout au long de la chaîne",
     "technology": [
       [
@@ -349,7 +364,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT et données connectées",
         "Explorer acquisition physique, données environnementales et machines, suivi de production et traçabilité par projet."
       ]
-    ]
+    ],
+    "brief": "Décrire cette étape"
   },
   "de": {
     "hero": [
@@ -360,31 +376,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "Vom Kulturschutz zur industriellen Zusammenarbeit",
     "mission": "CIAOMIND untersucht die Verbindung von Kulturerbe und geistigem Eigentum mit Digitalisierung, schlanker Produktion, Markenentwicklung und Unternehmensführung, um Erhalt und neue Gestaltung zu unterstützen. Regionale Kultur, Marken, Lieferketten und größere Märkte durch KI und IoT verbinden.",
     "pathTitle": "Eine Wertschöpfungskette Schritt für Schritt",
-    "pathIntro": "Mit einer genehmigten Kulturressource und einem definierten Projekt beginnen und Fachpartner, Abläufe und Geschäftsdaten verbinden.",
+    "pathIntro": "Kulturelle Ressourcen in ein konkretes Projekt überführen: Rechte klären, Gestaltung, Produktion und Märkte verbinden und mit einheitlichen Betriebs- und Finanzdaten die Wiederholbarkeit sowie Beiträge zum Kulturerhalt bewerten.",
     "stages": [
       [
         "Schützen und digitalisieren",
-        "Herkunft, Rechteinhaber, Genehmigungen und Nutzenverteilung klären. Nachvollziehbare digitale Archive aufbauen."
+        "Herkunft, Verantwortliche, Nutzungsrechte und Nutzenverteilung prüfen; digitale Unterlagen für Gestaltung und Entwicklung erstellen."
       ],
       [
         "Design und schlanke Produktion",
-        "Designer, Handwerker und Hersteller bei Materialien, Prototypen, Qualität und Lieferung verbinden."
+        "Autorisierte Ressourcen in Briefing, Muster und Spezifikationen übersetzen; Material, Qualität, Kosten und Lieferung vereinbaren."
       ],
       [
         "Marken und Märkte",
-        "Kulturelle Geschichten und Kundenbedarf mit Positionierung, Marketing, Vertrieb und Service verbinden."
+        "Muster und kulturelle Geschichte mit Kunden, Marken und Vertrieb verbinden und die Nachfrage anhand von Marktfeedback prüfen."
       ],
       [
-        "Betrieb und Finanzen",
-        "Verantwortung, Fortschritt, Einnahmen und Liquidität mit gemeinsamen Projekt- und Kostenbegriffen verfolgen."
+        "Betrieb und Finanzen standardisieren",
+        "Einheitliche Projekt-, Auftrags- und Kostenbegriffe nutzen, um Lieferung, Erlöse, Cashflow und Verantwortung zu dokumentieren."
       ],
       [
-        "Wachstum und Kapital",
-        "Nach der Modellprüfung wiederholbare Abläufe, Partnerschaften und Finanzierungsreife bewerten."
+        "Skalierung und Kapital bewerten",
+        "Anhand von Rechten, Verträgen, Liefernachweisen und Projektwirtschaftlichkeit Wiederholbarkeit, industrielle Neuordnung und Finanzbedarf prüfen."
       ],
       [
-        "Kreislauf und Reinvestition",
-        "Reparatur, Aufarbeitung, Wiederverkauf und laufende Investitionen in Kulturerhalt und Handwerk untersuchen."
+        "Kreisläufe und Reinvestition",
+        "Reparatur, Aufarbeitung und Wiederverkauf prüfen; Nutzenverteilung und Mittel für Kulturerhalt vereinbaren und tatsächliche Reinvestitionen dokumentieren."
       ]
     ],
     "cards": [
@@ -403,9 +419,12 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     ],
     "rolesTitle": "Mit Ihrer Expertise zusammenarbeiten",
     "roles": [
-      "Kultureinrichtungen und Rechteinhaber",
-      "Regionale Marken, Designer und Marktakteure",
-      "Handwerker, Hersteller und Industriepartner"
+      "Kulturinstitutionen und Rechteinhaber",
+      "Regionale Marken und Designer",
+      "Handwerksbetriebe und Hersteller",
+      "Markenmarketing und Vertriebspartner",
+      "Regionale Industrie- und Koordinationsorganisationen",
+      "Kapital- und Finanzpartner"
     ],
     "rolesIntro": "Beschreiben Sie Ressourcen, Ziele, Umfang und Herausforderungen als Ausgangspunkt für das Gespräch.",
     "contact": "Zusammenarbeit besprechen",
@@ -423,7 +442,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "Zusammenarbeit und Ergebnisse werden je Projekt vereinbart.",
     "formation": "Gründung besprechen",
     "heritage": "Kultur und Industrie besprechen",
-    "loop": "Wirtschaftlichen Wert im Sinne der Kreislaufwirtschaft in den Kulturerhalt reinvestieren.",
+    "loop": "Rechte und Herkunft → Produkte und Märkte → prüfbare Betriebsdaten → Skalierungsbewertung → vereinbarte Reinvestition in Kulturerhalt und Handwerk. Jeder Schritt benötigt Projektnachweise und Zustimmung der Beteiligten.",
     "technologyTitle": "KI und IoT entlang der Wertschöpfung",
     "technology": [
       [
@@ -434,7 +453,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT und vernetzte Daten",
         "Erfassung, Umwelt- und Maschinendaten, Produktionsverfolgung und Rückverfolgbarkeit je Projekt untersuchen."
       ]
-    ]
+    ],
+    "brief": "Bedarf für diese Phase beschreiben"
   },
   "es": {
     "hero": [
@@ -445,31 +465,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "De la protección cultural a la colaboración industrial",
     "mission": "CIAOMIND explora cómo conectar patrimonio y propiedad intelectual con digitalización, producción ajustada, marcas y gestión para apoyar la conservación y la creación. Conectar cultura regional, marcas, cadenas de suministro y mercados más amplios con IA e IoT.",
     "pathTitle": "Una cadena de valor paso a paso",
-    "pathIntro": "Empezar con un recurso cultural autorizado y un proyecto definido, conectando profesionales, entregables y datos de gestión.",
+    "pathIntro": "Convertir recursos culturales en un proyecto definido: verificar derechos, conectar diseño, producción y mercados, y utilizar registros operativos y financieros coherentes para evaluar la réplica y acordar aportaciones a la conservación.",
     "stages": [
       [
         "Proteger y digitalizar",
-        "Aclarar procedencia, titulares, permisos y reparto de beneficios. Crear archivos digitales trazables."
+        "Verificar origen, custodios, permisos y reparto de beneficios; preparar registros digitales para diseño y desarrollo."
       ],
       [
         "Diseño y producción ajustada",
-        "Conectar diseñadores, artesanos y fabricantes en materiales, prototipos, calidad y entregas."
+        "Traducir recursos autorizados en un brief, prototipo y especificaciones; acordar materiales, calidad, costes y entrega."
       ],
       [
         "Marcas y mercados",
-        "Conectar relato cultural y necesidades del cliente con posicionamiento, marketing, canales y servicio."
+        "Conectar prototipos y relato cultural con clientes, marcas y canales; contrastar la demanda con respuestas del mercado."
       ],
       [
-        "Operaciones y finanzas",
-        "Seguir responsabilidades, avances, ingresos y caja con criterios comunes de proyectos y costes."
+        "Estandarizar gestión y finanzas",
+        "Usar criterios comunes de proyectos, pedidos y costes para registrar entregas, ingresos, flujo de caja y responsabilidades."
       ],
       [
-        "Crecimiento y capital",
-        "Tras validar el modelo, evaluar procesos replicables, alianzas y preparación financiera."
+        "Evaluar escala y capital",
+        "Evaluar réplica, reorganización industrial y destino de fondos mediante derechos, contratos, entregas y economía del proyecto."
       ],
       [
         "Circularidad y reinversión",
-        "Explorar reparación, remanufactura, reventa e inversión continua en conservación y oficios."
+        "Evaluar reparación, remanufactura y reventa; acordar beneficios y aportaciones a la conservación y registrar la reinversión real."
       ]
     ],
     "cards": [
@@ -489,8 +509,11 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "rolesTitle": "Colaborar desde tu especialidad",
     "roles": [
       "Instituciones culturales y titulares de derechos",
-      "Marcas regionales, diseñadores y operadores del mercado",
-      "Artesanos, fabricantes y socios industriales"
+      "Marcas regionales y diseñadores",
+      "Artesanos y fabricantes",
+      "Operadores de marketing y canales de venta",
+      "Organizaciones industriales regionales y de coordinación",
+      "Socios financieros y de capital"
     ],
     "rolesIntro": "Comparte recursos, objetivos, alcance y dificultades para iniciar la conversación.",
     "contact": "Hablar de una colaboración",
@@ -508,7 +531,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "El alcance y los entregables se acuerdan para cada proyecto.",
     "formation": "Consultar sobre creación de empresas",
     "heritage": "Hablar de cultura e industria",
-    "loop": "Reinvertir valor económico en protección cultural con una visión circular.",
+    "loop": "Derechos y origen → productos y mercados → registros verificables → evaluación de escala → reinversión acordada en conservación y oficios. Cada paso depende de pruebas del proyecto y acuerdos entre socios.",
     "technologyTitle": "IA e IoT en toda la cadena",
     "technology": [
       [
@@ -519,7 +542,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT y datos conectados",
         "Explorar captura física, datos ambientales y de equipos, seguimiento de producción y trazabilidad por proyecto."
       ]
-    ]
+    ],
+    "brief": "Describir esta etapa"
   },
   "pt": {
     "hero": [
@@ -530,31 +554,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "Da proteção cultural à colaboração industrial",
     "mission": "A CIAOMIND explora a ligação entre património e propriedade intelectual, digitalização, produção enxuta, marcas e gestão, apoiando a conservação e a criação. Ligar cultura regional, marcas, cadeias de abastecimento e mercados mais amplos com IA e IoT.",
     "pathTitle": "Uma cadeia de valor passo a passo",
-    "pathIntro": "Começar com um recurso cultural autorizado e um projeto definido, ligando especialistas, entregas e dados de gestão.",
+    "pathIntro": "Transformar recursos culturais num projeto definido: verificar direitos, ligar design, produção e mercados e usar registos operacionais e financeiros coerentes para avaliar a replicação e acordar o apoio à preservação.",
     "stages": [
       [
         "Proteger e digitalizar",
-        "Clarificar proveniência, titulares, permissões e partilha de benefícios. Criar arquivos digitais rastreáveis."
+        "Verificar origem, responsáveis, permissões e partilha de benefícios; preparar registos digitais para design e desenvolvimento."
       ],
       [
         "Design e produção enxuta",
-        "Ligar designers, artesãos e fabricantes em materiais, protótipos, qualidade e entregas."
+        "Traduzir recursos autorizados num briefing, protótipo e especificações; acordar materiais, qualidade, custos e entrega."
       ],
       [
         "Marcas e mercados",
-        "Ligar narrativas culturais e necessidades dos clientes ao posicionamento, marketing, canais e serviço."
+        "Ligar o protótipo e a narrativa cultural a clientes, marcas e canais, testando a procura com respostas do mercado."
       ],
       [
-        "Operações e finanças",
-        "Acompanhar responsabilidades, progresso, receitas e caixa com critérios comuns de projetos e custos."
+        "Padronizar gestão e finanças",
+        "Usar critérios comuns de projetos, encomendas e custos para registar entregas, receitas, fluxo de caixa e responsabilidades."
       ],
       [
-        "Crescimento e capital",
-        "Após validar o modelo, avaliar processos replicáveis, parcerias e preparação financeira."
+        "Avaliar escala e capital",
+        "Avaliar replicação, reorganização industrial e uso dos fundos com base em direitos, contratos, entregas e economia do projeto."
       ],
       [
         "Circularidade e reinvestimento",
-        "Explorar reparação, remanufatura, revenda e investimento contínuo na conservação e nos ofícios."
+        "Avaliar reparação, remanufatura e revenda; acordar benefícios e apoio à preservação e registar o reinvestimento efetivo."
       ]
     ],
     "cards": [
@@ -574,8 +598,11 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "rolesTitle": "Colaborar a partir da sua especialidade",
     "roles": [
       "Instituições culturais e titulares de direitos",
-      "Marcas regionais, designers e operadores de mercado",
-      "Artesãos, fabricantes e parceiros industriais"
+      "Marcas regionais e designers",
+      "Artesãos e fabricantes",
+      "Operadores de marketing e canais comerciais",
+      "Organizações industriais regionais e de coordenação",
+      "Parceiros financeiros e de capital"
     ],
     "rolesIntro": "Partilhe recursos, objetivos, âmbito e dificuldades para iniciar a conversa.",
     "contact": "Conversar sobre uma parceria",
@@ -593,7 +620,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "O âmbito e as entregas são acordados para cada projeto.",
     "formation": "Consultar sobre criação de empresas",
     "heritage": "Conversar sobre cultura e indústria",
-    "loop": "Reinvestir valor económico na proteção cultural com uma visão circular.",
+    "loop": "Direitos e origem → produtos e mercados → registos verificáveis → avaliação de escala → reinvestimento acordado na preservação e nos ofícios. Cada etapa depende de provas do projeto e acordos entre parceiros.",
     "technologyTitle": "IA e IoT em toda a cadeia",
     "technology": [
       [
@@ -604,7 +631,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT e dados ligados",
         "Explorar captura física, dados ambientais e de equipamentos, acompanhamento e rastreabilidade por projeto."
       ]
-    ]
+    ],
+    "brief": "Descrever esta etapa"
   },
   "ja": {
     "hero": [
@@ -615,31 +643,31 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "title": "文化保護から産業連携へ",
     "mission": "CIAOMIND は文化遺産、文化資源、知的財産の保護を起点に、デジタル化、リーン生産、ブランド開発、経営管理の連携を探り、保全と新たな創造を支えます。 AI と IoT で地域の文化、ブランド、供給網をより広い市場につなぎます。",
     "pathTitle": "一歩ずつ築く価値の連鎖",
-    "pathIntro": "利用許諾が明確な文化資源と具体的なプロジェクトから、専門家、納品プロセス、経営データをつなぎます。",
+    "pathIntro": "文化資源を具体的なプロジェクトへ。権利を確認し、デザイン・製造・市場を結び、共通の業務・財務記録から再現性を評価し、保護への利益還元を合意します。",
     "stages": [
       [
         "保護とデジタル化",
-        "来歴、権利者、利用許諾、利益の配分を確認し、追跡可能なデジタル記録を整えます。"
+        "出所、保有者、許諾範囲、利益配分を確認し、デザインと開発に使うデジタル記録を整えます。"
       ],
       [
         "デザインとリーン生産",
-        "素材、試作、品質、納期を軸にデザイナー、職人、製造者をつなぎます。"
+        "許諾済み素材から企画書、試作品、仕様を作り、材料、品質、費用、納期を合意します。"
       ],
       [
         "ブランドと市場",
-        "文化の物語と顧客ニーズを、ブランド戦略、販促、販路、サービスの改善へつなげます。"
+        "試作品と文化の物語を顧客・ブランド・販路につなぎ、市場の反応から需要を検証します。"
       ],
       [
-        "運営と財務",
-        "共通のプロジェクト、受注、費用の基準で責任、進捗、収益、資金繰りを把握します。"
+        "業務と財務の標準化",
+        "案件・注文・原価の共通定義に沿って、納品、売上、資金の流れ、責任を記録します。"
       ],
       [
-        "成長と資本連携",
-        "事業モデルの検証後、再現可能な仕組み、協業、資金調達の準備を検討します。"
+        "規模化と資金連携の評価",
+        "権利、契約、履行記録、案件の採算を基に、再現性、産業連携の再編、資金用途を評価します。"
       ],
       [
-        "循環と再投資",
-        "修理、再製造、再販を検討し、文化保護と技能継承への継続的な投資を目指します。"
+        "循環と利益の再投資",
+        "修理、再製造、再販売を検討し、利益配分と保護への還元を合意して、実際の再投資を記録します。"
       ]
     ],
     "cards": [
@@ -658,9 +686,12 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     ],
     "rolesTitle": "専門性を活かして参加する",
     "roles": [
-      "文化機関と権利者",
-      "地域ブランド、デザイナー、市場運営者",
-      "職人、製造者、産業パートナー"
+      "文化機関・権利保有者",
+      "地域ブランド・デザイナー",
+      "職人・製造事業者",
+      "ブランドマーケティング・販路運営者",
+      "地域産業・連携調整組織",
+      "資金・財務パートナー"
     ],
     "rolesIntro": "資源、目標、協力範囲、課題を共有し、要件整理と対話から始めます。",
     "contact": "連携プロジェクトを相談",
@@ -678,7 +709,7 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
     "status": "協力方法と成果物の範囲はプロジェクトごとに合意します。",
     "formation": "会社設立を相談",
     "heritage": "文化と産業の連携を相談",
-    "loop": "循環的な発展を指針に、事業の価値を文化保護へ再投資します。",
+    "loop": "権利と出所 → 製品と市場 → 検証可能な業務記録 → 規模化の評価 → 合意に基づく保護と技術継承への再投資。各段階は案件の証拠と関係者の確認を前提とします。",
     "technologyTitle": "価値の連鎖を支える AI と IoT",
     "technology": [
       [
@@ -689,7 +720,8 @@ export const ecosystemCopy: Record<Locale, EcosystemText> = {
         "IoT とデータ連携",
         "実物の記録、環境と設備のデータ、生産の進捗、製品のトレーサビリティをプロジェクトごとに検討します。"
       ]
-    ]
+    ],
+    "brief": "この段階の課題を伝える"
   }
 };
 
