@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { EcosystemText } from '@/data/heritage-value';
 import { ecosystemVideos } from '@/data/industry-videos';
+import { stageIds } from '@/data/project-brief';
 import type { Locale } from '@/lib/i18n';
 import styles from './IndustryVideos.module.css';
 
@@ -49,7 +50,7 @@ export default function IndustryVideos({ lang, copy, sourceLabel, initialStage =
             <div className={styles.links}>
               <a href={`https://www.youtube.com/watch?v=${video.id}`}>{copy.watch} ↗</a>
               <a href={video.source}>{sourceLabel} ↗</a>
-              <Link href={`/${lang}/contact/?topic=${video.stage === 4 ? 'capital' : video.stage === 0 ? 'heritage' : 'industry'}`}>{copy.contact} →</Link>
+              <Link href={`/${lang}/contact/?topic=${video.stage === 4 ? 'capital' : video.stage === 0 || video.stage === 5 ? 'heritage' : 'industry'}&stage=${stageIds[video.stage]}#brief`}>{copy.brief} →</Link>
             </div>
           </article>
         ))}
