@@ -1,0 +1,38 @@
+{
+  "task_id": "CIAOMIND-WEBSITE-DIRECTION-20261119",
+  "input_version": "2026-11-19-v1",
+  "source_issue": "https://github.com/utopia013-droid/ciaomind-website/issues/6",
+  "direction_document": "docs/PRODUCT_DIRECTION.md",
+  "language": "zh",
+  "goal": "以文化与IP保护、AI和物联网数字化、精益制造、品牌市场、运营财务、资本合作及循环发展为指针，优化用户理解、操作、协同和产业要素重组，连接区域资源与更广阔市场。",
+  "product_criteria": [
+    "用户理解",
+    "操作便利",
+    "协同清晰",
+    "产业要素连接"
+  ],
+  "public_site": "https://www.ciaomind.com",
+  "website_release_commit": "bc2edd0",
+  "confirmed_public_capabilities": [
+    "八种语言",
+    "六阶段价值链",
+    "AI与物联网项目说明",
+    "12条外部案例",
+    "环节筛选",
+    "预填主题邮件咨询"
+  ],
+  "next_work": [
+    "角色与目标到下一步的用户路径",
+    "责任权限及交付确认的协作流程",
+    "区域资源与伙伴能力核验",
+    "项目中的技术与经济性验证"
+  ],
+  "muse_required_output": [
+    "返回自己的MUSE-ACK并包含任务ID、输入版本、输入SHA-256和时间",
+    "回读并概述产品指针",
+    "给出最多三个按优先级排列的具体任务，含责任角色、交付物和验收",
+    "注明实际证据、阻塞和下一步"
+  ],
+  "handoff_state": "prepared_pending_dispatch",
+  "review_basis": "actual_receipts_and_deliverables"
+}
