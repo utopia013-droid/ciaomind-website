@@ -1,3 +1,5 @@
+import { brandCopy } from '@/data/brand';
+import type { Locale } from '@/lib/i18n';
 import Link from 'next/link';
 import BrandLogo from './BrandLogo';
 import { useLocale, useTranslations } from 'next-intl';
@@ -19,6 +21,7 @@ export default function Footer() {
         {paths.map(path => <Link key={path} href={`/${locale}/${path}/`}>{t(`common.${path}`)}</Link>)}
         <Link href={`/${['zh','it','en'].includes(locale)?locale:'en'}/business-os/request/`}>{t('common.business_requests')}</Link>
         <Link href={`/${['zh','it','en'].includes(locale)?locale:'en'}/business-os/`}>Business OS</Link>
+        <Link href={`/${locale}/brand/`}>{(brandCopy[locale as Locale] ?? brandCopy.en).title}</Link>
         <Link href={`/${locale}/privacy/`}>{t('legal.privacyTitle')}</Link><Link href={`/${locale}/terms/`}>{t('legal.termsTitle')}</Link>
       </nav>
     </div><div className="container-modern border-t border-white/20 py-6 text-sm text-white/75">© {company.year} {company.name}. {t('footer.rights')}</div>
