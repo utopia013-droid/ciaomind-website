@@ -16,14 +16,13 @@ export const serviceVideos = {
 export type VideoTopic = keyof typeof serviceVideos;
 type FeatureText = { category: string; name: string; summary: string; format: string; cta: string };
 export type VideoText = {
-  title: string; intro: string; formation: FeatureText; heritage: FeatureText;
-  play: string; featured: string; series: string; watch: string; source: string; consent: string;
+  title: string; formation: FeatureText; heritage: FeatureText;
+  series: string; watch: string; source: string;
 };
 
 export const videoText: Record<Locale, VideoText> = {
   zh: {
     title: "视频指南",
-    intro: "从荷兰企业登记到世界遗产数字化，观看官方示范，联系团队讨论下一步。",
     formation: {
       category: "欧洲企业设立",
       name: "荷兰公司如何在商会登记",
@@ -38,16 +37,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "平台演示",
       cta: "洽谈遗产项目合作",
     },
-    play: "播放视频",
-    featured: "精选短片",
     series: "系列课程",
     watch: "在 YouTube 观看",
     source: "官方项目说明",
-    consent: "点击播放或选择系列课程时，将连接 YouTube。",
   },
   it: {
     title: "Videoguide",
-    intro: "Guarda come si registra un’impresa nei Paesi Bassi e come si esplora il patrimonio mondiale in digitale.",
     formation: {
       category: "Costituire un’impresa in Europa",
       name: "Registrare un’impresa alla KVK",
@@ -62,16 +57,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Demo della piattaforma",
       cta: "Proponi una collaborazione",
     },
-    play: "Riproduci il video",
-    featured: "Video scelto",
     series: "Playlist",
     watch: "Guarda su YouTube",
     source: "Fonte ufficiale",
-    consent: "La riproduzione del video o della playlist avvia una connessione a YouTube.",
   },
   en: {
     title: "Video guides",
-    intro: "See how Dutch business registration works and how UNESCO presents World Heritage digitally.",
     formation: {
       category: "Starting a business in Europe",
       name: "How to register a business with KVK",
@@ -86,16 +77,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Platform demo",
       cta: "Discuss a heritage partnership",
     },
-    play: "Play video",
-    featured: "Featured video",
     series: "Learning series",
     watch: "Watch on YouTube",
     source: "Official source",
-    consent: "Playing a video or selecting a series connects to YouTube.",
   },
   fr: {
     title: "Guides vidéo",
-    intro: "Découvrez l’immatriculation aux Pays-Bas et la mise en valeur numérique du patrimoine mondial.",
     formation: {
       category: "Créer une entreprise en Europe",
       name: "Immatriculer une entreprise auprès de la KVK",
@@ -110,16 +97,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Démonstration",
       cta: "Proposer un partenariat",
     },
-    play: "Lire la vidéo",
-    featured: "Vidéo à la une",
     series: "Série de vidéos",
     watch: "Voir sur YouTube",
     source: "Source officielle",
-    consent: "La lecture d’une vidéo ou la sélection d’une série établit une connexion à YouTube.",
   },
   de: {
     title: "Videoanleitungen",
-    intro: "Erfahren Sie, wie die Anmeldung in den Niederlanden abläuft und wie die UNESCO Welterbe digital vermittelt.",
     formation: {
       category: "Unternehmensgründung in Europa",
       name: "Ein Unternehmen bei der KVK anmelden",
@@ -134,16 +117,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Plattformdemo",
       cta: "Kooperation besprechen",
     },
-    play: "Video abspielen",
-    featured: "Videotipp",
     series: "Videoreihe",
     watch: "Auf YouTube ansehen",
     source: "Offizielle Quelle",
-    consent: "Beim Abspielen eines Videos oder bei der Auswahl einer Reihe wird eine Verbindung zu YouTube hergestellt.",
   },
   es: {
     title: "Guías en vídeo",
-    intro: "Descubre cómo se registra una empresa en los Países Bajos y cómo la UNESCO presenta el patrimonio mundial en formato digital.",
     formation: {
       category: "Crear una empresa en Europa",
       name: "Registrar una empresa en la KVK",
@@ -158,16 +137,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Demostración",
       cta: "Proponer una colaboración",
     },
-    play: "Reproducir el vídeo",
-    featured: "Vídeo destacado",
     series: "Serie de vídeos",
     watch: "Ver en YouTube",
     source: "Fuente oficial",
-    consent: "Al reproducir un vídeo o seleccionar una serie, se establece una conexión con YouTube.",
   },
   pt: {
     title: "Guias em vídeo",
-    intro: "Descubra como registar uma empresa nos Países Baixos e como a UNESCO apresenta o património mundial em formato digital.",
     formation: {
       category: "Criar uma empresa na Europa",
       name: "Registar uma empresa na KVK",
@@ -182,16 +157,12 @@ export const videoText: Record<Locale, VideoText> = {
       format: "Demonstração da plataforma",
       cta: "Propor uma parceria",
     },
-    play: "Reproduzir o vídeo",
-    featured: "Vídeo em destaque",
     series: "Série de vídeos",
     watch: "Ver no YouTube",
     source: "Fonte oficial",
-    consent: "A reprodução de um vídeo ou a seleção de uma série estabelece uma ligação ao YouTube.",
   },
   ja: {
     title: "動画ガイド",
-    intro: "オランダでの事業登録と、ユネスコが世界遺産をデジタルで紹介する取り組みを動画でご覧ください。",
     formation: {
       category: "欧州での会社設立",
       name: "オランダ商業会議所（KVK）での事業登録",
@@ -206,11 +177,8 @@ export const videoText: Record<Locale, VideoText> = {
       format: "プラットフォームのデモ",
       cta: "遺産プロジェクトの連携を相談",
     },
-    play: "動画を再生",
-    featured: "おすすめ動画",
     series: "動画シリーズ",
     watch: "YouTube で見る",
     source: "公式資料",
-    consent: "動画を再生するかシリーズを選ぶと、YouTube に接続します。",
   },
 };

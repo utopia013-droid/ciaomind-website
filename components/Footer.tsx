@@ -16,7 +16,7 @@ export default function Footer() {
       </div>
       <nav aria-label={t('footer.quick_links')} className="flex flex-wrap content-start gap-x-8 gap-y-4">
         {paths.map(path => <Link key={path} href={`/${locale}/${path}/`}>{t(`common.${path}`)}</Link>)}
-        <Link href={`/${['zh','it','en'].includes(locale)?locale:'en'}/business-os/request/`}>{locale==='zh'?'企业与合作方需求':locale==='it'?'Richieste imprese e partner':'Business and partner requests'}</Link>
+        <Link href={`/${['zh','it','en'].includes(locale)?locale:'en'}/business-os/request/`}>{t('common.business_requests')}</Link>
         <Link href={`/${['zh','it','en'].includes(locale)?locale:'en'}/business-os/`}>Business OS</Link>
         <Link href={`/${locale}/privacy/`}>{t('legal.privacyTitle')}</Link><Link href={`/${locale}/terms/`}>{t('legal.termsTitle')}</Link>
       </nav>

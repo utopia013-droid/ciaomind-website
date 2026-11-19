@@ -6,7 +6,11 @@
     "team": "Team",
     "contact": "Kontakt",
     "news": "Aktuelles",
-    "language": "Sprache"
+    "language": "Sprache",
+    "main_navigation": "Hauptnavigation",
+    "toggle_menu": "Navigationsmenü öffnen oder schließen",
+    "skip_to_content": "Zum Inhalt springen",
+    "business_requests": "Anfragen von Unternehmen und Partnern"
   },
   "hero": {
     "title": "Reale Organisationen. Vertrauenswürdige KI verbindet.",
@@ -134,33 +138,33 @@
     }
   },
   "contact": {
-    "title": "Contattaci",
-    "message": "Lasciaci un Messaggio",
-    "your_name": "Il Tuo Nome",
-    "your_email": "La Tua Email",
-    "your_message": "Il Tuo Messaggio",
-    "send": "Apri la posta",
-    "address": "Indirizzo di contatto",
-    "email": "Email",
-    "phone": "Telefono",
-    "working_hours": "Orari di Lavoro",
-    "weekdays": "Lunedì - Venerdì",
-    "weekend": "Sabato - Domenica",
-    "closed": "Chiuso",
-    "our_location": "La Nostra Posizione",
+    "title": "Kontakt",
+    "message": "Schreiben Sie uns",
+    "your_name": "Ihr Name",
+    "your_email": "Ihre E-Mail-Adresse",
+    "your_message": "Ihre Nachricht",
+    "send": "E-Mail-Programm öffnen",
+    "address": "Kontaktadresse",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "working_hours": "Öffnungszeiten",
+    "weekdays": "Montag bis Freitag",
+    "weekend": "Samstag und Sonntag",
+    "closed": "Geschlossen",
+    "our_location": "Unser Standort",
     "hero_description": "Wir freuen uns auf den Austausch mit Kulturinstitutionen, Forschung und KMU.",
-    "contact_info": "Recapiti",
-    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
-    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
-    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
-    "privacy_link": "Informazioni sulla privacy"
+    "contact_info": "Kontaktdaten",
+    "contact_description": "Senden Sie uns eine E-Mail oder bereiten Sie Ihre Anfrage mit dem Formular vor.",
+    "email_notice": "Das Formular öffnet einen Entwurf in Ihrem E-Mail-Programm. Prüfen und senden Sie ihn dort.",
+    "email_opened": "Versenden Sie den Entwurf in Ihrem E-Mail-Programm. Falls es sich nicht geöffnet hat, nutzen Sie die Adresse unten.",
+    "privacy_link": "Kontakt und Datenschutz"
   },
   "footer": {
     "description": "Wir verbinden Rechteinhaber, Designer, Hersteller und Käufer in nachvollziehbaren Abläufen. KI unterstützt Recherche und Koordination; Menschen genehmigen Rechte und Verpflichtungen.",
-    "quick_links": "Link Rapidi",
-    "contact_us": "Contattaci",
-    "follow_us": "Seguici",
-    "rights": "Tutti i diritti riservati"
+    "quick_links": "Direktlinks",
+    "contact_us": "Kontakt",
+    "follow_us": "Folgen Sie uns",
+    "rights": "Alle Rechte vorbehalten"
   },
   "news": {
     "title": "Centro Notizie",
@@ -173,8 +177,8 @@
     "article_section": "Notizie e Eventi"
   },
   "legal": {
-    "privacyTitle": "Privacy e contatti",
-    "termsTitle": "Informazioni sul sito",
+    "privacyTitle": "Datenschutz und Kontakt",
+    "termsTitle": "Nutzungsbedingungen",
     "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
     "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }

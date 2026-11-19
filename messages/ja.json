@@ -6,7 +6,11 @@
     "team": "チーム",
     "contact": "お問い合わせ",
     "news": "ニュース",
-    "language": "言語"
+    "language": "言語",
+    "main_navigation": "メインナビゲーション",
+    "toggle_menu": "メニューの開閉",
+    "skip_to_content": "本文へ移動",
+    "business_requests": "企業・パートナーのお問い合わせ"
   },
   "hero": {
     "title": "現実の組織をつなぐ。 信頼できるAIとの協働。",
@@ -134,33 +138,33 @@
     }
   },
   "contact": {
-    "title": "Contattaci",
-    "message": "Lasciaci un Messaggio",
-    "your_name": "Il Tuo Nome",
-    "your_email": "La Tua Email",
-    "your_message": "Il Tuo Messaggio",
-    "send": "Apri la posta",
-    "address": "Indirizzo di contatto",
-    "email": "Email",
-    "phone": "Telefono",
-    "working_hours": "Orari di Lavoro",
-    "weekdays": "Lunedì - Venerdì",
-    "weekend": "Sabato - Domenica",
-    "closed": "Chiuso",
-    "our_location": "La Nostra Posizione",
+    "title": "お問い合わせ",
+    "message": "メッセージの作成",
+    "your_name": "お名前",
+    "your_email": "メールアドレス",
+    "your_message": "お問い合わせ内容",
+    "send": "メールアプリを開く",
+    "address": "お問い合わせ先住所",
+    "email": "メール",
+    "phone": "電話",
+    "working_hours": "受付時間",
+    "weekdays": "月曜日から金曜日",
+    "weekend": "土曜日・日曜日",
+    "closed": "休業",
+    "our_location": "所在地",
     "hero_description": "文化機関、研究者、中小企業、データ連携パートナーからのご相談を歓迎します。",
-    "contact_info": "Recapiti",
-    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
-    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
-    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
-    "privacy_link": "Informazioni sulla privacy"
+    "contact_info": "連絡先",
+    "contact_description": "チームへのご連絡には、メールまたは下記の作成フォームをご利用ください。",
+    "email_notice": "フォームを入力するとメールアプリで下書きが開きます。内容を確認し、メールアプリから送信してください。",
+    "email_opened": "メールアプリで下書きを確認して送信してください。アプリが開かない場合は下記のアドレスに直接ご連絡ください。",
+    "privacy_link": "お問い合わせとプライバシー"
   },
   "footer": {
     "description": "権利者、デザイナー、製造者、買い手を追跡可能な業務プロセスでつなぎます。AIは調査と調整を支援し、権利許諾や契約判断は人間が行います。",
-    "quick_links": "Link Rapidi",
-    "contact_us": "Contattaci",
-    "follow_us": "Seguici",
-    "rights": "Tutti i diritti riservati"
+    "quick_links": "関連リンク",
+    "contact_us": "お問い合わせ",
+    "follow_us": "フォローする",
+    "rights": "無断転載を禁じます"
   },
   "news": {
     "title": "Centro Notizie",
@@ -173,8 +177,8 @@
     "article_section": "Notizie e Eventi"
   },
   "legal": {
-    "privacyTitle": "Privacy e contatti",
-    "termsTitle": "Informazioni sul sito",
+    "privacyTitle": "プライバシーとお問い合わせ",
+    "termsTitle": "利用条件",
     "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
     "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }

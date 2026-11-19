@@ -6,7 +6,11 @@
     "team": "团队",
     "contact": "联系",
     "news": "新闻",
-    "language": "语言"
+    "language": "语言",
+    "main_navigation": "主导航",
+    "toggle_menu": "切换导航菜单",
+    "skip_to_content": "跳到正文",
+    "business_requests": "企业与合作方需求"
   },
   "hero": {
     "title": "文化与科技，连接中意",

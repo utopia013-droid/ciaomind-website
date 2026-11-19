@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n';
 import { company } from '@/data/company';
@@ -27,9 +27,9 @@ export default async function LocaleLayout({ children, params: paramsPromise }: 
   const { lang } = await paramsPromise;
 
   if (!locales.includes(lang as Locale)) notFound();
-  const messages = await getMessages();
+  const [messages, t] = await Promise.all([getMessages(), getTranslations('common')]);
   return <html lang={lang === 'zh' ? 'zh-CN' : lang}><body>
-    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:p-4">{lang === 'zh' ? '跳到正文' : 'Vai al contenuto'}</a>
+    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:p-4">{t('skip_to_content')}</a>
     <NextIntlClientProvider messages={messages} locale={lang}>
       <BrandIntro /><div className="min-h-screen flex flex-col"><Header /><main id="main-content" className="flex-1 pt-20">{children}</main><Footer /></div>
     </NextIntlClientProvider>
