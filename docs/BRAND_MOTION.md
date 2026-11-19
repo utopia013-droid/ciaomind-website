@@ -1,5 +1,7 @@
 # CIAOMIND green and white identity
 
+The 2026-11-19 signature and cross-media format update is defined in [BRAND_SYSTEM.md](BRAND_SYSTEM.md). Its full-name horizontal signature now supplies the website and communication assets. The green/white symbol motion below continues to describe the scroll interaction.
+
 Implemented from the user's visual direction on 2026-11-17.
 
 - One lockup: left curved four-point symbol; CIAO above MIND on the right.

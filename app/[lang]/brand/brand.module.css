@@ -1,0 +1,27 @@
+.page { background:#f7f5ef; color:#1c4036; padding:clamp(2.8rem,6vw,5rem) max(5vw,calc((100vw - 76rem)/2)); overflow-wrap:anywhere; }
+.heading { max-width:54rem; margin-bottom:2.4rem; }
+.heading h1 { font-size:clamp(2.5rem,5vw,4.5rem); color:inherit; margin-bottom:1.3rem; line-height:1.2; }
+.heading p,.rules p { font-size:1.05rem; line-height:1.8; }
+.download { display:inline-flex; margin-top:1.5rem; background:#1c4036; color:white; padding:.8rem 1.2rem; line-height:1.5; }
+.preview { width:100%; height:auto; border:1px solid #d2d9ce; }
+.page section { padding-top:3rem; }
+.page h2 { font-size:clamp(1.8rem,3vw,2.6rem); color:inherit; margin-bottom:1.5rem; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }
+.grid article { border:1px solid #d2d9ce; padding:1.3rem; background:white; min-width:0; }
+.mark { display:flex; align-items:center; justify-content:center; height:160px; }
+.mark img { width:100%; max-height:130px; object-fit:contain; }
+.grid article:last-child .mark img { width:86px; }
+.page h3 { font-family:inherit; font-size:1.1rem; color:inherit; margin-top:1.1rem; }
+.links { display:flex; flex-wrap:wrap; gap:.75rem; font-size:.85rem; margin-top:.8rem; }
+.links a { text-decoration:underline; text-underline-offset:.2rem; }
+.templateGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.templateGrid a { display:grid; grid-template-columns:1fr auto; border-top:1px solid #a8b69f; padding:1.2rem 0; gap:.4rem 1rem; align-items:center; }
+.templateGrid small { grid-row:2; color:#5b6f5c; }
+.templateGrid a>span:last-child { grid-column:2; grid-row:1/3; }
+.swatches { display:flex; flex-wrap:wrap; gap:2rem; }
+.swatches>div { display:flex; gap:1rem; align-items:center; }
+.swatches>div>span { display:block; width:56px; height:56px; border:1px solid #bcc8b6; }
+.swatches p { line-height:1.7; }
+.rules { max-width:60rem; }
+.page a:focus-visible { outline:3px solid #99713b; outline-offset:3px; }
+@media(max-width:700px) { .grid,.templateGrid { grid-template-columns:1fr; } .mark { height:130px; } }
