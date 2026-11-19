@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { accountClient, accountLocale } from '@/lib/account';
 import { businessOsCopy, businessOsLabels } from '@/lib/business-os-copy';
+import { networkCopy } from '@/data/partner-network';
+import { networkArea } from '@/lib/partner-network';
 import { canApprove, canEdit, candidateScore, projectStages, recordKinds, stageAllowed, type Tenant, type Membership, type Project, type Task, type BusinessRecord, type Audit, type Role, type Intake } from '@/lib/business-os';
 import { changeBusinessOs } from './actions';
 import { signOut } from '../account/actions';
@@ -12,6 +14,7 @@ const card = 'rounded-2xl border border-slate-200 bg-white p-5 sm:p-6';
 const field = 'w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900';
 const button = 'rounded-lg bg-[#173d35] px-4 py-2 text-sm font-semibold text-white disabled:opacity-40';
 type DirectoryMember = { tenant_id: string; user_id: string; display_name: string | null };
+const intakeColumns = 'id,tenant_id,company_name,contact_email,kind,brief,status,created_at,project_id,network_area,referrer:bos_network_nodes!bos_intakes_network_referrer_id_fkey(name)';
 
 export default async function BusinessOs({ params: paramsPromise, searchParams: searchParamsPromise }: { params: Promise<{ lang: string }>; searchParams: Promise<{ project?: string; status?: string }> }) {
   const params = await paramsPromise;
@@ -20,6 +23,12 @@ export default async function BusinessOs({ params: paramsPromise, searchParams: 
   const lang = accountLocale(params.lang);
   const language = lang === 'zh' || lang === 'it' ? lang : 'en';
   const c = businessOsCopy[language];
+  const network = networkCopy[lang];
+  const networkLabel = (value: string | null) => {
+    const area = networkArea(value);
+    return area && network.areas[area][0];
+  };
+  const referralLabel = language === 'zh' ? '引荐节点' : language === 'it' ? 'Nodo referente' : 'Referring node';
   const labels = businessOsLabels[language];
   const label = (key: string) => labels[key as keyof typeof labels] ?? key;
   const shell = (content: React.ReactNode) => <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8">
@@ -57,9 +66,15 @@ export default async function BusinessOs({ params: paramsPromise, searchParams: 
       .map(member => <option key={member.user_id} value={member.user_id}>{member.display_name!.trim()}</option>)}
   </>;
   const managedTeams = memberships.filter(item => canApprove(item.role)).map(item => item.tenant_id);
-  const intakesResult = managedTeams.length ? await client.from('bos_intakes').select('id,tenant_id,company_name,contact_email,kind,brief,status,created_at,project_id').in('tenant_id', managedTeams).eq('status', 'pending').order('created_at').limit(100) : null;
-  if (intakesResult?.error) return shell(<p role="alert" className={card}>{c.unavailable}</p>);
-  const intakes = (intakesResult?.data ?? []) as Intake[];
+  const [intakesResult, projectIntakeResult] = await Promise.all([
+    managedTeams.length ? client.from('bos_intakes').select(intakeColumns).in('tenant_id', managedTeams).eq('status', 'pending').order('created_at').limit(100) : null,
+    project && canApprove(teamRole(project.tenant_id))
+      ? client.from('bos_intakes').select(intakeColumns).eq('project_id', project.id).eq('tenant_id', project.tenant_id)
+        .not('network_area', 'is', null).eq('status', 'accepted').order('created_at').limit(1).maybeSingle()
+      : null,
+  ]);
+  const intakes = (intakesResult?.data ?? []) as unknown as Intake[];
+  const projectIntake = projectIntakeResult?.data as unknown as Intake | undefined;
   const effectiveRole = project && (canApprove(teamRole(project.tenant_id)) ? teamRole(project.tenant_id) : accessResult.data?.find(item => item.project_id === project.id)?.role) as Role | undefined;
   const editable = canEdit(effectiveRole) && project?.stage !== 'collected' && project?.stage !== 'closed';
   let tasks: Task[] = [], records: BusinessRecord[] = [], audit: Audit[] = [];
@@ -103,13 +118,33 @@ export default async function BusinessOs({ params: paramsPromise, searchParams: 
         </form></section>)}
       </aside>
       <div className="grid min-w-0 gap-6">
-        {managedTeams.length > 0 && <section className={card}><h2 className="text-xl font-semibold">{language === 'zh' ? '企业需求与合作方入驻审核' : language === 'it' ? 'Verifica richieste e candidature partner' : 'Business requests and partner review'}</h2><Link href={`/${lang}/business-os/request/`} className="mt-3 inline-block text-sm text-emerald-800 underline">{language === 'zh' ? '公开需求入口' : language === 'it' ? 'Modulo pubblico' : 'Public request form'}</Link>
-          {!intakes.length && <p className="mt-4 text-sm text-slate-500">{c.empty}</p>}
-          <div className="mt-5 grid gap-4">{intakes.map(intake => <article key={intake.id} className="rounded-xl border border-slate-200 p-4"><h3 className="font-semibold">{intake.company_name} · {intake.kind === 'partner' ? (language === 'zh' ? '合作方意向' : language === 'it' ? 'Candidato partner' : 'Partner application') : c.client}</h3><p className="mt-2 break-all text-sm">{intake.contact_email}</p><p className="mt-2 whitespace-pre-wrap break-words text-sm">{intake.brief}</p><p className="mt-2 text-xs text-amber-800">{language === 'zh' ? '邮箱与申报内容未经验证。受理将创建线索项目，不授予账号、成员或合作资格。' : language === 'it' ? 'Email e contenuti non verificati. L’accettazione crea un progetto iniziale, senza concedere account, ruoli o qualifiche.' : 'Email and claims are unverified. Acceptance creates a prospect project; it grants no account, membership or partner qualification.'}</p>
+        {managedTeams.length > 0 && <section className={card + ' scroll-mt-24'} id="intake-queue">
+          <h2 className="text-xl font-semibold">{language === 'zh' ? '企业需求与合作方入驻审核' : language === 'it' ? 'Verifica richieste e candidature partner' : 'Business requests and partner review'}</h2>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm text-emerald-800">
+            <Link className="underline" href={'/' + lang + '/network/'}>{network.title}</Link>
+            <Link className="underline" href={'/' + lang + '/business-os/network/'}>{network.team}</Link>
+          </div>
+          {intakesResult?.error ? <p role="alert" className="mt-4">{c.unavailable}</p>
+            : !intakes.length && <p className="mt-4 text-sm text-slate-500">{c.empty}</p>}
+          <div className="mt-5 grid gap-4">{intakes.map(intake => <article key={intake.id} className="rounded-xl border border-slate-200 p-4">
+            <h3 className="font-semibold">{intake.company_name} · {networkLabel(intake.network_area)
+              ?? (intake.kind === 'partner' ? (language === 'zh' ? '合作方意向' : language === 'it' ? 'Candidato partner' : 'Partner application') : c.client)}</h3>
+            {intake.network_area && <p className="mt-2 break-all text-xs text-slate-600">{network.reference} · {intake.id}</p>}
+            {intake.referrer && <p className="mt-2 text-sm text-emerald-800">{referralLabel} · {intake.referrer.name}</p>}
+            <p className="mt-2 break-all text-sm">{intake.contact_email}</p>
+            <p className="mt-2 whitespace-pre-wrap break-words text-sm">{intake.brief}</p>
+            <p className="mt-2 text-xs text-amber-800">{language === 'zh' ? '邮箱和申请信息待核验。受理会创建一个初始项目，随后可在节点管理中确认伙伴资格。' : language === 'it' ? 'Email e contenuti da verificare. L’accettazione crea un progetto iniziale; la verifica del nodo si fa nell’area rete.' : 'Email and claims await verification. Acceptance creates a prospect project. Node verification takes place in the network workspace.'}</p>
             <form action={action('review_intake')} className="mt-4 flex flex-wrap items-center gap-3"><input name="tenant_id" type="hidden" value={intake.tenant_id} /><input name="id" type="hidden" value={intake.id} /><label className="flex gap-2 text-sm"><input type="checkbox" name="review_checked" required />{language === 'zh' ? '已人工核对并决定后续处理' : language === 'it' ? 'Valutazione umana effettuata' : 'Human assessment completed'}</label><button className={button} name="decision" value="accepted">{language === 'zh' ? '受理并创建项目' : language === 'it' ? 'Accetta e crea progetto' : 'Accept and create project'}</button><button name="decision" value="rejected" className="rounded-lg border border-slate-300 px-4 py-2 text-sm">{c.reject}</button></form>
           </article>)}</div>
         </section>}
         {project && <>
+        {projectIntake && <section className={card}>
+          <h2 className="text-xl font-semibold">{network.title} · {networkLabel(projectIntake.network_area)}</h2>
+          <p className="mt-3 break-all text-xs text-slate-600">{network.reference} · {projectIntake.id}</p>
+          <p className="mt-2 break-all text-sm">{projectIntake.contact_email}</p>
+          <p className="mt-2 whitespace-pre-wrap break-words text-sm">{projectIntake.brief}</p>
+          {projectIntake.referrer && <p className="mt-2 text-sm text-emerald-800">{referralLabel} · {projectIntake.referrer.name}</p>}
+        </section>}
         <section className={card}><div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm text-slate-500">{c.project} · {teams.find(team => team.id === project.tenant_id)?.name}</p><h2 className="mt-1 text-2xl font-semibold">{project.title}</h2><p className="mt-2">{project.client_name}</p></div><span className="rounded-full bg-emerald-50 px-3 py-1 text-sm text-emerald-900">{label(project.stage)}</span></div>
           <dl className="mt-5 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-slate-500">{c.owner}</dt><dd className="break-all">{memberName(project.owner_id, project.tenant_id)}</dd></div><div><dt className="text-slate-500">{c.due}</dt><dd>{project.due_on ?? '—'}</dd></div><div><dt className="text-slate-500">{c.role}</dt><dd>{effectiveRole ? label(effectiveRole) : c.locked}</dd></div><div><dt className="text-slate-500">{label('contract')} / {label('receipt')}</dt><dd>{formatMoney(contract)} / {formatMoney(receipts)}</dd></div></dl>
           <ol className="mt-6 flex flex-wrap gap-2 text-xs" aria-label={c.stage}>{projectStages.map(stage => <li key={stage} className={`rounded px-2 py-1 ${stage === project.stage ? 'bg-[#173d35] text-white' : 'bg-slate-100 text-slate-600'}`}>{label(stage)}</li>)}</ol>

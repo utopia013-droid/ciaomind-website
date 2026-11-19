@@ -13,7 +13,7 @@ export default function Header() {
  const headerRef = useRef<HTMLElement>(null);
  useBrandScroll(headerRef);
  useEffect(() => { const close = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false); }; window.addEventListener('keydown', close); return () => window.removeEventListener('keydown', close); }, []);
- const paths = ['home', 'about', 'services', 'videos', 'news', 'team', 'contact'] as const;
+ const paths = ['home', 'about', 'services', 'network', 'videos', 'news', 'team', 'contact'] as const;
  const href = (key: string) => `/${locale}/${key === 'home' ? '' : `${key}/`}`;
  function switchLanguage(target: string) { const url = new URL(window.location.href); const parts = url.pathname.split('/'); if (parts.length > 1) parts[1] = target; url.pathname = parts.join('/'); window.location.assign(url.toString()); }
  return <header ref={headerRef} data-brand-mode="rest" className="site-header fixed top-0 left-0 right-0 z-50">

@@ -1,5 +1,6 @@
 {
   "common": {
+    "network": "Red industrial",
     "home": "Inicio",
     "about": "Nosotros",
     "services": "Servicios",

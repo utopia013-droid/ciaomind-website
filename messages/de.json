@@ -1,5 +1,6 @@
 {
   "common": {
+    "network": "Industrienetzwerk",
     "home": "Startseite",
     "about": "Über uns",
     "services": "Leistungen",

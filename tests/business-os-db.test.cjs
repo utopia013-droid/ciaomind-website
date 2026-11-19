@@ -34,6 +34,8 @@ test('Business OS SQL permissions, audit, money, stages and public intake', asyn
     await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', notesMigration), 'utf8'));
     const namesMigration = fs.readdirSync(path.join(__dirname, '../supabase/migrations')).find(name => name.endsWith('_business_os_member_names.sql'));
     await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', namesMigration), 'utf8'));
+    const networkMigration = fs.readdirSync(path.join(__dirname, '../supabase/migrations')).find(name => name.endsWith('_business_os_network.sql'));
+    await db.exec(fs.readFileSync(path.join(__dirname, '../supabase/migrations', networkMigration), 'utf8'));
     await db.query('insert into auth.users values($1),($2),($3),($4),($5)', [owner, manager, contributor, viewer, outsider]);
     await db.query('insert into public.bos_tenants(id,name) values($1,$2),($3,$4)', [team, 'Synthetic team A', otherTeam, 'Synthetic team B']);
     await db.query("insert into public.bos_tenant_members values($1,$2,'owner'),($1,$3,'manager'),($1,$4,'contributor'),($1,$5,'viewer'),($6,$7,'owner')", [team, owner, manager, contributor, viewer, otherTeam, outsider]);
@@ -188,6 +190,64 @@ test('Business OS SQL permissions, audit, money, stages and public intake', asyn
       assert.equal((await db.query('select * from public.bos_intake_audit where intake_id=$1', [intake])).rows.length, 1);
       await rejected("select public.bos_review_intake($1,'accepted')", [intake]);
       await rejected("update public.bos_intakes set brief='Tampered information after review' where id=$1", [intake]);
+    });
+    await t.test('network consent, tenant isolation, node approval and referral attribution', async () => {
+      const app = (suffix, area, email, referral = null) => [
+        '90000000-0000-4000-8000-' + String(suffix).padStart(12, '0'),
+        'Synthetic network applicant', email, area,
+        'I offer a small ceramic prototyping workshop and quality sample.', 'fr', referral, true,
+      ];
+      const send = 'select public.bos_submit_network_intake($1,$2,$3,$4,$5,$6,$7,$8) as id';
+      const first = app(1, 'making', 'maker@example.org');
+      await act(null, 'anon');
+      assert.equal((await db.query('select public.bos_network_available() as ready')).rows[0].ready, false);
+      await rejected(send, first);
+      await rejected('select * from public.bos_network_nodes');
+      await act(null, 'postgres');
+      await db.exec('update ciaomind_bos_private.intake_config set enabled=false, network_enabled=true');
+      await act(null, 'anon');
+      assert.deepEqual((await db.query('select public.bos_network_available() as network, public.bos_intake_available() as legacy')).rows[0],
+        { network: true, legacy: false });
+      await rejected(send, [...first.slice(0, 7), false]);
+      await rejected(send, app(2, 'owner', 'maker@example.org'));
+      assert.equal((await db.query(send, first)).rows[0].id, first[0]);
+      assert.equal((await db.query(send, first)).rows[0].id, first[0]);
+      await rejected(send, app(1, 'finance', 'other@example.org'));
+      await rejected("select public.bos_verify_network_node($1,'Synthetic verification note')", [first[0]]);
+
+      await act(manager);
+      await rejected("select public.bos_verify_network_node($1,'Synthetic verification note')", [first[0]]);
+      const prospect = (await db.query("select public.bos_review_intake($1,'accepted') as id", [first[0]])).rows[0].id;
+      const node = (await db.query("select public.bos_verify_network_node($1,'Synthetic verification note') as id", [first[0]])).rows[0].id;
+      assert.equal((await db.query("select public.bos_verify_network_node($1,'Synthetic verification note') as id", [first[0]])).rows[0].id, node);
+      assert.equal((await db.query('select active from public.bos_network_nodes where id=$1', [node])).rows[0].active, true);
+      assert.equal((await db.query('select * from public.bos_project_members where project_id=$1', [prospect])).rows.length, 0);
+      await rejected('update public.bos_network_nodes set active=false where id=$1', [node]);
+
+      await act(outsider);
+      assert.equal((await db.query('select * from public.bos_network_nodes where id=$1', [node])).rows.length, 0);
+      await rejected('select public.bos_set_network_node_active($1,false)', [node]);
+      await rejected("select public.bos_verify_network_node($1,'Synthetic verification note')", [first[0]]);
+      await act(contributor);
+      assert.equal((await db.query('select * from public.bos_network_nodes')).rows.length, 0);
+
+      const referred = app(3, 'project', 'buyer@example.org', node);
+      const unknown = app(4, 'culture', 'archive@example.org', app(99, 'project', 'unlikely@example.org')[0]);
+      await act(null, 'anon');
+      assert.equal((await db.query(send, referred)).rows[0].id, referred[0]);
+      assert.equal((await db.query(send, unknown)).rows[0].id, unknown[0]);
+      await act(manager);
+      const rows = (await db.query('select id,network_referrer_id from public.bos_intakes where id in ($1,$2) order by id', [referred[0], unknown[0]])).rows;
+      assert.deepEqual(rows, [{ id: referred[0], network_referrer_id: node }, { id: unknown[0], network_referrer_id: null }]);
+      await db.query('select public.bos_set_network_node_active($1,false)', [node]);
+      await db.query('select public.bos_set_network_node_active($1,false)', [node]);
+      const paused = app(5, 'market', 'market@example.org', node);
+      await act(null, 'anon');
+      await db.query(send, paused);
+      await act(manager);
+      assert.equal((await db.query('select network_referrer_id from public.bos_intakes where id=$1', [paused[0]])).rows[0].network_referrer_id, null);
+      const audit = (await db.query("select action from public.bos_audit where project_id=$1 and action like 'network_node_%' order by id", [prospect])).rows;
+      assert.deepEqual(audit.map(row => row.action), ['network_node_verified', 'network_node_state']);
     });
   } finally { await db.close(); }
 });

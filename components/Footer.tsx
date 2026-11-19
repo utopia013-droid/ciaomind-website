@@ -6,7 +6,7 @@ import { getEcosystemCopy } from '@/data/heritage-value';
 
 export default function Footer() {
   const locale = useLocale(); const t = useTranslations();
-  const paths = ['about', 'services', 'videos', 'news', 'team', 'contact'] as const;
+  const paths = ['about', 'services', 'network', 'videos', 'news', 'team', 'contact'] as const;
   return <footer className="site-footer">
     <div className="container-modern py-12 grid gap-10 md:grid-cols-2">
       <div><Link href={`/${locale}/`} className="footer-brand" aria-label="CIAOMIND"><BrandLogo /></Link>

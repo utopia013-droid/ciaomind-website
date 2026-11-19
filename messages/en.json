@@ -1,5 +1,6 @@
 {
   "common": {
+    "network": "Industry network",
     "home": "Home",
     "about": "About",
     "services": "Services",
