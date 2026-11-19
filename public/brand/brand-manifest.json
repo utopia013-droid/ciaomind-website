@@ -1,11 +1,18 @@
 {
-  "version": "2026-11-19",
+  "version": "2026-11-19-r3",
   "name": "CIAOMIND",
   "descriptor": "CULTURE \u00b7 INDUSTRY \u00b7 INNOVATION",
   "master": "/brand/ciaomind-lockup-green.svg",
+  "webMaster": "/brand/ciaomind-stacked-green.svg",
+  "formats": [
+    "SVG",
+    "PNG",
+    "WebP"
+  ],
   "clearSpace": "Keep at least one quarter of the symbol width around the complete signature.",
   "variants": [
-    "horizontal",
+    "horizontal-full-width-descriptor",
+    "stacked-ciao-over-mind",
     "centered",
     "symbol"
   ],

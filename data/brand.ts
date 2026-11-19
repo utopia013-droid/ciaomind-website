@@ -1,7 +1,8 @@
 import type { Locale } from '@/lib/i18n';
 
-export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | 'identity' | 'horizontal' | 'centered' | 'symbol' | 'templates' | 'presentation' | 'post' | 'email' | 'letterhead' | 'usage' | 'rules' | 'colors' | 'vector' | 'png' | 'social' | 'story' | 'green' | 'cream' | 'white', string>> = {
+export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | 'identity' | 'horizontal' | 'stacked' | 'centered' | 'symbol' | 'templates' | 'presentation' | 'post' | 'email' | 'letterhead' | 'usage' | 'rules' | 'colors' | 'vector' | 'png' | 'social' | 'story' | 'green' | 'cream' | 'white', string>> = {
   "zh": {
+    "stacked": "上下叠排组合",
     "title": "品牌资源",
     "intro": "统一的 CIAOMIND 标识、颜色与传播模板，适用于网站、社交媒体、演示、视频与正式文件。",
     "download": "下载完整素材包",
@@ -26,6 +27,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "白色"
   },
   "en": {
+    "stacked": "Stacked signature",
     "title": "Brand resources",
     "intro": "A shared CIAOMIND identity, colour palette and communication templates for web, social media, presentations, video and correspondence.",
     "download": "Download the complete kit",
@@ -50,6 +52,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "White"
   },
   "it": {
+    "stacked": "Firma su due righe",
     "title": "Risorse del marchio",
     "intro": "Identità, colori e modelli CIAOMIND condivisi per sito, social media, presentazioni, video e corrispondenza.",
     "download": "Scarica il kit completo",
@@ -74,6 +77,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "Bianco"
   },
   "fr": {
+    "stacked": "Signature superposée",
     "title": "Ressources de marque",
     "intro": "Identité, couleurs et modèles CIAOMIND communs pour le site, les réseaux sociaux, les présentations, les vidéos et la correspondance.",
     "download": "Télécharger le kit complet",
@@ -98,6 +102,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "Blanc"
   },
   "de": {
+    "stacked": "Zweizeilige Signatur",
     "title": "Markenmaterial",
     "intro": "Einheitliches CIAOMIND Erscheinungsbild, Farben und Vorlagen für Website, soziale Medien, Präsentationen, Videos und Korrespondenz.",
     "download": "Komplettes Paket herunterladen",
@@ -122,6 +127,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "Weiß"
   },
   "es": {
+    "stacked": "Firma en dos líneas",
     "title": "Recursos de marca",
     "intro": "Identidad, colores y plantillas CIAOMIND para web, redes sociales, presentaciones, vídeos y correspondencia.",
     "download": "Descargar el kit completo",
@@ -146,6 +152,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "Blanco"
   },
   "pt": {
+    "stacked": "Assinatura em duas linhas",
     "title": "Recursos da marca",
     "intro": "Identidade, cores e modelos CIAOMIND para o site, redes sociais, apresentações, vídeos e correspondência.",
     "download": "Descarregar o kit completo",
@@ -170,6 +177,7 @@ export const brandCopy: Record<Locale, Record<'title' | 'intro' | 'download' | '
     "white": "Branco"
   },
   "ja": {
+    "stacked": "上下組みロゴ",
     "title": "ブランド素材",
     "intro": "ウェブ、SNS、プレゼンテーション、動画、文書に共通する CIAOMIND のロゴ、配色、テンプレートです。",
     "download": "素材一式をダウンロード",
