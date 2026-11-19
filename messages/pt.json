@@ -3,10 +3,15 @@
     "home": "Início",
     "about": "Sobre nós",
     "services": "Serviços",
+    "videos": "Guias em vídeo",
     "team": "Equipa",
     "contact": "Contacto",
     "news": "Notícias",
-    "language": "Idioma"
+    "language": "Idioma",
+    "main_navigation": "Navegação principal",
+    "toggle_menu": "Abrir ou fechar o menu",
+    "skip_to_content": "Saltar para o conteúdo",
+    "business_requests": "Pedidos de empresas e parceiros"
   },
   "hero": {
     "title": "Organizações reais. IA fiável em colaboração.",
@@ -134,33 +139,33 @@
     }
   },
   "contact": {
-    "title": "Contattaci",
-    "message": "Lasciaci un Messaggio",
-    "your_name": "Il Tuo Nome",
-    "your_email": "La Tua Email",
-    "your_message": "Il Tuo Messaggio",
-    "send": "Apri la posta",
-    "address": "Indirizzo di contatto",
-    "email": "Email",
-    "phone": "Telefono",
-    "working_hours": "Orari di Lavoro",
-    "weekdays": "Lunedì - Venerdì",
-    "weekend": "Sabato - Domenica",
-    "closed": "Chiuso",
-    "our_location": "La Nostra Posizione",
+    "title": "Contacte-nos",
+    "message": "Escreva-nos",
+    "your_name": "O seu nome",
+    "your_email": "O seu endereço de e-mail",
+    "your_message": "A sua mensagem",
+    "send": "Abrir o e-mail",
+    "address": "Morada de contacto",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "working_hours": "Horário de atendimento",
+    "weekdays": "De segunda a sexta-feira",
+    "weekend": "Sábado e domingo",
+    "closed": "Fechado",
+    "our_location": "A nossa localização",
     "hero_description": "Convidamos instituições culturais, investigadores e PME a discutir um piloto.",
-    "contact_info": "Recapiti",
-    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
-    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
-    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
-    "privacy_link": "Informazioni sulla privacy"
+    "contact_info": "Contactos",
+    "contact_description": "Contacte a equipa por e-mail ou prepare o seu pedido através do formulário.",
+    "email_notice": "O formulário abre um rascunho na sua aplicação de e-mail. Reveja-o e envie-o a partir da aplicação.",
+    "email_opened": "Envie o rascunho a partir da aplicação de e-mail. Se esta não tiver aberto, escreva para o endereço abaixo.",
+    "privacy_link": "Contactos e privacidade"
   },
   "footer": {
     "description": "Ligamos titulares de direitos, designers, produtores e compradores através de processos rastreáveis. A IA apoia a pesquisa e a coordenação; as aprovações permanecem humanas.",
-    "quick_links": "Link Rapidi",
-    "contact_us": "Contattaci",
-    "follow_us": "Seguici",
-    "rights": "Tutti i diritti riservati"
+    "quick_links": "Ligações úteis",
+    "contact_us": "Contacte-nos",
+    "follow_us": "Siga-nos",
+    "rights": "Todos os direitos reservados"
   },
   "news": {
     "title": "Centro Notizie",
@@ -173,8 +178,8 @@
     "article_section": "Notizie e Eventi"
   },
   "legal": {
-    "privacyTitle": "Privacy e contatti",
-    "termsTitle": "Informazioni sul sito",
+    "privacyTitle": "Privacidade e contactos",
+    "termsTitle": "Termos de utilização",
     "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
     "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }

@@ -3,10 +3,15 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
+    "videos": "Video guides",
     "team": "Team",
     "contact": "Contact",
     "news": "News",
-    "language": "Language"
+    "language": "Language",
+    "main_navigation": "Main navigation",
+    "toggle_menu": "Toggle navigation",
+    "skip_to_content": "Skip to content",
+    "business_requests": "Business and partner requests"
   },
   "hero": {
     "title": "Real organisations. Trusted AI collaboration.",
@@ -134,33 +139,33 @@
     }
   },
   "contact": {
-    "title": "Contattaci",
-    "message": "Lasciaci un Messaggio",
-    "your_name": "Il Tuo Nome",
-    "your_email": "La Tua Email",
-    "your_message": "Il Tuo Messaggio",
-    "send": "Apri la posta",
-    "address": "Indirizzo di contatto",
+    "title": "Contact us",
+    "message": "Write to us",
+    "your_name": "Your name",
+    "your_email": "Your email address",
+    "your_message": "Your message",
+    "send": "Open email app",
+    "address": "Contact address",
     "email": "Email",
-    "phone": "Telefono",
-    "working_hours": "Orari di Lavoro",
-    "weekdays": "Lunedì - Venerdì",
-    "weekend": "Sabato - Domenica",
-    "closed": "Chiuso",
-    "our_location": "La Nostra Posizione",
+    "phone": "Phone",
+    "working_hours": "Opening hours",
+    "weekdays": "Monday to Friday",
+    "weekend": "Saturday and Sunday",
+    "closed": "Closed",
+    "our_location": "Our location",
     "hero_description": "We welcome cultural institutions, researchers, SMEs and data-space partners to discuss a focused pilot.",
-    "contact_info": "Recapiti",
-    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
-    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
-    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
-    "privacy_link": "Informazioni sulla privacy"
+    "contact_info": "Contact details",
+    "contact_description": "Email the team or use the form to prepare your enquiry.",
+    "email_notice": "This form opens a draft in your email app. Review it and press Send there.",
+    "email_opened": "Continue in your email app to send the draft. If the app did not open, email the address below.",
+    "privacy_link": "Contact and privacy"
   },
   "footer": {
     "description": "We connect cultural rights holders, designers, producers and buyers through traceable workflows. AI supports research and coordination; people approve permissions and commitments.",
-    "quick_links": "Link Rapidi",
-    "contact_us": "Contattaci",
-    "follow_us": "Seguici",
-    "rights": "Tutti i diritti riservati"
+    "quick_links": "Quick links",
+    "contact_us": "Contact us",
+    "follow_us": "Follow us",
+    "rights": "All rights reserved"
   },
   "news": {
     "title": "Centro Notizie",
@@ -173,8 +178,8 @@
     "article_section": "Notizie e Eventi"
   },
   "legal": {
-    "privacyTitle": "Privacy e contatti",
-    "termsTitle": "Informazioni sul sito",
+    "privacyTitle": "Privacy and contact",
+    "termsTitle": "Website terms",
     "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
     "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }

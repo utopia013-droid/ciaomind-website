@@ -41,12 +41,12 @@ export default function ServiceCard({ id, locale }: ServiceCardProps) {
 
         {/* Title */}
         <h3 className="text-xl font-bold text-text-main mb-3 group-hover:text-primary-coral transition-colors duration-300">
-          {t(service.titleKey as any)}
+          {t(service.titleKey)}
         </h3>
 
         {/* Description */}
         <p className="text-text-secondary mb-6 leading-relaxed">
-          {t(service.descriptionKey as any)}
+          {t(service.descriptionKey)}
         </p>
 
         {/* Features */}

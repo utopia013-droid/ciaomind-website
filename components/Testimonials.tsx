@@ -40,7 +40,7 @@ export default function Testimonials({ locale }: TestimonialsProps) {
   const t = useTranslations();
 
   return (
-    <section className="section bg-gradient-hero relative overflow-hidden">
+    <section lang={locale} className="section bg-gradient-hero relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-coral/10 rounded-full blur-3xl" />
@@ -78,7 +78,7 @@ export default function Testimonials({ locale }: TestimonialsProps) {
 
                 {/* Content */}
                 <p className="text-white/80 text-lg leading-relaxed mb-6 flex-grow">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
 
                 {/* Author */}

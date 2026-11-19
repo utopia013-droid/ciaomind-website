@@ -1,6 +1,8 @@
+import { getEcosystemCopy } from '@/data/heritage-value';
 import type { Metadata } from 'next';
 import { company } from '@/data/company';
 export const pageNames: Record<string, { zh: string; it: string }> = {
+ vision: {zh: '文化价值与产业协同愿景', it: 'Visione per cultura e industria'},
  '': {zh: '文化遗产数字化、AI教育与中意交流', it: 'Patrimonio digitale, educazione AI e dialogo Italia–Cina'},
  about: {zh: '关于我们', it: 'Chi siamo'}, services: {zh: '文化数字化、AI教育与中意合作项目', it: 'Progetti culturali digitali, educazione e AI'},
  team: {zh: '公司团队', it: 'Il team'}, contact: {zh: '联系我们｜意大利 Ferrara', it: 'Contatti a Ferrara'},
@@ -17,8 +19,9 @@ const descriptions: Record<string, {zh:string;it:string}> = {
  terms:{zh:'CIAOMIND 网站内容与联系工具的使用说明，以及公司联系信息。',it:'Informazioni sull’uso dei contenuti e degli strumenti di contatto del sito CIAOMIND.'},
 };
 export function pageMetadata(lang: string, path: string): Metadata {
+ const core = ['', 'services', 'about', 'vision'].includes(path) ? getEcosystemCopy(lang) : null;
  const locale=lang==='zh'?'zh':'it'; const name=pageNames[path]?.[locale] ?? 'CIAOMIND';
- const title=lang==='zh'||lang==='it'?`CIAOMIND | ${name}`:'CIAOMIND | Heritage Economy OS · Trusted AI Workflows'; const description=lang==='zh'||lang==='it'?descriptions[path]?.[locale]:'Exploring rights-cleared cultural resources, cross-border partners and human-supervised trusted AI workflows.';
+ const title=core ? `CIAOMIND | ${core.title}` : lang==='zh'||lang==='it'?`CIAOMIND | ${name}`:'CIAOMIND | Heritage Economy OS · Trusted AI Workflows'; const description=core ? core.intro : lang==='zh'||lang==='it'?descriptions[path]?.[locale]:'Exploring rights-cleared cultural resources, cross-border partners and human-supervised trusted AI workflows.';
  const localized=(language:string)=>`${company.website}/${language}/${path?`${path}/`:''}`;
- return {title:{absolute:title},description,alternates:{canonical:localized(lang),languages:{'zh-CN':localized('zh'),it:localized('it'),en:localized('en'),fr:localized('fr'),de:localized('de'),es:localized('es'),pt:localized('pt'),ja:localized('ja'),'x-default':localized('en')}},openGraph:{title,description,url:localized(locale),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png`,width:1200,height:630,alt:'CIAOMIND — Culture, Intelligence, Connection'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png`]}};
+ return {title:{absolute:title},description,alternates:{canonical:localized(lang),languages:{'zh-CN':localized('zh'),it:localized('it'),en:localized('en'),fr:localized('fr'),de:localized('de'),es:localized('es'),pt:localized('pt'),ja:localized('ja'),'x-default':localized('en')}},openGraph:{title,description,url:localized(lang),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png`,width:1200,height:630,alt:'CIAOMIND — Culture, Intelligence, Connection'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png`]}};
 }

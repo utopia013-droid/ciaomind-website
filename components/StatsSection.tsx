@@ -44,7 +44,7 @@ export default function StatsSection({ locale }: StatsSectionProps) {
   const t = useTranslations();
 
   return (
-    <section className="section bg-background-light relative overflow-hidden">
+    <section lang={locale} className="section bg-background-light relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-full h-full" style={{

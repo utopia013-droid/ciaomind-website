@@ -3,10 +3,15 @@
     "home": "Accueil",
     "about": "À propos",
     "services": "Services",
+    "videos": "Guides vidéo",
     "team": "Équipe",
     "contact": "Contact",
     "news": "Actualités",
-    "language": "Langue"
+    "language": "Langue",
+    "main_navigation": "Navigation principale",
+    "toggle_menu": "Afficher ou masquer le menu",
+    "skip_to_content": "Aller au contenu",
+    "business_requests": "Demandes des entreprises et partenaires"
   },
   "hero": {
     "title": "Des organisations réelles. Une IA de confiance, ensemble.",
@@ -134,33 +139,33 @@
     }
   },
   "contact": {
-    "title": "Contattaci",
-    "message": "Lasciaci un Messaggio",
-    "your_name": "Il Tuo Nome",
-    "your_email": "La Tua Email",
-    "your_message": "Il Tuo Messaggio",
-    "send": "Apri la posta",
-    "address": "Indirizzo di contatto",
-    "email": "Email",
-    "phone": "Telefono",
-    "working_hours": "Orari di Lavoro",
-    "weekdays": "Lunedì - Venerdì",
-    "weekend": "Sabato - Domenica",
-    "closed": "Chiuso",
-    "our_location": "La Nostra Posizione",
+    "title": "Contactez-nous",
+    "message": "Écrivez-nous",
+    "your_name": "Votre nom",
+    "your_email": "Votre adresse e-mail",
+    "your_message": "Votre message",
+    "send": "Ouvrir la messagerie",
+    "address": "Adresse de contact",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "working_hours": "Horaires",
+    "weekdays": "Du lundi au vendredi",
+    "weekend": "Samedi et dimanche",
+    "closed": "Fermé",
+    "our_location": "Notre adresse",
     "hero_description": "Institutions culturelles, chercheurs et PME: échangeons sur un pilote ciblé.",
-    "contact_info": "Recapiti",
-    "contact_description": "Scrivici via email. Il modulo aiuta a preparare una richiesta nella tua applicazione di posta.",
-    "email_notice": "Il modulo apre la tua applicazione email: verifica e invia il messaggio da lì. Questa pagina non invia direttamente i dati.",
-    "email_opened": "È stata richiesta l’apertura della posta. Il messaggio non è ancora inviato; se non si apre, scrivi direttamente all’indirizzo qui sotto.",
-    "privacy_link": "Informazioni sulla privacy"
+    "contact_info": "Coordonnées",
+    "contact_description": "Contactez notre équipe par e-mail ou préparez votre demande avec le formulaire.",
+    "email_notice": "Ce formulaire ouvre un brouillon dans votre messagerie. Vérifiez-le puis envoyez-le depuis votre messagerie.",
+    "email_opened": "Envoyez le brouillon depuis votre messagerie. Si elle ne s’est pas ouverte, utilisez l’adresse ci-dessous.",
+    "privacy_link": "Contact et confidentialité"
   },
   "footer": {
     "description": "Nous relions ayants droit, designers, producteurs et acheteurs dans des processus traçables. L’IA assiste la recherche et la coordination; les décisions restent humaines.",
-    "quick_links": "Link Rapidi",
-    "contact_us": "Contattaci",
-    "follow_us": "Seguici",
-    "rights": "Tutti i diritti riservati"
+    "quick_links": "Liens utiles",
+    "contact_us": "Contactez-nous",
+    "follow_us": "Suivez-nous",
+    "rights": "Tous droits réservés"
   },
   "news": {
     "title": "Centro Notizie",
@@ -173,8 +178,8 @@
     "article_section": "Notizie e Eventi"
   },
   "legal": {
-    "privacyTitle": "Privacy e contatti",
-    "termsTitle": "Informazioni sul sito",
+    "privacyTitle": "Confidentialité et contact",
+    "termsTitle": "Conditions d’utilisation",
     "privacyText": "Il modulo prepara una bozza email sul tuo dispositivo e non invia direttamente i dati. Le informazioni arrivano al destinatario solo dopo l’invio dalla tua applicazione. Non includere documenti di identità, credenziali o dati sensibili non necessari. Il servizio di hosting può trattare log tecnici necessari a erogare il sito. Per informazioni sul trattamento dei dati o per esercitare i tuoi diritti, contatta la società all’indirizzo seguente.",
     "termsText": "Il sito presenta la società e i suoi ambiti di progetto. Servizi, costi, risultati e utilizzo dei diritti richiedono un accordo scritto separato. I contenuti non costituiscono autorizzazioni di marchi, riconoscimenti di terzi o garanzie di risultato."
   }

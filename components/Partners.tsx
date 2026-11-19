@@ -21,7 +21,7 @@ export default function Partners({ locale }: PartnersProps) {
   const t = useTranslations();
 
   return (
-    <section className="py-16 bg-background-white border-y border-gray-100">
+    <section lang={locale} className="py-16 bg-background-white border-y border-gray-100">
       <div className="container-modern">
         <FadeIn className="text-center mb-12">
           <p className="text-text-secondary text-lg">

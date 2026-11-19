@@ -73,7 +73,7 @@ export default function TermsOfService() {
               5. 免责声明
             </h2>
             <p className="text-text-secondary mb-4">
-              本网站按"现状"和"可用"基础提供,不提供任何明示或暗示的保证,包括但不限于:
+              本网站按&quot;现状&quot;和&quot;可用&quot;基础提供,不提供任何明示或暗示的保证,包括但不限于:
             </p>
             <ul className="list-disc pl-6 text-text-secondary space-y-2">
               <li>服务的无中断或无错误运行</li>

@@ -3,10 +3,15 @@
     "home": "Home",
     "about": "Chi Siamo",
     "services": "Servizi",
+    "videos": "Videoguide",
     "team": "Team",
     "contact": "Contatti",
     "news": "Notizie",
-    "language": "Lingua"
+    "language": "Lingua",
+    "main_navigation": "Navigazione principale",
+    "toggle_menu": "Apri o chiudi il menu",
+    "skip_to_content": "Vai al contenuto",
+    "business_requests": "Richieste imprese e partner"
   },
   "hero": {
     "title": "Cultura e tecnologia tra Italia e Cina",

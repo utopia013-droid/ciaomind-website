@@ -1,0 +1,28 @@
+.section { padding-top:clamp(3rem,6vw,5rem); margin-top:clamp(2.5rem,6vw,5rem); border-top:1px solid #a7b19e; scroll-margin-top:6rem; }
+.heading { max-width:65rem; margin-bottom:1.5rem; }
+.section .heading h2 { font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.25; color:#173d35; margin:0 0 1rem; }
+.heading p,.context { font-size:1rem; line-height:1.85; color:#455c50; }
+.filters { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.6rem 0 2rem; }
+.filters button { border:1px solid #b4bfae; padding:.55rem .85rem; color:#173d35; line-height:1.5; }
+.filters button[aria-pressed=true] { background:#173d35; border-color:#173d35; color:#fff; }
+.filters button:hover { text-decoration:underline; text-underline-offset:.2rem; }
+.context { margin:-.5rem 0 2rem; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2.75rem 1.6rem; }
+.card { min-width:0; display:flex; flex-direction:column; }
+.screen { width:100%; min-height:200px; aspect-ratio:16/9; position:relative; overflow:hidden; background:#173d35; }
+.screen iframe,.poster { position:absolute; inset:0; border:0; height:100%; width:100%; }
+.poster { color:white; background:#173d35; cursor:pointer; }
+.poster img { object-fit:cover; }
+.poster::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent,#102d2425); }
+.play { display:grid; place-items:center; width:3rem; height:3rem; padding-left:.12rem; border:1px solid white; border-radius:50%; background:#173d35eb; position:absolute; z-index:1; left:50%; top:50%; transform:translate(-50%,-50%); }
+.publisher { font-size:.8rem; font-weight:600; color:#53664f; margin:1rem 0 .45rem; }
+.section .card h3 { font-family:inherit; font-size:1.06rem; font-weight:500; line-height:1.5; color:#173d35; margin:0; }
+.stage { font-size:.85rem; color:#61715c; margin:.6rem 0; }
+.links { display:flex; flex-wrap:wrap; gap:.5rem 1.1rem; margin-top:auto; padding-top:.6rem; font-size:.85rem; }
+.links a { padding:.3rem 0; text-decoration:underline; text-underline-offset:.2rem; }
+.notice { font-size:.85rem; line-height:1.7; color:#526257; margin-top:2rem; }
+.close { align-self:flex-end; padding:.45rem 0; font-size:.8rem; text-decoration:underline; }
+.section :is(button,a):focus-visible { outline:3px solid #99713b; outline-offset:3px; }
+.poster:focus-visible { outline-offset:-4px; z-index:2; }
+@media(max-width:1100px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:700px) { .grid { grid-template-columns:1fr; } }

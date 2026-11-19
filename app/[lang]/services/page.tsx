@@ -1,4 +1,27 @@
 import Link from 'next/link';
-import {strategyLocales} from '@/data/strategy-locales';
-import {useTranslations} from 'next-intl';
-export default function ServicesPage({params:{lang}}:{params:{lang:string}}){const t=useTranslations();const s=strategyLocales[(lang in strategyLocales?lang:'en') as keyof typeof strategyLocales];return <><section className="section bg-primary-navy text-white"><div className="container-modern max-w-5xl"><p className="tracking-widest mb-4">HERITAGE ECONOMY OS</p><h1 className="text-4xl md:text-5xl text-white">{t('services.title')}</h1><p className="text-xl mt-8">{s.solution}</p></div></section><section className="section bg-white"><div className="container-modern max-w-5xl"><h2 className="text-3xl mb-8">01 — HERITAGE-TO-MARKET</h2><p className="text-lg mb-8">{s.pilot}</p></div></section><section className="section bg-background-light"><div className="container-modern max-w-5xl grid md:grid-cols-2 gap-12"><div><h2 className="text-3xl mb-5">02 — TRUSTED AI WORKFLOWS</h2><p>{s.research}</p></div><div><h2 className="text-3xl mb-5">03 — CROSS-BORDER MATCHING</h2><p>{s.partners}</p></div></div></section><section className="section bg-white"><div className="container-modern max-w-5xl"><h2 className="text-3xl mb-5">04 — VALIDATION & DELIVERY</h2><p className="mb-6">{s.stage}</p><p className="mb-8">{s.solution}</p><Link className="btn-primary inline-block" href={`/${lang}/contact/`}>{s.cta}</Link></div></section></>}
+import { getEcosystemCopy } from '@/data/heritage-value';
+import { CollaborationSection, TechnologySection, ValuePath } from '@/components/HeritageValue';
+import styles from '@/components/HeritageValue.module.css';
+
+export default async function ServicesPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const c = getEcosystemCopy(lang);
+  return <div className={styles.page}>
+    <header className={styles.hero}><h1>{c.title}</h1><p>{c.mission}</p></header>
+    <section className={styles.services} aria-label={c.explore}>
+      {c.cards.slice(0, 2).map(([title, body], index) => {
+        const topic = index === 0 ? 'formation' : 'heritage';
+        return <article id={topic} key={topic}>
+          <h2>{title}</h2><p>{body}</p>
+          <div className={styles.actions}>
+            <Link className={styles.button} href={`/${lang}/contact/?topic=${topic}`}>{index === 0 ? c.formation : c.heritage} <span aria-hidden="true">→</span></Link>
+            <Link className={styles.link} href={`/${lang}/videos/#${index === 0 ? 'formation' : 'industry'}`}>{c.videos} <span aria-hidden="true">↗</span></Link>
+          </div>
+        </article>;
+      })}
+    </section>
+    <ValuePath lang={lang} />
+    <TechnologySection lang={lang} />
+    <CollaborationSection lang={lang} />
+  </div>;
+}

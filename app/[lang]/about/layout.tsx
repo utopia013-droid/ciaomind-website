@@ -1,3 +1,5 @@
 import { pageMetadata } from '@/lib/seo';
-export function generateMetadata({ params: { lang } }: { params: { lang: string } }) { return pageMetadata(lang, 'about'); }
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+ return pageMetadata(lang, 'about'); }
 export default function PageLayout({ children }: { children: React.ReactNode }) { return children; }
