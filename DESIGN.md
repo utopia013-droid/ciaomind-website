@@ -42,3 +42,7 @@ Website resources are available at /[lang]/brand/ in eight languages. The footer
 ## Application status
 
 The website and reusable communication assets are covered by this release. External social account profile changes and updates to previously distributed documents are tracked separately by channel and document.
+
+
+### Latest user correction — 2026-11-19
+Opening only: align the descriptor below the full symbol + horizontal CIAOMIND group. Header/footer after entry: restore the compact CIAO-over-MIND lockup. This overrides the earlier all-surfaces horizontal website decision; exported horizontal communication assets remain available.
