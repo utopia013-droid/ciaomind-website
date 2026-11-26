@@ -1,6 +1,9 @@
 import { getEcosystemCopy } from '@/data/heritage-value';
 import type { Metadata } from 'next';
 import { company } from '@/data/company';
+import { locales } from '@/lib/i18n';
+import { createLocalizedSeo } from '@/lib/seo-urls';
+export const localizedSeo = createLocalizedSeo(company.website, locales);
 export const pageNames: Record<string, { zh: string; it: string }> = {
  vision: {zh: '文化价值与产业协同愿景', it: 'Visione per cultura e industria'},
  '': {zh: '文化遗产数字化、AI教育与中意交流', it: 'Patrimonio digitale, educazione AI e dialogo Italia–Cina'},
@@ -22,6 +25,6 @@ export function pageMetadata(lang: string, path: string): Metadata {
  const core = ['', 'services', 'about', 'vision'].includes(path) ? getEcosystemCopy(lang) : null;
  const locale=lang==='zh'?'zh':'it'; const name=pageNames[path]?.[locale] ?? 'CIAOMIND';
  const title=core ? `CIAOMIND | ${core.title}` : lang==='zh'||lang==='it'?`CIAOMIND | ${name}`:'CIAOMIND | Heritage Economy OS · Trusted AI Workflows'; const description=core ? core.intro : lang==='zh'||lang==='it'?descriptions[path]?.[locale]:'Exploring rights-cleared cultural resources, cross-border partners and human-supervised trusted AI workflows.';
- const localized=(language:string)=>`${company.website}/${language}/${path?`${path}/`:''}`;
- return {title:{absolute:title},description,alternates:{canonical:localized(lang),languages:{'zh-CN':localized('zh'),it:localized('it'),en:localized('en'),fr:localized('fr'),de:localized('de'),es:localized('es'),pt:localized('pt'),ja:localized('ja'),'x-default':localized('en')}},openGraph:{title,description,url:localized(lang),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png?v=20261119r3`,width:1200,height:630,alt:'CIAOMIND — Culture, Industry, Innovation'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png?v=20261119r3`]}};
+ const localized=(language:string)=>localizedSeo.url(language,path);
+ return {title:{absolute:title},description,alternates:localizedSeo.alternates(lang,path),openGraph:{title,description,url:localized(lang),siteName:'CIAOMIND',type:'website',locale:locale==='it'?'it_IT':'zh_CN',alternateLocale:locale==='it'?['zh_CN']:['it_IT'],images:[{url:`${company.website}/brand/ciaomind-social.png?v=20261119r3`,width:1200,height:630,alt:'CIAOMIND — Culture, Industry, Innovation'}]},twitter:{card:'summary_large_image',title,description,images:[`${company.website}/brand/ciaomind-social.png?v=20261119r3`]}};
 }

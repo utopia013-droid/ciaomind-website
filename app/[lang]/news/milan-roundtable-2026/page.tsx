@@ -4,16 +4,18 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { company } from '@/data/company';
+import { localizedSeo } from '@/lib/seo';
 import { roundtable, roundtableImages } from '@/data/milan-roundtable';
 
 export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await paramsPromise;
 
   const c = (lang in newsTranslations ? newsTranslations[lang as keyof typeof newsTranslations] : roundtable[lang === 'zh' ? 'zh' : 'it']);
-  const url = `${company.website}/${lang}/news/${roundtable.slug}/`;
+  const path = `news/${roundtable.slug}`;
+  const url = localizedSeo.url(lang, path);
   return {
     title: { absolute: `${c.title} | CIAOMIND` }, description: c.summary,
-    alternates: { canonical: url, languages: Object.fromEntries(['zh','it','en','fr','de','es','pt','ja'].map(l=>[l,`${company.website}/${l}/news/${roundtable.slug}/`])) },
+    alternates: localizedSeo.alternates(lang, path),
     openGraph: { type: 'article', title: c.title, description: c.summary, url, publishedTime: roundtable.published, images: [{ url: `${company.website}/images/news/${roundtable.slug}/group.jpg`, width: 1280, height: 1774, alt: c.captions[0] }] },
     twitter: { card: 'summary_large_image', title: c.title, description: c.summary, images: [`${company.website}/images/news/${roundtable.slug}/group.jpg`] },
   };

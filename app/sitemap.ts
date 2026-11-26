@@ -1,12 +1,13 @@
 import type { MetadataRoute } from 'next';
-import { company } from '@/data/company';
-import { pageNames } from '@/lib/seo';
+import { pageNames, localizedSeo } from '@/lib/seo';
 import { locales } from '@/lib/i18n';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [...Object.keys(pageNames), 'network', 'videos','brand', 'news/milan-roundtable-2026'];
-  const url = (locale: string, path: string) => company.website + '/' + locale + '/' + (path ? path + '/' : '');
+  // Only public, final localized routes. Do not include redirecting aliases,
+  // archived news routes, account/workspace routes, or query-string variants.
+  const paths = [...Object.keys(pageNames), 'network', 'videos', 'brand', 'news/milan-roundtable-2026'];
   return paths.flatMap(path => locales.map(locale => ({
-    url: url(locale, path),
-    alternates: { languages: Object.fromEntries(locales.map(lang => [lang, url(lang, path)])) },
+    url: localizedSeo.url(locale, path),
+    alternates: { languages: localizedSeo.languages(path) },
   })));
 }
