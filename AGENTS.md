@@ -2,6 +2,8 @@
 
 Read [docs/PRODUCT_DIRECTION.md](docs/PRODUCT_DIRECTION.md) before changing website content, information architecture, user journeys or collaboration features.
 
+For identity and communication changes, use [docs/BRAND_SYSTEM.md](docs/BRAND_SYSTEM.md) and the shared generated brand assets.
+
 The user confirmed this direction on 2026-11-19. Apply it together with the current user request and existing repository requirements. Later explicit user decisions take precedence.
 
 - Ground the product in cultural heritage, cultural resources and IP protection, with rights, provenance and benefit sharing.

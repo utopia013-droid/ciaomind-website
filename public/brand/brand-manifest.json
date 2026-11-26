@@ -1,0 +1,66 @@
+{
+  "version": "2026-11-19-r3",
+  "name": "CIAOMIND",
+  "descriptor": "CULTURE \u00b7 INDUSTRY \u00b7 INNOVATION",
+  "master": "/brand/ciaomind-lockup-green.svg",
+  "webMaster": "/brand/ciaomind-stacked-green.svg",
+  "formats": [
+    "SVG",
+    "PNG",
+    "WebP"
+  ],
+  "clearSpace": "Keep at least one quarter of the symbol width around the complete signature.",
+  "variants": [
+    "horizontal-full-width-descriptor",
+    "stacked-ciao-over-mind",
+    "centered",
+    "symbol"
+  ],
+  "colors": {
+    "green": "#1C4036",
+    "cream": "#F7F5EF",
+    "white": "#FFFFFF"
+  },
+  "covers": [
+    {
+      "file": "/brand/ciaomind-social.png",
+      "width": 1200,
+      "height": 630
+    },
+    {
+      "file": "/brand/ciaomind-avatar.png",
+      "width": 1080,
+      "height": 1080
+    },
+    {
+      "file": "/brand/ciaomind-post.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "/brand/ciaomind-story.png",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "file": "/brand/ciaomind-presentation-cover.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "/brand/ciaomind-video-endcard.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "/brand/ciaomind-wide-cover.png",
+      "width": 1920,
+      "height": 640
+    }
+  ],
+  "templates": [
+    "/brand/ciaomind-email-signature.html",
+    "/brand/ciaomind-letterhead.html",
+    "/brand/ciaomind-letterhead.pdf"
+  ]
+}

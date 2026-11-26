@@ -37,5 +37,5 @@ export default function BrandIntro() {
   if (!visible || reducedMotion || /\/(business-os|account)(\/|$)/.test(pathname)) return null;
   return <div className="brand-intro" aria-hidden="true" onAnimationEnd={event => {
     if (event.target === event.currentTarget && event.animationName === 'brand-intro-exit') setVisible(false);
-  }}><BrandLogo /></div>;
+  }}><BrandLogo variant="intro" /></div>;
 }
