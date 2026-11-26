@@ -10,6 +10,9 @@ export default createMiddleware({
   defaultLocale: 'en',
   localePrefix: 'always',
   localeDetection: true,
+  // The sitemap and Metadata API supply matching canonical hreflang URLs.
+  // Avoid a second Link header that can advertise redirecting x-default URLs.
+  alternateLinks: false,
   localeCookie: {
     name: 'NEXT_LOCALE',
     sameSite: 'lax',

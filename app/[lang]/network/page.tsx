@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import type { Metadata } from 'next';
+import { localizedSeo } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowDown, ArrowDownRight, ArrowUpRight, Link2, Landmark, PenTool, Factory, Store, Globe2, ClipboardCheck, Blocks, Wallet } from 'lucide-react';
 import NetworkApplication from '@/components/NetworkApplication';
@@ -24,10 +25,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
   return {
     title: copy.title,
     description: copy.summary,
-    alternates: {
-      canonical: '/' + locale + '/network/',
-      languages: Object.fromEntries(Object.keys(networkCopy).map(lang => [lang, '/' + lang + '/network/'])),
-    },
+    alternates: localizedSeo.alternates(locale, 'network'),
   };
 }
 

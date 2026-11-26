@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { brandCopy } from '@/data/brand';
 import { locales, type Locale } from '@/lib/i18n';
-import { company } from '@/data/company';
+import { localizedSeo } from '@/lib/seo';
 import styles from './brand.module.css';
 
 type Props = { params: Promise<{ lang: string }> };
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
   const c = getCopy(lang);
   return {
     title: c.title, description: c.intro,
-    alternates: { canonical: `${company.website}/${lang}/brand/`, languages: Object.fromEntries(locales.map(l => [l, `${company.website}/${l}/brand/`])) },
+    alternates: localizedSeo.alternates(lang, 'brand'),
     openGraph: { title: `CIAOMIND · ${c.title}`, description: c.intro, images: [{ url: '/brand/ciaomind-social.png?v=20261119r3', width:1200, height:630 }] },
   };
 }
